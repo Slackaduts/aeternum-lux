@@ -102,13 +102,14 @@ function Icon(_sprite, _frame = 1) constructor {
 
 
 /**
- * Creates a new consumable item.
- * @param {string} _name Name of the item, must be unique
+ * Creates a new consumable Item struct. Interops with inventory struct/system
+ * @param {string} _name Name of the item
  * @param {string} _desc Item description
- * @param {struct.Icon} _icon Sprite image of the item
- * @param {struct.CombatStats} _statsMod CombatStats
+ * @param {struct.Icon} _icon Icon data for the item
+ * @param {array} [_recipe]=[] Recipe data for the item
+ * @param {struct.CombatStats} [_statsMod]=new CombatStats() Optional stats for the item
  */
-function Item(_name, _desc, _icon, _statsMod = new CombatStats(), _recipe = []) constructor {
+function Item(_name, _desc, _icon, _recipe = [], _statsMod = new CombatStats()) constructor {
 	name = _name;
 	itemType = itemTypes.CONSUMABLE;
 	desc = _desc;
@@ -154,17 +155,20 @@ function Item(_name, _desc, _icon, _statsMod = new CombatStats(), _recipe = []) 
 				_obj.inventory.remove_item(get_item(_recipeItem.name), _recipeItem.amount);
 
 			_obj.inventory.add_item(self, 1);
+			};
 		};
 	};
 };
 
 
+
+
 /**
- * Creates a new Reagent item.
- * @param {any*} _name Description
- * @param {any*} _desc Description
- * @param {any*} _icon Description
- * @param {array} [_recipe]=[] Description
+ * Creates a new Reagent item. These are used purely for crafting and serve zero functional purpose.
+ * @param {string} _name Name of the item
+ * @param {string} _desc Item description
+ * @param {struct.Icon} _icon Item icon data (struct containing sprite and image index)
+ * @param {array} [_recipe]=[] Recipe data, array of structs containting item name and amounts
  */
 function Reagent(_name, _desc, _icon, _recipe = []) : Item(_name, _desc, _icon, _recipe) constructor {
 	itemType = itemTypes.REAGENT;
@@ -172,18 +176,19 @@ function Reagent(_name, _desc, _icon, _recipe = []) : Item(_name, _desc, _icon, 
 };
 
 
+
  /**
   * Creates a new equipment item.
   * @param {string} _name Name of the equipment
   * @param {string} _desc Equipment description
-  * @param {Asset.GMSprite} _icon Sprite icon for this equipment
+  * @param {struct.Icon} _icon Sprite icon for this equipment
   * @param {struct.CombatStats} _statsMod Stats of the equipment item
   * @param {array} [_recipe]=[] Recipe data for this item
   * @param {real} [_equipmentType]=equipmentTypes.BODY Equipment type, see equipmentTypes enum
   * @param {string} [_nameReq] Combatant name required for equipping. Useful for class locking.
   * @param {real} [_levelReq]=0 Level requirement to equip
   */
- function Equipment(_name, _desc, _icon, _statsMod, _recipe = [], _equipmentType = equipmentTypes.BODY, _nameReq = undefined, _levelReq = 0) : Item(_name, _desc, _icon, _statsMod, _recipe) constructor {
+ function Equipment(_name, _desc, _icon, _statsMod, _recipe = [], _equipmentType = equipmentTypes.BODY, _nameReq = undefined, _levelReq = 0) : Item(_name, _desc, _icon, _recipe, _statsMod) constructor {
 	itemType = itemTypes.EQUIPMENT;
 	equipmentType = equipmentTypes.BODY;
 	levelReq = _levelReq;
@@ -207,15 +212,17 @@ function Reagent(_name, _desc, _icon, _recipe = []) : Item(_name, _desc, _icon, 
 };
 
 
-function KeyItem(_name, _desc, _icon, _statsMod = new CombatStats(), _scenes = [[]]) : Item(_name, _desc, _icon, _statsMod) constructor {
+
+function KeyItem(_name, _desc, _icon, _recipe = [], _scenes = [[]]) : Item(_name, _desc, _icon, _recipe) constructor {
 	type = itemTypes.ARTIFACT;
 	sceneManager = new scene_manager(_scenes);
-	stats.setStats(_statsMod);
 
 	static use = function() {
 		//PUSH TO SCENE POOL OF INSTANCE
 	};
 };
+
+
 
 /**
  * Preloads the items database.
@@ -291,15 +298,17 @@ function get_item(_name, _amount = 1) {
 		//If the reference has our desired name, we know it is correct
 		if variable_struct_exists(_struct, _name) {
 			var _itemData = global.itemsDatabase[_currStruct].items[_struct[$ _name]];
+
 			//Defaults if not provided
+			if !variable_struct_exists(_itemData, "icon") _itemData.icon = new Icon("sprBaseIcons", 1);
 			if !variable_struct_exists(_itemData, "stats") _itemData.stats = new CombatStats();
 			if !variable_struct_exists(_itemData, "desc") _itemData.desc = "Nothing is known about this item.";
-			//if !variable_struct_exists(_itemData, "stats") _itemData.icon = sprItem;
 			if !variable_struct_exists(_itemData, "recipe") _itemData.recipe = [];
+
 			//Handle item-type specific structs
 			switch (_currStruct) {
 				case itemTypes.CONSUMABLE:
-					_item = new Item(_itemData.name, _itemData.desc, _itemData.icon, _itemData.stats, _itemData.recipe);
+					_item = new Item(_itemData.name, _itemData.desc, _itemData.icon, _itemData.recipe, _itemData.stats);
 				break;
 
 				case itemTypes.REAGENT:
@@ -309,16 +318,14 @@ function get_item(_name, _amount = 1) {
 				case itemTypes.EQUIPMENT:
 					if !variable_struct_exists(_itemData, "nameReq") _itemData.nameReq = undefined;
 					if !variable_struct_exists(_itemData, "levelReq") _itemData.levelReq = undefined;
-					_item = new Equipment(_itemData.name, _itemData.desc, _itemData.icon, _itemData.stats, _itemData.recipe, equipment_type(_itemData.equipmentType), _itemData.nameReq, _itemData.levelReq);
+					_item = new Equipment(_itemData.name, _itemData.desc, _itemData.icon, _itemData.recipe, _itemData.stats, equipment_type(_itemData.equipmentType), _itemData.nameReq, _itemData.levelReq);
 				break;
 
 				case itemTypes.ARTIFACT:
 					_item = new KeyItem(_itemData.name, _itemData.desc, _itemData.icon, _itemData.stats) // IMPLEMENT SCENES FROM FILE SOMEHOW
 				break;
-
 			};
 		};
-	};
 	return _item;
-
+	};
 };
