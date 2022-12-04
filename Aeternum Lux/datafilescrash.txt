@@ -1,0 +1,9 @@
+{ longMessage : "ERROR in
+action number 1
+of Key Press Event for F5 Key
+for object YuiGlobals:
+
+
+instance_destroy argument 1 incorrect type (undefined) expecting a Number (YYGI32)
+ at gml_Script_anon_gml_Object_yui_document_Create_0_824_gml_Object_yui_document_Create_0 (line 45) - 	instance_destroy(root);
+", script : "gml_Script_anon_gml_Object_yui_document_Create_0_824_gml_Object_yui_document_Create_0", stacktrace : [ "gml_Script_anon_gml_Object_yui_document_Create_0_824_gml_Object_yui_document_Create_0 (line 45)","gml_Object_YuiGlobals_KeyPress_116 (line 9) - 	reload();" ], message : "instance_destroy argument 1 incorrect type (undefined) expecting a Number (YYGI32)", line : 45 }

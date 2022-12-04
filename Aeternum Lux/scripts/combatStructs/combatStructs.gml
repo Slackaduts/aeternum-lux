@@ -1,0 +1,210 @@
+enum controlStates {
+	STATIC,
+	IDLE,
+	CONTROLLED,
+	FOLLOWING,
+	WANDERING,
+	LAST	
+};
+
+
+enum teamStates {
+	PLAYER,
+	ENEMY,
+	NEUTRAL,
+	LAST	
+};
+
+
+enum aiTypes {
+	DARING,
+	CAREFUL,
+	SNIPER,
+	NONE,
+	LAST	
+};
+
+
+enum enemyRanks {
+	MOB,
+	ELITE,
+	BOSS,
+	ELDER,
+	LAST	
+};
+
+
+enum aiStates {
+	ATTACKING,
+	HEALING,
+	DEFENDING,
+	RUSHING,
+	FLEEING,
+	LAST
+};
+
+
+
+/**
+ * Creates a struct containing the relevant combatant states useful for handling movement and other things outside of combat.
+ */
+function CombatStates() constructor {
+	inCombat = false; //If we are in combat
+	isDead = false; //If our HP is 0
+	isLocked = false; //If our movement is locked
+	isDocile = false; //If we are forced into not attacking
+	isSlowed = false; //If we are slowed
+	isConfused = false; //If we are forced into random directions
+	controlState = controlStates.IDLE
+};
+
+
+/**
+ * Creates a struct containing stats relevant to combat for a combatant.
+ */
+function CombatStats() constructor {
+	maxHp = 0; //Max Health
+	hpRegen = 0; //Health regeneration
+	hp = 0; //Current Health
+	maxMp = 0; //Max Mana
+	mpRegen = 0; //Mana regeneration
+	mp = 0; //Current Mana
+	maxTp = 0; //Max TP
+	tp = 0; //Current TP, allows some skills to be used and also passively buffs all attacks
+	vigor = 0; //Attack
+	affinity = 0; //Magic Attack
+	fortitude = 0; //Defense
+	resilience = 0; //Magic Defense
+	technique = 0; //Reduces cooldowns for skills and mildly improves TP gain
+	tenacity = 0; //Working name, mildly improves all stats when solo and improves defensive stats greatly when in a party but NOT selected
+	
+	/// @desc Clamps stats to be within their relevant ranges.	
+	static clampStats = function() {
+		//NOTE: This clamp is sus as fuck
+		clamp_struct(self, 0, 999999);
+		hp = clamp(hp, 0, maxHp);
+		mp = clamp(mp, 0, maxMp);
+		tp = clamp(tp, 0, maxTp);
+	};
+	
+	static setStats = function(_statsMod) {
+		add_struct(self, _statsMod);
+	};
+	
+	
+	/**
+	 * Adds stats to this CombatStats object.
+	 * @param {struct.CombatStats} _statsMod Stats to apply
+	 */
+	static applyStats = function(_statsMod) {
+		add_struct(self, _statsMod);
+		clampStats();
+	};
+
+	/**
+	 * Subtracts stats from this CombatStats object.
+	 * @param {struct.CombatStats} _statsMod Stats to revoke
+	 */
+	static revokeStats = function(_statsMod) {
+		subtract_struct(self, _statsMod);
+		clampStats();
+	};
+};
+
+
+
+/**
+ * Holds all combat-related information for a combatant.
+ * @param {any*} _name Name of this combatant
+ */
+function CombatantManager(_name) constructor {
+	name =_name;
+	team = teamStates.ENEMY;
+	rank = enemyRanks.MOB;
+	level = 1;
+	aiType = aiTypes.DARING;
+	states = new CombatStates();
+
+	baseStats = new CombatStats();
+	liveStats = new CombatStats();
+	
+	equipment = [];
+	overTimes = [];	
+};
+
+
+
+//function SkillHitBox(_statsMod, _team, _) constructor {
+	
+	
+	
+//	static trigger = function()
+	
+	
+//};
+
+
+
+
+
+
+
+
+//function CombatOverTime(_name, _hp, _mp, _tp, _statsMod, _statesMod, _duration) constructor {
+//	name = _name;
+//	hpTick = _hp;
+//	mpTick = _mp;
+//	tpTick = _tp;
+//	combatantStatsMod = _statsMod;
+//	combatantStatesMod = _statesMod;
+//	maxDuration = _duration;
+//	duration = _duration;
+	
+//	static addOverTime = function() {
+//		var combatStatNames = variable_struct_get_names(combatLiveStats);
+//		for (var currEntry = 0; currEntry < array_length(combatStatNames); currEntry++) {	
+//			var currStatMod = combatantStatsMod[$ combatStatNames[currEntry]]
+//			combatLiveStats[$ combatStatNames[currEntry]] += currStatMod;
+//		};
+		
+//		var combatStateNames = variable_struct_get_names(combatLiveStats);
+//		for (var currEntry = 0; currEntry < array_length(combatStateNames); currEntry++) {	
+//			var currStateMod = combatStatesMod[$ combatStateNames[currEntry]]
+//			combatLiveStates[$ combatStateNames[currEntry]] *= currStateMod;
+//		};		
+//	};
+	
+//	static removeOverTime = function() {
+//		var combatStatNames = variable_struct_get_names(combatLiveStats);
+//		for (var currEntry = 0; currEntry < array_length(combatStatNames); currEntry++) {	
+//			var currStatMod = combatantStatsMod[$ combatStatNames[currEntry]];
+//			combatLiveStats[$ combatStatNames[currEntry]] -= currStatMod;
+//		};
+		
+//		var combatStateNames = variable_struct_get_names(combatLiveStats);
+//		for (var currEntry = 0; currEntry < array_length(combatStateNames); currEntry++) {	
+//			var currStateMod = combatStatesMod[$ combatStateNames[currEntry]];
+//			combatLiveStates[$ combatStateNames[currEntry]] = combatStates[$ combatStateNames[currEntry]];
+//		};		
+//	};
+	
+//	static applyTick = function() {
+//		duration = clamp(duration - 1, 0, 25);
+//		with (other) {
+//			combatLiveStats.currHp = clamp(currHp + hpTick, 1, maxHp);
+//			combatLiveStats.currMp = clamp(currMp + mpTick, 1, maxMp);
+//			combatLiveStats.currTp = clamp(currTp + tpTick, 1, maxTp);
+//		};
+//	};
+	
+//	static drawTickXY = function(_x, _y) {
+//		//TODO: HAVE THIS CREATE A CHILD OF A TEXT RENDERING INSTANCE THAT LOWERS OPACITY AND FLOATS UPWARD
+		
+//	};
+	
+//	static drawTickInst = function(_inst) {
+//		//TODO: HAVE THIS CREATE A CHILD OF A TEXT RENDERING INSTANCE THAT LOWERS OPACITY AND FLOATS UPWARD
+//	};
+
+
+//};

@@ -1,0 +1,9 @@
+{ longMessage : "ERROR in
+action number 1
+of Create Event
+for object yui_document:
+
+
+Variable <unknown_object>.tryRead(100278, -2147483648) cannot be resolved.
+ at gml_Script_anon_YuiDocument_gml_GlobalScript_YuiDocument_506_YuiDocument_gml_GlobalScript_YuiDocument (line 38) - 		var file_data = cabinet_file.tryRead();
+", line : 38, stacktrace : [ "gml_Script_anon_YuiDocument_gml_GlobalScript_YuiDocument_506_YuiDocument_gml_GlobalScript_YuiDocument (line 38)","gml_Script_YuiDocument (line 20) - 	loadDocument();","gml_Script_anon_gml_Object_yui_document_Create_0_529_gml_Object_yui_document_Create_0 (line 32)","gml_Object_yui_document_Create_0 (line 49) - load();" ], message : "Variable <unknown_object>.tryRead(100278, -2147483648) cannot be resolved.", script : "gml_Script_anon_YuiDocument_gml_GlobalScript_YuiDocument_506_YuiDocument_gml_GlobalScript_YuiDocument" }

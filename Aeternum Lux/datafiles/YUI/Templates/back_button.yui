@@ -1,0 +1,10 @@
+file_type: resources
+
+resources:
+
+  back_button:
+    type: fragment
+    content:
+      type: button
+      content: Back
+      on_click: @@ e => yui_change_screen(welcome_screen, e.source)

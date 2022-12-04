@@ -1,0 +1,30 @@
+items:
+  - name: Basic Potion
+    desc: A minor healing potion made by an amateur alchemist. Heals 10HP.
+    icon:
+      name: sprConsumablesIcons
+      frame: 31
+    stats:
+      hp: 10
+    recipe:
+      - name: Monstrous Extract
+        amount: 1
+      - name: Fish Oil
+        amount: 1
+      - name: Trinate Powder
+        amount: 1
+
+  - name: Basic Ether
+    desc: A minor mana restoring elixir made by an amateur alchemist. Restores 15MP.
+    icon:
+      name: sprConsumablesIcons
+      frame: 24
+    stats:
+      mp: 10
+    recipe:
+      - name: Monstrous Extract
+        amount: 1
+      - name: Fish Oil
+        amount: 1
+      - name: Trinate Powder
+        amount: 1

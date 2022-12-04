@@ -1,0 +1,12 @@
+items:
+  - name: Monstrous Extract
+    desc: A liquid secreted by undead and/or magical monsters. Useful for crafting.
+    icon: sprItem
+
+  - name: Trinate Powder
+    desc: A powdered mixture of various metals and materials and materials. Used as a binding agent.
+    icon: sprItem
+
+  - name: Animal Hide
+    desc: The hide of a mammal. Useful for crafting.
+    icon: sprItem

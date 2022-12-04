@@ -1,0 +1,17 @@
+items:
+  - name: Leather Boots
+    desc: Poorly made boots made by an amateur leatherworker. Provides little defense.
+    equipmentType: feet
+    nameReq: None
+    levelReq: 0
+    icon: sprItem
+    stats:
+      fortitude: 5
+      resilience: 2
+    recipe:
+      - name: Animal Hide
+        amount: 1
+      - name: Copper Pieces
+        amount: 2
+      - name: Trinate Powder
+        amount: 2

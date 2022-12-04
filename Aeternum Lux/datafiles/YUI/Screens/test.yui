@@ -1,0 +1,47 @@
+// id: test
+// file_type: screen
+
+import:
+  - ../Widgets/meter_bar.yui
+
+root:
+  type: panel
+  layout: canvas
+  // size: { w: 1280, h: 720 }
+  // background: #000000
+  // border_color: #FFFFFF
+  // border_thickness: 2
+
+  elements:
+    - type: text
+      text: @x
+      canvas:
+        bottom: 66
+        left: 0
+    - type: meter_bar
+      size: { w: 140, h: 20 }
+      max: @combatLiveStats.maxHp
+      value: @combatLiveStats.hp
+      background: white
+      meter_blend_color: red
+      canvas:
+        bottom: 44
+        left: 0
+    - type: meter_bar
+      size: { w: 140, h: 20 }
+      max: @combatLiveStats.maxMp
+      value: @combatLiveStats.mp
+      background: white
+      meter_blend_color: blue
+      canvas:
+        bottom: 22
+        left: 0
+    - type: meter_bar
+      size: { w: 140, h: 20 }
+      max: @combatLiveStats.maxTp
+      value: @combatLiveStats.tp
+      background: white
+      meter_blend_color: green
+      canvas:
+        bottom: 0
+        left: 0

@@ -1,0 +1,149 @@
+id: inventory_screen
+file_type: screen
+
+import:
+  - "../Templates/main_panel.yui"
+  - "../Templates/back_button.yui"
+
+  // importing interactions here enables live reload for them
+  - "../Interactions/equip_item.yui"
+
+// resources can also be defined within a .yui file, without needing to be imported
+resources:
+
+  // define the UI for displaying an equipment slot that an item can be equipped to
+  // e.g. head/boots/etc (these are defined in inventory.yaml in the Example Data folder)
+  equipped_item_slot:
+    type: fragment
+    content: 
+      type: panel
+      layout: horizontal
+      spacing: 15
+      elements:
+        - type: border
+          border_color: $theme.resources.control_border
+          background: $theme.resources.control_bg
+          padding: 2
+          size: 64
+
+          // Here you can see an example of Data Binding, which is how you can get data from the game
+          // into the UI. Not all properties support binding, so check the documentation!
+          // TODO: link to docs
+          tooltip: @equipped_item.name
+          tooltip_placement: left_top
+
+          // This section indicates that this panel participates in the 'equip_item' interaction in
+          // the 'drop' role. Elements can participate in multiple interactions in different roles.
+          interactions: 
+            - equip_item.drop
+
+          content:
+            type: image
+            sprite: @equipped_item.sprite
+            size: stretch
+        - type: text
+          text: @name
+
+  // define the UI for displaying an inventory item that can be equipped to a slot
+  // (the items are defined in inventory.yaml in the Example Data folder)
+  inventory_item_slot:
+    type: fragment
+    content: 
+      type: border
+      padding: 2
+      border_color: $theme.resources.control_border
+      background: $theme.resources.control_bg
+      content:
+        type: image
+        sprite: @sprite
+        size: stretch
+
+      // this section specifies that the 'equip_item' interaction should start when the mouse button 
+      // is pressed on this panel. 'interaction' is an alternative to calling a function directly
+      events:
+        on_mouse_down:
+          interaction: equip_item
+
+      tooltip_placement: top_left
+      tooltip:
+        type: panel
+        elements:
+          - type: text
+            text_style: subtitle
+            text: @name
+
+          // the text element accepts an array, which can be a mix of strings and bindings.
+          // This is more performant than using multiple text elements, so take advantage of it!
+          - type: text
+            text: ["Slot: ", @slot]
+
+root:
+  type: panel
+  padding: 30
+  layout: canvas 
+  elements:
+    - type: back_button
+
+    - type: main_panel
+      canvas:
+        top: 50
+        left: 191
+        right: 191
+        bottom: 40
+      layout: canvas
+      spacing: 20
+      padding: 30
+      elements:
+        - type: text
+          text_style: title
+          text: Inventory Screen
+
+        - type: main_panel
+          background: $theme.resources.subpanel_bg
+          canvas:
+            top: 50
+          spacing: 10
+          padding: 20
+          elements:
+            - type: text
+              text_style: subtitle
+              text: Equipped Items
+
+            // In addition to specifying children explicitly via 'elements', panel also supports
+            // binding to an array from game data. In this case, the 'template' property defines
+            // how to render each item. In this case, the template will be used to render each
+            // item in the 'slots' list on the current data context (and the data context for
+            // the template will be the individual item)
+            - type: panel
+              spacing: 10
+              elements: @slots
+              template:
+                type: equipped_item_slot
+
+        - type: main_panel
+          background: $theme.resources.subpanel_bg
+          canvas:
+            top: 210
+            left: 220
+          padding: 20
+          spacing: 10
+          elements:
+            - type: text
+              text_style: subtitle
+              text: Inventory Items
+
+            // the 'grid' layout can be used to divide an area into evenly sized rectangles
+            - type: panel
+              layout: grid
+              padding: [0,10,0,0]
+              grid:
+                rows: 4
+                row_height: 64
+                row_spacing: 10
+                columns: 8
+                column_width: 64
+                column_spacing: 10
+
+              elements: @items
+              template:
+                type: inventory_item_slot

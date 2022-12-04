@@ -1,0 +1,9 @@
+{ script : "gml_Script_get_item", longMessage : "ERROR in
+action number 1
+of  Step Event1
+for object objCamera:
+
+
+Variable <unknown_object>.stats(101338, -2147483648) not set before reading it.
+ at gml_Script_get_item (line 234) - 					_item = new Item(_itemData.name, _itemData.desc, _itemData.icon, _itemData.stats);
+", line : 234, stacktrace : [ "gml_Script_get_item (line 234)","gml_Object_objCamera_Step_1 (line 30) - show_debug_message(get_item("Basic Ether"))" ], message : "Variable <unknown_object>.stats(101338, -2147483648) not set before reading it." }
