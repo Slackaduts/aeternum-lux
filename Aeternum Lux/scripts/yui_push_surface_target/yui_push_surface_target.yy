@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "draw",
-    "path": "folders/YUI/scripts/draw.yy",
+    "path": "folders/Packages - YUI/scripts/draw.yy",
   },
 }

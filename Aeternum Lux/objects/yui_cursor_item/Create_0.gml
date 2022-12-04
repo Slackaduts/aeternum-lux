@@ -23,9 +23,11 @@ is_cursor_layer = false;
 // TODO: convert to cursor_click?
 left_pressed = undefined;
 left_click = undefined;
+left_double_click = undefined;
 
 right_pressed = undefined;
 right_click = undefined;
+right_double_click = undefined;
 
 cursor_hover = undefined;
 
@@ -35,16 +37,29 @@ on_mouse_wheel_down = undefined;
 on_got_focus = undefined;
 on_lost_focus = undefined;
 
+on_hover_changed = undefined;
+
 // simplifies logic for checking parent opacity
 opacity = 1;
 
 onChildLayoutComplete = function(child) {
 	// this is just here to make the recursive call simpler in yui_elements
 }
-
-setHighlight = function(highlight) {
-	self.highlight = highlight;
+isPointVisible = function(x, y) {
+	return true;
 }
 
+setHighlight = function(highlight) {
+	var changed = self.highlight != highlight;
+	self.highlight = highlight;
+	
+	if changed && on_hover_changed {
+		on_hover_changed();
+	}
+}
+
+focus = function() {
+	YuiCursorManager.setFocus(id);
+}
 
 

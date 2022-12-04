@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Selection",
-    "path": "folders/YUI/Selection.yy",
+    "path": "folders/Packages - YUI/Selection.yy",
   },
 }

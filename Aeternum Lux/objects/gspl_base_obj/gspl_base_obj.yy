@@ -26,6 +26,6 @@
   "overriddenProperties": [],
   "parent": {
     "name": "test",
-    "path": "folders/gspl/test.yy",
+    "path": "folders/Packages - gspl/test.yy",
   },
 }

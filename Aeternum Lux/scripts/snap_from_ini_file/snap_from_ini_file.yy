@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "INI",
-    "path": "folders/Struct N' Array Parser/INI.yy",
+    "path": "folders/Packages - Struct N' Array Parser/INI.yy",
   },
 }

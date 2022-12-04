@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Objects",
-    "path": "folders/gspl/Objects.yy",
+    "path": "folders/Packages - gspl/Objects.yy",
   },
 }

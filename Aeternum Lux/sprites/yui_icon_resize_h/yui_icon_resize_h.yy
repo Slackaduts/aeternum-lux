@@ -69,6 +69,6 @@
   "nineSlice": null,
   "parent": {
     "name": "delapouite",
-    "path": "folders/YUI/Sprites/game-icons.net/delapouite.yy",
+    "path": "folders/Packages - YUI/Sprites/game-icons.net/delapouite.yy",
   },
 }

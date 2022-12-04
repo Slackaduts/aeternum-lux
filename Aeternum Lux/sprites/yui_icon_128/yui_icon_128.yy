@@ -93,6 +93,6 @@
   },
   "parent": {
     "name": "Sprites",
-    "path": "folders/YUI/Sprites.yy",
+    "path": "folders/Packages - YUI/Sprites.yy",
   },
 }

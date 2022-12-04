@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Transform",
-    "path": "folders/YUI/Transform.yy",
+    "path": "folders/Packages - YUI/Transform.yy",
   },
 }

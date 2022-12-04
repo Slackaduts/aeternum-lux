@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Execute",
-    "path": "folders/gspl/Execute.yy",
+    "path": "folders/Packages - gspl/Execute.yy",
   },
 }

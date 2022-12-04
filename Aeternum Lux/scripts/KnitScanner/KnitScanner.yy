@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Knit",
-    "path": "folders/gspl/Languages/Knit.yy",
+    "path": "folders/Packages - gspl/Languages/Knit.yy",
   },
 }

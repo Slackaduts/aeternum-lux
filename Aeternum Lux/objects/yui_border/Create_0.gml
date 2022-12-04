@@ -47,6 +47,17 @@ build = function() {
 	
 	opacity = bound_values.opacity * parent.opacity * 1 - (!enabled * 0.5);
 	
+	if layout_props.is_bg_live {
+		if bound_values.bg_sprite != undefined {
+			bg_sprite = bound_values.bg_sprite;
+			bg_alpha = 1;
+		}
+		else if bound_values.bg_color != undefined {
+			bg_color = bound_values.bg_color;
+			bg_alpha = ((bg_color & 0xFF000000) >> 24) / 255; // extract alpha
+		}
+	}
+	
 	// create the content item instance if there should be one
 	// NOTE: have to do this after opacity is updated
 	var make_content_item = 
@@ -55,12 +66,19 @@ build = function() {
 		&& layout_props.content_element != undefined
 
 	if make_content_item {
-		content_item = yui_make_render_instance(layout_props.content_element, data_context);
+		if trace
+			DEBUG_BREAK_YUI
+		content_item = yui_make_render_instance(layout_props.content_element, bound_values.data_source);
 	}
 	
 	if content_item {
-		content_item.data_context = bound_values.data_source;
-		// will trigger build() as child runs after this
+		// check if we need to rebuild
+		content_item.rebuild = content_item.data_context != bound_values.data_source;
+		if content_item.rebuild {
+			// update child data context
+			content_item.data_context = bound_values.data_source;
+			// will trigger build() as child runs after this
+		}
 	}
 }
 

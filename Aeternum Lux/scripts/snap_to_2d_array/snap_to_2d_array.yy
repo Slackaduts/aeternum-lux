@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Grids & 2D Arrays",
-    "path": "folders/Struct N' Array Parser/Grids & 2D Arrays.yy",
+    "path": "folders/Packages - Struct N' Array Parser/Grids & 2D Arrays.yy",
   },
 }

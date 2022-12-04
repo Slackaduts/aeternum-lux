@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "ValueTypes",
-    "path": "folders/gspl/Execute/ValueTypes.yy",
+    "path": "folders/Packages - gspl/Execute/ValueTypes.yy",
   },
 }

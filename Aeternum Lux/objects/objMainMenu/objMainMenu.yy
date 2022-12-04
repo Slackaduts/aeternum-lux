@@ -8,7 +8,10 @@
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "yui_document",
+    "path": "objects/yui_document/yui_document.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -23,7 +26,10 @@
   "physicsShapePoints": [],
   "eventList": [],
   "properties": [],
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"yui_file","path":"objects/yui_document/yui_document.yy",},"objectId":{"name":"yui_document","path":"objects/yui_document/yui_document.yy",},"value":"\"YUI/Screens/mainmenu.yui\"",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"data_context","path":"objects/yui_document/yui_document.yy",},"objectId":{"name":"yui_document","path":"objects/yui_document/yui_document.yy",},"value":"undefined",},
+  ],
   "parent": {
     "name": "GUI",
     "path": "folders/Objects/GUI.yy",

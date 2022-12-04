@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Messagepack",
-    "path": "folders/Struct N' Array Parser/Messagepack.yy",
+    "path": "folders/Packages - Struct N' Array Parser/Messagepack.yy",
   },
 }

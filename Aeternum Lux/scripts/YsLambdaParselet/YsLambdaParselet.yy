@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Parselets",
-    "path": "folders/YUI/Parser/Ys/Parselets.yy",
+    "path": "folders/Packages - YUI/Parser/Ys/Parselets.yy",
   },
 }

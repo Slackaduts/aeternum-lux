@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Data",
-    "path": "folders/YUI/Data.yy",
+    "path": "folders/Packages - YUI/Data.yy",
   },
 }

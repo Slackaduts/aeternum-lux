@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Pratt",
-    "path": "folders/gspl/Parser/Pratt.yy",
+    "path": "folders/Packages - gspl/Parser/Pratt.yy",
   },
 }

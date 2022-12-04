@@ -66,9 +66,15 @@ theme:
       border_color: &accent_color
 
     dropdown_menu:
-      item_background: &control_border
+      item_bg_color: &control_border
+      selected_bg_color: &control_bg_light
       item_highlight_alpha: 0.4
 
+    listbox:
+      background: &control_border
+      border_color: &control_border
+      item_bg_color: &control_bg
+      selected_bg_color: &control_bg_light
 
     menu:
       spacing: 0
@@ -97,6 +103,18 @@ theme:
     scrollbox:
       background: &control_bg
       thumb_background: &focus_border // move to scrollbar style somewhere?
+
+    tab_panel_content:
+      background: &control_bg
+      border_color: &control_border
+      padding: 5
+      size: { min_w: 200, min_h: 100 }
+
+    tab_header:
+      bg_color: &subpanel_bg
+      selected_color: &control_bg_light
+      border_color: &control_border
+      padding: [10,5]
 
     // === elements ===
 

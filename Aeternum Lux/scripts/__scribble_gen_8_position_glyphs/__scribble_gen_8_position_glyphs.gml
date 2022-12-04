@@ -41,9 +41,6 @@ function __scribble_gen_8_position_glyphs()
             var _alignment_width     = (_model_max_width == infinity)? __width : _model_max_width;
             var _pin_alignment_width = (_model_max_width == infinity)? __width : _model_max_width;
         }
-            
-        _alignment_width     /= __fit_scale;
-        _pin_alignment_width /= __fit_scale;
         
         var _page_min_x =  infinity;
         var _page_max_x = -infinity; 
@@ -173,6 +170,8 @@ function __scribble_gen_8_position_glyphs()
                     }
                 break;
             }
+            
+            
             
             // Figure out the boundaries of the page + model
             var _page_min_x  = min(_page_min_x,  _glyph_x                       );

@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Compiler",
-    "path": "folders/YUI/Compiler.yy",
+    "path": "folders/Packages - YUI/Compiler.yy",
   },
 }

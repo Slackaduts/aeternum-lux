@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Elements",
-    "path": "folders/YUI/Elements.yy",
+    "path": "folders/Packages - YUI/Elements.yy",
   },
 }

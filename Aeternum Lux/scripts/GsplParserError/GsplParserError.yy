@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Parser",
-    "path": "folders/gspl/Parser.yy",
+    "path": "folders/Packages - gspl/Parser.yy",
   },
 }

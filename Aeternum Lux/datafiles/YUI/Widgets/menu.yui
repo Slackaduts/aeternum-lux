@@ -71,7 +71,7 @@ resources:
                 - type: image
                   size: 24
                   image: @icon_sprite
-                  visible: $is_submenu
+                  //visible: $is_submenu
                 - $item_template
             on_click:
               - @command()
@@ -103,7 +103,7 @@ resources:
             type: button
             background: $item_background
             highlight_alpha: $item_highlight_alpha
-            padding: [29, 5, 5, 5]
+            padding: [34, 5, 5, 5]
             content: $item_template
             popup:
               placement: $menu_placement

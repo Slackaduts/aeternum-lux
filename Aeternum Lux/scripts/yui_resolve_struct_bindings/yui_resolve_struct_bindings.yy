@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Binding",
-    "path": "folders/YUI/Binding.yy",
+    "path": "folders/Packages - YUI/Binding.yy",
   },
 }

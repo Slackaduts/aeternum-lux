@@ -1,0 +1,13 @@
+file_type: screen
+
+import:
+  - ../Templates/inventory_item.yui
+
+root:
+  type: border
+  content:
+    type: panel
+    layout: vertical
+    elements: @@ gui_get_inventory_cat(1)
+    template:
+      type: inventory_item

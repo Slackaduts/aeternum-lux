@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "XML",
-    "path": "folders/Struct N' Array Parser/XML.yy",
+    "path": "folders/Packages - Struct N' Array Parser/XML.yy",
   },
 }

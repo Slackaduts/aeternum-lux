@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "string",
-    "path": "folders/YUI/scripts/string.yy",
+    "path": "folders/Packages - YUI/scripts/string.yy",
   },
 }

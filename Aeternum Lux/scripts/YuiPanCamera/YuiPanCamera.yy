@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Interaction",
-    "path": "folders/YUI/Interaction.yy",
+    "path": "folders/Packages - YUI/Interaction.yy",
   },
 }

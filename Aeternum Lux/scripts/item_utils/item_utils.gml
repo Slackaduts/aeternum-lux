@@ -1,4 +1,3 @@
-
 enum itemTypes {
 	CONSUMABLE,
 	REAGENT,
@@ -7,6 +6,15 @@ enum itemTypes {
 	LAST	
 };
 
+enum equipmentTypes {
+	HEAD,
+	BODY,
+	FEET,
+	WEAPON,
+	ACCESSORY,
+	KEEPSAKE,
+	LAST
+};
 
 
 
@@ -30,6 +38,34 @@ function Inventory() constructor {
 		};
 		
 		return _exists;
+	};
+	
+	
+	/**
+	 * Returns a single category of items as an array of items.
+	 * @param {real} _category The item category to return
+	 * @param {bool} [_alphabetize]=true  Whether the item array should be alphabetized
+	 * @returns {array}
+	 */	
+	static get_category_inventory_array = function(_category, _alphabetize = true) {	
+		var _categoryNames = variable_struct_get_names(categories[_category])
+		var _items = [];
+		for (var _currItem = 0; _currItem < array_length(_categoryNames); _currItem++) {
+			var _item = categories[_category][$ _categoryNames[_currItem]];
+			array_push(_items, _item);
+		};
+		
+		//Alphabetize, by case lowered item name
+		if _alphabetize array_sort(_items, function(left, right) {
+		    if (left.name < right.name)
+		        return -1;
+		    else if (string_lower(left.name) > string_lower(right.name))
+		        return 1;
+		    else
+		        return 0;
+		});
+
+		return _items;
 	};
 
 
@@ -73,6 +109,7 @@ function Inventory() constructor {
 		else categories[_item.itemType][$ _item.name] = _item;
 	};
 
+
 	/**
 	 * Removes an item from the inventory.
 	 * @param {struct.Item} _item Item to remove from the inventory
@@ -85,6 +122,20 @@ function Inventory() constructor {
 			else categories[_item.itemType][$ _item.name].amount -= _item.amount;
 		};
 	};
+};
+
+
+
+/**
+ * Gets the alphabetized item array of a given inventory category.
+ * @param {real} _category Category to pick from, refer to the enum
+ */
+function gui_get_inventory_cat(_category) {
+	var _obj = undefined;
+	if global.focusInstance.inventory.total_items == 0 _obj = objCamera;
+	else _obj = global.focusInstance;
+
+	return _obj.inventory.get_category_inventory_array(_category);
 };
 
 
@@ -243,15 +294,7 @@ function preload_items() {
 	};
 };
 
-enum equipmentTypes {
-	HEAD,
-	BODY,
-	FEET,
-	WEAPON,
-	ACCESSORY,
-	KEEPSAKE,
-	LAST
-};
+
 
 /**
  * Converts an equipment type string to equipment type enum value.

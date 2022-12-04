@@ -129,5 +129,5 @@ function CombatantManager(_name) constructor {
 	liveStats = new CombatStats();
 	
 	equipment = [];
-	overTimes = [];	
+	overTimes = [];
 };

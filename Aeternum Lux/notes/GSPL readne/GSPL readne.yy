@@ -3,7 +3,7 @@
   "resourceVersion": "1.1",
   "name": "GSPL readne",
   "parent": {
-    "name": "gspl",
-    "path": "folders/gspl.yy",
+    "name": "Packages - gspl",
+    "path": "folders/Packages - gspl.yy",
   },
 }

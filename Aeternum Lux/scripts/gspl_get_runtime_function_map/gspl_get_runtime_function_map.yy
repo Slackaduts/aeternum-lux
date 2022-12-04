@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Environment",
-    "path": "folders/gspl/Execute/Environment.yy",
+    "path": "folders/Packages - gspl/Execute/Environment.yy",
   },
 }

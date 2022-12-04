@@ -2,12 +2,25 @@
 
 persistent = persist;
 
+// auto-init globals if it doesn't exist
+if !instance_exists(YuiGlobals) {
+	instance_create_depth(0, 0, depth, YuiGlobals);
+}
+
+// default to quick start screen if yui_file is not set
+if yui_file == "" {
+	yui_file = "YUI/quick_start_screen.yui";
+	yui_warning("yui_document in", room_get_name(room), "does not have 'yui_file' value set, using 'YUI/quick_start_screen.yui' as a backup");
+}
+
+// the document describing what to render
 document = undefined;
+
+// the actual render instance root
 root = undefined;
 
-// defining this makes 'visual ancestor' search code simpler
+// defining these makes 'visual ancestor' search code simpler
 parent = undefined;
-
 opacity = 1;
 
 // the space we were given to draw in
@@ -29,7 +42,7 @@ else {
 }
 
 load = function() {
-	document = new YuiDocument(yui_file);
+	document = new YuiDocument(yui_file, YuiGlobals.yui_cabinet);
 	document_error = document.load_error
 	if document_error != undefined {
 		return;

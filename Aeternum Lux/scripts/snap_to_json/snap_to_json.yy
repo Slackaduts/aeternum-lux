@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "JSON",
-    "path": "folders/Struct N' Array Parser/JSON.yy",
+    "path": "folders/Packages - Struct N' Array Parser/JSON.yy",
   },
 }

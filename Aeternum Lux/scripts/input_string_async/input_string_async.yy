@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Input",
-    "path": "folders/YUI/Input.yy",
+    "path": "folders/Packages - YUI/Input.yy",
   },
 }

@@ -96,7 +96,7 @@ function YuiTextElement(_props, _resources, _slot_values) : YuiBaseElement(_prop
 		if !is_visible return false;
 				
 		var text = is_text_live && !is_array(props.text) ? props.text.resolve(data) : props.text;
-		if text == "" || text == undefined {
+		if text == undefined {
 			return false;
 		}
 		
@@ -105,6 +105,8 @@ function YuiTextElement(_props, _resources, _slot_values) : YuiBaseElement(_prop
 			: self.color;
 		
 		var opacity = is_opacity_live ? props.opacity.resolve(data) : props.opacity;
+		var xoffset = is_xoffset_live ? props.xoffset.resolve(data) : props.xoffset;
+		var yoffset = is_yoffset_live ? props.yoffset.resolve(data) : props.yoffset;
 		
 		// handle text array by joining the values		
 		if is_array(text) {
@@ -127,6 +129,8 @@ function YuiTextElement(_props, _resources, _slot_values) : YuiBaseElement(_prop
 		if prev
 			&& text == prev.text
 			&& opacity == prev.opacity
+			&& xoffset == prev.xoffset
+			&& yoffset == prev.yoffset
 			&& color == prev.color
 			&& typist == prev.typist
 		{
@@ -135,9 +139,12 @@ function YuiTextElement(_props, _resources, _slot_values) : YuiBaseElement(_prop
 		
 		return {
 			is_live: is_bound,
+			data_source: data,
 			text: text,
 			font: font,
 			opacity: opacity,
+			xoffset: xoffset,
+			yoffset: yoffset,
 			color: color,
 			autotype: props.autotype,
 			typist: typist,

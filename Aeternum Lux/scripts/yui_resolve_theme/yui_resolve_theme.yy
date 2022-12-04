@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Themes",
-    "path": "folders/YUI/Themes.yy",
+    "path": "folders/Packages - YUI/Themes.yy",
   },
 }

@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Ys",
-    "path": "folders/YUI/Parser/Ys.yy",
+    "path": "folders/Packages - YUI/Parser/Ys.yy",
   },
 }

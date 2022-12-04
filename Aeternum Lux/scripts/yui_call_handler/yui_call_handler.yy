@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Event Handling",
-    "path": "folders/YUI/Event Handling.yy",
+    "path": "folders/Packages - YUI/Event Handling.yy",
   },
 }

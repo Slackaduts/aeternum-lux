@@ -4,6 +4,6 @@
   "name": "game-icons.net license",
   "parent": {
     "name": "game-icons.net",
-    "path": "folders/YUI/Sprites/game-icons.net.yy",
+    "path": "folders/Packages - YUI/Sprites/game-icons.net.yy",
   },
 }

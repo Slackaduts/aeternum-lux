@@ -4,6 +4,6 @@
   "name": "yuiscript_todos",
   "parent": {
     "name": "Parser",
-    "path": "folders/YUI/Parser.yy",
+    "path": "folders/Packages - YUI/Parser.yy",
   },
 }

@@ -1,24 +1,4 @@
 root:
-  type: border
-  xoffset: @@ yui_world_to_gui_x(@speaker.x) + @speaker.sprite_width / 2
-  yoffset: @@ yui_world_to_gui_y(@speaker.y) - @speaker.sprite_height
-  size: { max_w: 560, max_h: 360 }
-  content:
-    type: panel
-    layout: vertical
-    alignment: { h: center }
-    elements:
-      - type: border
-        background: #000000
-        border_color: #FFFFFF
-        border_thickness: 2
-        content:
-          type: text
-          padding: 5
-          text: @content
-          scribble: true
-          typist: @typist
-      - type: image
-        sprite: sprDialogueIndicator
-        opacity: @@ 0.5 + ((sin((@currentTime / @roomSpeed) * 0.1)) * 0.5)
-        visible: @dialogueEnd
+  type: panel
+  layout: radial
+  

@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Callables",
-    "path": "folders/gspl/Execute/Callables.yy",
+    "path": "folders/Packages - gspl/Execute/Callables.yy",
   },
 }

@@ -14,18 +14,29 @@ element_map = {
 	data_template: YuiDataTemplateElement,
 	viewport: YuiViewportElement,
 	text_input: YuiTextInputElement,
+	dynamic: YuiDynamicElement,
 };
+
+if !instance_exists(YuiCursorManager) {
+	instance_create_depth(0, 0, depth, YuiCursorManager);
+}
 
 screens = {};
 interactions = {};
 themes = {};
+resources = {};
 
 var yui_file_customizer = function(cabinet_file) {
 	
 	// scan the file type
 	var file_type = cabinet_file.tryScanLines(function (line) {
 		if string_pos("file_type: ", line) == 1 {
-			return string_copy(line, 12, string_length(line) - 13);
+			var file_type = string_copy(line, 12, string_length(line) - 12);
+			
+			// trims any dangling carriage returns
+			file_type = string_replace(file_type, chr(13), "");
+			
+			return file_type;
 		}
 	});
 	
@@ -45,6 +56,7 @@ var yui_file_customizer = function(cabinet_file) {
 			break;
 			
 		case "resources":
+			resources[$ cabinet_file.file_id] = cabinet_file;
 			break;
 	}
 }
@@ -71,7 +83,7 @@ var options = {
 	file_value_generator: yui_file_generator,
 };
 
-var yui_data_folder = YUI_LOCAL_PROJECT_DATA_FOLDER + YUI_DATA_SUBFOLDER;
-yui_cabinet = new Cabinet(yui_data_folder, ".yui", options);
+yui_cabinet = new Cabinet(YUI_LOCAL_PROJECT_DATA_FOLDER, ".yui", options);
 
 yui_log("YuiGlobals: loaded");
+

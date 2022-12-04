@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "YAML",
-    "path": "folders/Struct N' Array Parser/YAML.yy",
+    "path": "folders/Packages - Struct N' Array Parser/YAML.yy",
   },
 }

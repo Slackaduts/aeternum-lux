@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Iterators",
-    "path": "folders/gspl/Execute/Iterators.yy",
+    "path": "folders/Packages - gspl/Execute/Iterators.yy",
   },
 }

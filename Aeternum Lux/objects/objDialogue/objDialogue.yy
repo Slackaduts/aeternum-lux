@@ -29,9 +29,9 @@
   ],
   "properties": [],
   "overriddenProperties": [
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"is_full_screen","path":"objects/yui_document/yui_document.yy",},"objectId":{"name":"yui_document","path":"objects/yui_document/yui_document.yy",},"value":"True",},
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"yui_file","path":"objects/yui_document/yui_document.yy",},"objectId":{"name":"yui_document","path":"objects/yui_document/yui_document.yy",},"value":"\"YUI/Screens/dialogue.yui\"",},
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"trace","path":"objects/yui_document/yui_document.yy",},"objectId":{"name":"yui_document","path":"objects/yui_document/yui_document.yy",},"value":"False",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":null,"objectId":null,"value":"True",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":null,"objectId":null,"value":"\"YUI/Screens/dialogue.yui\"",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":null,"objectId":null,"value":"False",},
   ],
   "parent": {
     "name": "GUI",

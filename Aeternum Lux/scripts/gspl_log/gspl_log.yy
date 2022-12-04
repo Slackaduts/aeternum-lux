@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "gspl",
-    "path": "folders/gspl.yy",
+    "name": "Packages - gspl",
+    "path": "folders/Packages - gspl.yy",
   },
 }

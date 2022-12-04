@@ -5,6 +5,8 @@ function YuiPanelElement(_props, _resources, _slot_values) : YuiBaseElement(_pro
 		
 		// layout
 		layout: "vertical",
+		reverse: false, // when true, shows items in reverse order
+		count: undefined, // max number of items to show (applies after reverse)
 		padding: 0,
 		spacing: undefined,
 		alignment: "default",
@@ -24,9 +26,29 @@ function YuiPanelElement(_props, _resources, _slot_values) : YuiBaseElement(_pro
 		// option B: bind the element list to data, and use a template to render each element
 		path: undefined, // defines the source path for the element list
 		template: undefined, // the template to use when rendering elements from the path
+		
+		// allows binding slots at panel scope instead of item scope
+		bind_slot_scope: undefined,
 	};
 	
 	props = yui_apply_element_props(_props);
+	
+	has_scoped_slots = props.bind_slot_scope != undefined;
+	if has_scoped_slots {
+		slot_values = yui_shallow_copy(slot_values);
+		var bound_slot_names = variable_struct_get_names(props.bind_slot_scope);
+		var i = 0; repeat array_length(bound_slot_names) {
+			var slot_name = bound_slot_names[i++];
+			var binding = yui_bind(props.bind_slot_scope[$ slot_name], resources, slot_values);
+			
+			if instanceof(binding) == "YuiScopeBinding" {
+				throw yui_error("binding scope multiple times");
+			}
+			
+			var scoped_binding = new YuiScopeBinding(binding);
+			slot_values[$ slot_name] = scoped_binding;
+		}
+	}
 	
 	baseInit(props);
 	
@@ -37,8 +59,10 @@ function YuiPanelElement(_props, _resources, _slot_values) : YuiBaseElement(_pro
 	// live binding this is not (yet?) supported, but this enables $slot support
 	props.layout = yui_bind(props.layout, resources, slot_values);
 	
+	props.count = yui_bind_and_resolve(props.count, resources, slot_values);
+	
 	var makeLayout = yui_resolve_layout(props.layout);
-	layout = new makeLayout(alignment, props.spacing);
+	layout = new makeLayout(alignment, props.spacing, size);
 	layout.trace = props.trace;
 	
 	resolveBackgroundAndBorder()
@@ -68,6 +92,8 @@ function YuiPanelElement(_props, _resources, _slot_values) : YuiBaseElement(_pro
 	is_elements_bound = yui_is_live_binding(props.elements);
 	
 	is_bound = base_is_bound
+		|| is_bg_sprite_live
+		|| is_bg_color_live
 		|| is_elements_bound;
 		
 	// ===== functions =====
@@ -79,7 +105,10 @@ function YuiPanelElement(_props, _resources, _slot_values) : YuiBaseElement(_pro
 			padding: props.padding,
 			size: size,
 			layout: layout,
+			reverse: props.reverse,
+			count: props.count,
 			// border
+			is_bg_live: is_bg_sprite_live || is_bg_color_live,
 			bg_sprite: bg_sprite,
 			bg_color: bg_color,
 			border_color: border_color,
@@ -93,6 +122,16 @@ function YuiPanelElement(_props, _resources, _slot_values) : YuiBaseElement(_pro
 			data = is_data_source_bound ? data_source.resolve(data) : data_source;
 		}
 		
+		// update scoped bindings if needed
+		if has_scoped_slots && (!prev || data != prev.data_source) {
+			var bound_slot_names = variable_struct_get_names(props.bind_slot_scope);
+			var i = 0; repeat array_length(bound_slot_names) {
+				var slot_name = bound_slot_names[i++];
+				var binding = slot_values[$ slot_name];
+				binding.updateScope(data);
+			}
+		}
+		
 		var is_visible = is_visible_live ? props.visible.resolve(data) : props.visible;
 		if !is_visible return false;
 		
@@ -100,9 +139,16 @@ function YuiPanelElement(_props, _resources, _slot_values) : YuiBaseElement(_pro
 		var xoffset = is_xoffset_live ? props.xoffset.resolve(data) : props.xoffset;
 		var yoffset = is_yoffset_live ? props.yoffset.resolve(data) : props.yoffset;
 		
+		var bg_sprite = is_bg_sprite_live ? yui_resolve_sprite_by_name(bg_sprite_binding.resolve(data)) : undefined;
+		var bg_color = is_bg_color_live ? yui_resolve_color(bg_color_binding.resolve(data)) : undefined;
+		
 		if uses_template {
 			// single template element for bound data_items
 			var source_items = is_elements_bound ? props.elements.resolve(data) : props.elements;
+			
+			if !is_array(source_items) {
+				throw yui_error("source_items must resolve to an array");
+			}
 			
 			// we need to copy the array for diff detection to work
 			var child_count = array_length(source_items);
@@ -121,9 +167,12 @@ function YuiPanelElement(_props, _resources, _slot_values) : YuiBaseElement(_pro
 		
 		// diff
 		if prev
+			&& data == prev.data_source
 			&& opacity == prev.opacity
 			&& xoffset == prev.xoffset
 			&& yoffset == prev.yoffset
+			&& bg_sprite == prev.bg_sprite
+			&& bg_color == prev.bg_color
 			&& child_count == prev.child_count
 			&& (uses_template
 				? array_equals(data_items, prev.data_items)
@@ -140,6 +189,9 @@ function YuiPanelElement(_props, _resources, _slot_values) : YuiBaseElement(_pro
 			opacity: opacity,
 			xoffset: xoffset,
 			yoffset: yoffset,
+			// live versions
+			bg_sprite: bg_sprite,
+			bg_color: bg_color,
 			// panel
 			child_count: child_count,
 			data_items: data_items,

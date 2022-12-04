@@ -133,6 +133,6 @@
   "maintainGms1Font": false,
   "parent": {
     "name": "Fonts",
-    "path": "folders/YUI/Fonts.yy",
+    "path": "folders/Packages - YUI/Fonts.yy",
   },
 }

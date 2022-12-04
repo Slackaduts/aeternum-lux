@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Cursor",
-    "path": "folders/YUI/Cursor.yy",
+    "path": "folders/Packages - YUI/Cursor.yy",
   },
 }

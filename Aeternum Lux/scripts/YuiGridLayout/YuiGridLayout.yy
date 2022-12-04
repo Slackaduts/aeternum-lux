@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Layout",
-    "path": "folders/YUI/Layout.yy",
+    "path": "folders/Packages - YUI/Layout.yy",
   },
 }

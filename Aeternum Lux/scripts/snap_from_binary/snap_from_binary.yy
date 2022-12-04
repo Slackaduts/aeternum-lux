@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Binary",
-    "path": "folders/Struct N' Array Parser/Binary.yy",
+    "path": "folders/Packages - Struct N' Array Parser/Binary.yy",
   },
 }

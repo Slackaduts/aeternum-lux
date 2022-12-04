@@ -38,3 +38,10 @@ global.itemsReference = [{}, {}, {}, {}];
 preload_items();
 
 inventory = new Inventory();
+inventory.add_item(get_item("Basic Ether", 5));
+show_debug_message(inventory);
+show_debug_message("THIS WORKED");
+//inventory.add_item(get_item("Monstrous Extract", 2));
+//show_debug_message("THIS WORKED")
+//inventory.add_item(get_item("Trinate Powder", 5));
+//show_debug_message("THIS WORKED")

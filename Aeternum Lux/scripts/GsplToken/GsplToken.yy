@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "Scanner",
-    "path": "folders/gspl/Scanner.yy",
+    "path": "folders/Packages - gspl/Scanner.yy",
   },
 }

@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "GML",
-    "path": "folders/Struct N' Array Parser/GML.yy",
+    "path": "folders/Packages - Struct N' Array Parser/GML.yy",
   },
 }

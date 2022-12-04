@@ -32,6 +32,6 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Render Items",
-    "path": "folders/YUI/Render Items.yy",
+    "path": "folders/Packages - YUI/Render Items.yy",
   },
 }

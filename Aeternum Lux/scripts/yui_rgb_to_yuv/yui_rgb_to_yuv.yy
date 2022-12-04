@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "color",
-    "path": "folders/YUI/scripts/color.yy",
+    "path": "folders/Packages - YUI/scripts/color.yy",
   },
 }

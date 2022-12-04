@@ -105,7 +105,10 @@ function cutscene_dialogue(_callerObj, _speakerObj, _content = "", _txtSpd = 1, 
 			sceneManager._yui = undefined;
 		};
 		
-		var _params = { data_context: new dialogue_manager(_callerObj, _speakerObj, _content, _txtSpd, _txtSmoothness, _forceSkip) };
+		var _params = { 
+			data_context: new dialogue_manager(_callerObj, _speakerObj, _content, _txtSpd, _txtSmoothness, _forceSkip),
+			yui_file: "YUI/Screens/dialogue.yui"
+			};
 		sceneManager._yui = instance_create_depth(x, y, 0, _obj, _params);
 		//sceneManager._yui.load();
 	};
