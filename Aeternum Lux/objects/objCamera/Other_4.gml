@@ -21,3 +21,5 @@ for (var currLayer = 0; currLayer < array_length(layers); currLayer++) {
 	};
 	
 };
+
+global.focusInstance = instance_nearest(x, y, objNero);

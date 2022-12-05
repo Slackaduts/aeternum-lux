@@ -3,18 +3,17 @@ file_type: resources
 resources:
   inventory_item:
     type: fragment
+    trace: true
     content:
-      type: panel
-      layout: horizontal
-      alignment: { v: center }
-      elements:
-        - image:
-          sprite: @icon.sprite
-          frame: @icon.frame
-          padding: 5
-        - text:
-          content: @name
-          padding: 5
-        - text:
-          content: x + @amount
-          padding: 5
+      - type: text:
+        text: THIS WORKED
+      // - type: image
+      //   sprite: @icon.sprite
+      //   frame: @icon.frame
+      //   padding: 2
+      // - type: text
+      //   content: "BRUH"
+      //   padding: 2
+      // - type: text
+      //   content: x + @amount
+      //   padding: 2

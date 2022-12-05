@@ -4,7 +4,9 @@ items:
     equipmentType: feet
     nameReq: None
     levelReq: 0
-    icon: sprItem
+    # icon:
+    #   sprite: sprItem
+    #   frame: 
     stats:
       fortitude: 5
       resilience: 2

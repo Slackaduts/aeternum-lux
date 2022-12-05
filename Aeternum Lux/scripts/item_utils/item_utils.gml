@@ -52,6 +52,7 @@ function Inventory() constructor {
 		var _items = [];
 		for (var _currItem = 0; _currItem < array_length(_categoryNames); _currItem++) {
 			var _item = categories[_category][$ _categoryNames[_currItem]];
+			//show_debug_message(_item);
 			array_push(_items, _item);
 		};
 		
@@ -104,10 +105,21 @@ function Inventory() constructor {
 	 * @param {real} [_amount] Optional amount to add
 	 */
 	static add_item = function(_item, _amount = undefined) {
-		if _amount != undefined _item.amount = _amount;
-		if item_exists(_item) categories[_item.itemType][$ _item.name].amount += _item.amount
-		else categories[_item.itemType][$ _item.name] = _item;
+		_amount ??= 1;
+		if item_exists(_item) categories[_item.itemType][$ _item.name].amount += _amount
+		else {
+			categories[_item.itemType][$ _item.name] = _item;
+			categories[_item.itemType][$ _item.name].amount = _amount;
+			
+		};
+		show_debug_message(categories[_item.itemType][$ _item.name])
 	};
+	
+	
+	//static give_item = function(_item) {
+	//	if item_exists(_item) categories[_item.itemType][$ _item.name].amount += _item.amount
+	//	else categories[_item.itemType][$ _item.name] = _item;
+	//};
 
 
 	/**
@@ -131,11 +143,11 @@ function Inventory() constructor {
  * @param {real} _category Category to pick from, refer to the enum
  */
 function gui_get_inventory_cat(_category) {
-	var _obj = undefined;
-	if global.focusInstance.inventory.total_items == 0 _obj = objCamera;
-	else _obj = global.focusInstance;
-
-	return _obj.inventory.get_category_inventory_array(_category);
+	//var _obj = undefined;
+	//if global.focusInstance.inventory.total_items() == 0 _obj = objCamera;
+	//else _obj = global.focusInstance;
+	var _inst = instance_nearest(0, 0, objCamera);
+	return _inst.inventory.get_category_inventory_array(_category);
 };
 
 
@@ -146,7 +158,8 @@ function gui_get_inventory_cat(_category) {
  * @param {real} [_frame]=1 Image index of the desired icon of the specified sheet
  */
 function Icon(_sprite, _frame = 1) constructor {
-	sprite = asset_get_index(_sprite);
+	//sprite = asset_get_index(_sprite);
+	sprite = _sprite;
 	frame = _frame;	
 };
 
@@ -334,6 +347,7 @@ function equipment_type(_type) {
  */
 function get_item(_name, _amount = 1) {
 	var _item = undefined;
+	_amount ??= 0;
 	for (var _currStruct = 0; _currStruct < array_length(global.itemsReference); _currStruct++) {
 		// Search every item type reference, and every item within that reference
 		var _struct = global.itemsReference[_currStruct];
@@ -369,6 +383,17 @@ function get_item(_name, _amount = 1) {
 				break;
 			};
 		};
+	_item.amount += _amount;
 	return _item;
 	};
+};
+
+
+/**
+ * Creates a string for showing amounts in a GUI. Workaround for incomplete string concat implementation in YUI.
+ * @param {any} _amount Number to show as an amount
+ * @returns {string} The gui-ready amount string
+ */
+function gui_amount_view(_amount) {
+	return string_concat("x", string(_amount))
 };

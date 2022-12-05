@@ -2,7 +2,7 @@ items:
   - name: Basic Potion
     desc: A minor healing potion made by an amateur alchemist. Heals 10HP.
     icon:
-      name: sprConsumablesIcons
+      sprite: sprConsumablesIcons
       frame: 31
     stats:
       hp: 10
@@ -14,10 +14,11 @@ items:
       - name: Trinate Powder
         amount: 1
 
+
   - name: Basic Ether
     desc: A minor mana restoring elixir made by an amateur alchemist. Restores 15MP.
     icon:
-      name: sprConsumablesIcons
+      sprite: sprConsumablesIcons
       frame: 24
     stats:
       mp: 10
@@ -28,3 +29,28 @@ items:
         amount: 1
       - name: Trinate Powder
         amount: 1
+
+
+  - name: Alchemist's Brew
+    desc: A strange mixture that induces strong hallucinations, often shared.
+    icon:
+      sprite: sprConsumablesIcons
+      frame: 42
+
+
+  - name: Field Cricket
+    desc: A common field cricket. You probably shouldn't eat this.
+    stats:
+      hp: 1
+    icon:
+      sprite: sprBugsIcons
+      frame: 120
+
+
+  - name: Wild Mushroom
+    desc: A large wild mushroom. Used for crafting.
+    stats:
+      hp: 6
+    icon:
+      sprite: sprBaseIcons
+      frame: 166

@@ -16,7 +16,8 @@ function scene_manager(_scenes = [[]]) constructor {
 	_scribble = undefined;
 	_typist = undefined;
 	_yui = undefined;
-	
+
+
 	static scene_execute = function(_scene = currScene, _forced = false) {
 		if sceneOver || _forced {
 			cutsceneOver = false;
@@ -27,7 +28,8 @@ function scene_manager(_scenes = [[]]) constructor {
 			};
 		};
 	};
-	
+
+
 	static next_scene = function(_forcedScene = currScene) {
 			sceneOver = true;
 			currScene = scenes[_forcedScene][0];
@@ -43,7 +45,8 @@ function scene_manager(_scenes = [[]]) constructor {
 				};
 			};
 	};
-	
+
+
 	static npc_activate_scene = function(_inputKey = "accept") {
 		with (other) {
 			if objFocusIndicator.focusObj == id {
@@ -60,18 +63,13 @@ function scene_manager(_scenes = [[]]) constructor {
 			else objFocusIndicator.indicatorState = indicatorStates.ALERT;
 		};
 	};
-	
+
+
 	static push_to_scene_pool = function(_obj = other) {
 		array_push(_obj.scenePool, self);
 	};
 };
 
-
-//function get_empty_gui_x(_speakerObj, _objs = []) {
-	
-	
-	
-//};
 
 
 function dialogue_manager(_callerObj, _speakerObj, _content = "", _txtSpd = 1, _txtSmoothness = 0, _forceSkip = false) constructor {
@@ -98,6 +96,7 @@ function dialogue_manager(_callerObj, _speakerObj, _content = "", _txtSpd = 1, _
 };
 
 
+
 function cutscene_dialogue(_callerObj, _speakerObj, _content = "", _txtSpd = 1, _txtSmoothness = 0, _forceSkip = false, _obj = objDialogue) {
 	with (_callerObj) {
 		if sceneManager._yui != undefined {
@@ -107,12 +106,14 @@ function cutscene_dialogue(_callerObj, _speakerObj, _content = "", _txtSpd = 1, 
 		
 		var _params = { 
 			data_context: new dialogue_manager(_callerObj, _speakerObj, _content, _txtSpd, _txtSmoothness, _forceSkip),
-			yui_file: "YUI/Screens/dialogue.yui"
+			yui_file: "\\YUI\\Screens\\dialogue.yui"
 			};
 		sceneManager._yui = instance_create_depth(x, y, 0, _obj, _params);
 		//sceneManager._yui.load();
 	};
 };
+
+
 
 function cutscene_toggle_movement(_callerObj, _forcedStatus = undefined) {
 	//TODO: MAKE THIS WORK
@@ -122,6 +123,8 @@ function cutscene_toggle_movement(_callerObj, _forcedStatus = undefined) {
 	
 	_callerObj.sceneManager.next_scene();
 };
+
+
 
 /// @desc Moves an object to a specific XY over a period of time. Also allows for relative movement by default.
 /// @param {Id.Instance*} _obj The instance we are moving

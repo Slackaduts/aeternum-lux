@@ -3,11 +3,51 @@ file_type: screen
 import:
   - ../Templates/inventory_item.yui
 
+
 root:
   type: border
+  padding: 3
   content:
-    type: panel
-    layout: vertical
-    elements: @@ gui_get_inventory_cat(1)
-    template:
-      type: inventory_item
+    type: border
+    background: #000000
+    border_color: #FFFFFF
+    border_thickness: 2
+    padding: 3
+    content:
+      type: panel
+      layout: vertical
+      elements: @@ gui_get_inventory_cat(0)
+      trace: true
+      template:
+        type: panel
+        alignment: { v: center }
+        layout: horizontal
+        elements:
+          - type: image
+            sprite: @icon.sprite
+            frame: @icon.frame - 1
+            padding: 3
+          - type: text
+            text: @name
+            padding: 3
+          - type: text
+            text: @@ gui_amount_view(@amount)
+            padding: 3
+      // type: panel
+      // layout: horizontal
+      // alignment: { v: center }
+      // elements:
+      //   - type: image
+      //     sprite: @icon.sprite
+      //     frame: @icon.frame
+      //     padding: 5
+      //   - type: text
+      //     content: "BRUH"
+      //     padding: 5
+      //   - type: text
+      //     content: x + @amount
+      //     padding: 5
+
+          // elements: @@ gui_get_inventory_cat(0)
+
+// type: inventory_item
