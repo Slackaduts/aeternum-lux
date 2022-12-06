@@ -17,11 +17,14 @@ root:
       type: panel
       layout: vertical
       elements: @@ gui_get_inventory_cat(0)
-      trace: true
+      // trace: true
       template:
         type: panel
         alignment: { v: center }
         layout: horizontal
+        tooltip:
+          type: text
+          text: @desc
         elements:
           - type: image
             sprite: @icon.sprite
@@ -33,21 +36,3 @@ root:
           - type: text
             text: @@ gui_amount_view(@amount)
             padding: 3
-      // type: panel
-      // layout: horizontal
-      // alignment: { v: center }
-      // elements:
-      //   - type: image
-      //     sprite: @icon.sprite
-      //     frame: @icon.frame
-      //     padding: 5
-      //   - type: text
-      //     content: "BRUH"
-      //     padding: 5
-      //   - type: text
-      //     content: x + @amount
-      //     padding: 5
-
-          // elements: @@ gui_get_inventory_cat(0)
-
-// type: inventory_item

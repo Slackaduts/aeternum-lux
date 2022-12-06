@@ -357,7 +357,8 @@ function get_item(_name, _amount = 1) {
 			var _itemData = global.itemsDatabase[_currStruct].items[_struct[$ _name]];
 
 			//Defaults if not provided
-			if !variable_struct_exists(_itemData, "icon") _itemData.icon = new Icon("sprBaseIcons", 1);
+			_itemData.icon ??= 1;
+			_itemData.icon = rmmv_to_icon(_itemData.icon);
 			if !variable_struct_exists(_itemData, "stats") _itemData.stats = new CombatStats();
 			if !variable_struct_exists(_itemData, "desc") _itemData.desc = "Nothing is known about this item.";
 			if !variable_struct_exists(_itemData, "recipe") _itemData.recipe = [];
@@ -391,9 +392,23 @@ function get_item(_name, _amount = 1) {
 
 /**
  * Creates a string for showing amounts in a GUI. Workaround for incomplete string concat implementation in YUI.
- * @param {any} _amount Number to show as an amount
+ * @param {real} _amount Number to show as an amount
  * @returns {string} The gui-ready amount string
  */
 function gui_amount_view(_amount) {
 	return string_concat("x", string(_amount))
+};
+
+
+function rmmv_to_icon(_index) {
+	//_index = clamp(_index, 0, 3999);
+	if _index <= 95 return new Icon("sprOverTimesIcons", _index);
+	else if _index <= 319 return new Icon("sprBaseIcons", _index - 95);
+	else if _index <= 1087 return new Icon("sprSkillsIcons", _index - 319);
+	else if _index <= 1999 return new Icon("sprWeaponsIcons", _index - 1087);
+	else if _index <= 2383 return new Icon("sprConsumablesIcons", _index - 1999);
+	else if _index <= 2751 return new Icon("sprGemsIcons", _index - 2383);
+	else if _index <= 2991 return new Icon("sprBugsIcons", _index - 2751);
+	else if _index <= 3711 return new Icon("sprFoodIcons", _index - 2991);
+	else if _index <= 3999 return new Icon("sprPixelIcons", _index - 3711);
 };

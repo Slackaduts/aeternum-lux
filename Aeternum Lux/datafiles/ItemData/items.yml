@@ -1,9 +1,7 @@
 items:
   - name: Basic Potion
     desc: A minor healing potion made by an amateur alchemist. Heals 10HP.
-    icon:
-      sprite: sprConsumablesIcons
-      frame: 31
+    icon: 2029
     stats:
       hp: 10
     recipe:
@@ -17,9 +15,7 @@ items:
 
   - name: Basic Ether
     desc: A minor mana restoring elixir made by an amateur alchemist. Restores 15MP.
-    icon:
-      sprite: sprConsumablesIcons
-      frame: 24
+    icon: 2023
     stats:
       mp: 10
     recipe:
@@ -33,24 +29,56 @@ items:
 
   - name: Alchemist's Brew
     desc: A strange mixture that induces strong hallucinations, often shared.
-    icon:
-      sprite: sprConsumablesIcons
-      frame: 42
+    icon: 2041
 
 
   - name: Field Cricket
     desc: A common field cricket. You probably shouldn't eat this.
     stats:
       hp: 1
-    icon:
-      sprite: sprBugsIcons
-      frame: 120
+    icon: 2826
 
 
   - name: Wild Mushroom
     desc: A large wild mushroom. Used for crafting.
     stats:
       hp: 6
-    icon:
-      sprite: sprBaseIcons
-      frame: 166
+    icon: 261
+
+  - name: Raw Fish
+    desc: A raw fish caught in a nearby waterway. Heals HP, most of the time...
+    stats:
+      hp: 20
+    icon: 3248
+
+  - name: Fish Stew
+    desc: A delicious stew made from fish and foraged ingredients. Heals HP.
+    stats:
+      hp: 150
+    icon: 3813
+    recipe:
+      - name: Raw Fish
+        amount: 3
+      - name: Wild Mushroom
+        amount: 1
+
+  - name: Apple
+    desc: A fresh apple from a healthy tree. Heals HP.
+    stats:
+      hp: 10
+    icon: 3504
+
+  - name: Dragonfruit
+    desc: An odd fruit found in remote areas. Heals HP and MP.
+    stats:
+      hp: 50
+      mp: 50
+    icon: 3512
+
+  - name: Seeker's Blood
+    desc: A strange mixture that heightens the senses. Restores HP, MP, and TP.
+    stats:
+      hp: 20
+      mp: 50
+      tp: 65
+    icon: 2016

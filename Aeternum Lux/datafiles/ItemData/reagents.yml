@@ -1,9 +1,76 @@
 items:
   - name: Monstrous Extract
     desc: A liquid secreted by undead and/or magical monsters. Useful for crafting.
+    icon: 2022
 
   - name: Trinate Powder
-    desc: A powdered mixture of various metals and materials and materials. Used as a binding agent.
+    desc: A powdered mixture of various metals and materials and materials. Used as a binding agent. Useful for crafting.
+    icon: 304
 
   - name: Animal Hide
     desc: The hide of a mammal. Useful for crafting.
+    icon: 3947
+
+  - name: Beastly Hide
+    desc: The hide of a boss monster or large animal. Useful for crafting.
+    icon: 3948
+
+  - name: Fish Oil
+    desc: Oil extracted from various fish. Useful for crafting.
+    icon: 2019
+
+  - name: Iron Ingot
+    desc: A bar of pure iron. Useful for crafting.
+    icon: 3960
+
+  - name: Steel Ingot
+    desc: A bar of steel. Useful for crafting.
+    icon: 3960
+
+  - name: Copper Ingot
+    desc: A bar of pure copper. Useful for crafting.
+    icon: 3962
+
+  - name: Coralium Ingot
+    desc: A bar of pure coralium. You can feel its corruption just by touching it. Useful for crafting.
+    icon: 2619
+
+  - name: Poison Flower
+    desc: A poisonous flower. Useful for crafting.
+    icon: 184
+
+  - name: Afflicted Cloth
+    desc: A shred of cloth from a viraith's robe. Useful for crafting.
+    icon: 3958
+
+  - name: Coralium Pearl
+    desc: A concentrated gem of coralium. You can feel dark energy flow through it. Useful for crafting, and accepted as currency in certain planes of existence.
+    icon: 2405
+
+  - name: Copper Pieces
+    desc: A small amount of copper coins. Useful for crafting.
+    icon: 3942
+
+  - name: Beastly Tooth
+    desc: A tooth from a large boss or animal. Useful for crafting.
+    icon: 294
+
+  - name: Mammal Tooth
+    desc: A tooth from a ferocious mammal, possibly a wolf. Useful for crafting.
+    icon: 293
+
+  - name: Old Feather
+    desc: A feather from a large bird or wyrm. Useful for crafting.
+    icon: 297
+
+  - name: Strange Oil
+    desc: A sickening, black, viscous liquid imbued with dark energy. Useful for crafting.
+    icon: 3674
+
+  - name: Fiery Essence
+    desc: A pure elemental embodiment of fire. Useful for crafting.
+    icon: 2408
+
+  - name: Stat Point
+    desc: An exertion of the soul. To upgrade stats, use an Alchemist's Brew.
+    icon: 2302

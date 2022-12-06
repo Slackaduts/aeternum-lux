@@ -585,6 +585,7 @@
     {"id":{"name":"YuiWindowItem","path":"scripts/YuiWindowItem/YuiWindowItem.yy",},"order":2,},
     {"id":{"name":"YuiHorizontalLayout","path":"scripts/YuiHorizontalLayout/YuiHorizontalLayout.yy",},"order":10,},
     {"id":{"name":"YuiDocument","path":"scripts/YuiDocument/YuiDocument.yy",},"order":31,},
+    {"id":{"name":"sprPixelIcons","path":"sprites/sprPixelIcons/sprPixelIcons.yy",},"order":8,},
     {"id":{"name":"input_mouse_dy","path":"scripts/input_mouse_dy/input_mouse_dy.yy",},"order":8,},
     {"id":{"name":"input_player_ghost_get","path":"scripts/input_player_ghost_get/input_player_ghost_get.yy",},"order":8,},
     {"id":{"name":"__input_multiplayer_assignment_tick","path":"scripts/__input_multiplayer_assignment_tick/__input_multiplayer_assignment_tick.yy",},"order":24,},
