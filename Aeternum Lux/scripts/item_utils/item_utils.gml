@@ -153,19 +153,6 @@ function gui_get_inventory_cat(_category) {
 
 
 /**
- * A struct containing data about icons.
- * @param {string} _sprite Sprite name of the icon sheet
- * @param {real} [_frame]=1 Image index of the desired icon of the specified sheet
- */
-function Icon(_sprite, _frame = 1) constructor {
-	//sprite = asset_get_index(_sprite);
-	sprite = _sprite;
-	frame = _frame;	
-};
-
-
-
-/**
  * Creates a new consumable Item struct. Interops with inventory struct/system
  * @param {string} _name Name of the item
  * @param {string} _desc Item description
@@ -293,10 +280,10 @@ function KeyItem(_name, _desc, _icon, _recipe = [], _scenes = [[]]) : Item(_name
  */
 function preload_items() {
 	global.itemsDatabase = [];
-	categoriesToLoad = ["items", "reagents", "equipment", "keyitems"];
+	categoriesToLoad = ["items", "reagents", "equipment"];
 	for (var _cat = 0; _cat < array_length(categoriesToLoad); _cat++) {
-		var _file = string_from_file("ItemData/" + categoriesToLoad[_cat] + ".yml");
-		array_push(global.itemsDatabase, snap_from_yaml(_file));
+		var _file = SnapStringFromFile("ItemData\\" + categoriesToLoad[_cat] + ".yml");
+		array_push(global.itemsDatabase, SnapFromYAML(_file));
 	};
 
 	for (var _ref = 0; _ref < array_length(global.itemsDatabase); _ref++) {	
@@ -398,6 +385,20 @@ function get_item(_name, _amount = 1) {
 function gui_amount_view(_amount) {
 	return string_concat("x", string(_amount))
 };
+
+
+
+/**
+ * A struct containing data about icons.
+ * @param {string} _sprite Sprite name of the icon sheet
+ * @param {real} [_frame]=1 Image index of the desired icon of the specified sheet
+ */
+function Icon(_sprite, _frame = 1) constructor {
+	//sprite = asset_get_index(_sprite);
+	sprite = _sprite;
+	frame = _frame;	
+};
+
 
 
 function rmmv_to_icon(_index) {

@@ -88,3 +88,30 @@ combatant = new CombatantManager("Enemy");
 
 scenePool = [];
 
+dataToSave = [
+	"x",
+	"y",
+	"followingObj",
+	"position",
+	"velocity",
+	"proxyVelocity",
+	"steeringForce",
+	"maxForce",
+	"tweenManager",
+	"combatTweenManager"
+];
+
+
+/**
+ * Returns a save-able struct of all relevant saved data on the object. Control what data you want to save with the dataToSave array.
+ */
+function save() {
+	var _saveData = {}
+	for (var _currData = 0; _currData < array_length(dataToSave); _currData++) {
+		var _data = dataToSave[_currData];
+		_saveData[$ _data] = self[$ _data];
+	};
+	
+	return _saveData;
+};
+

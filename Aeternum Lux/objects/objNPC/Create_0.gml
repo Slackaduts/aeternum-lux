@@ -18,3 +18,5 @@ npcScenes = [
 sceneManager = new scene_manager(npcScenes);
 startingScene = 0;
 direction = 270;
+
+dataToSave = array_concat(dataToSave, ["sceneManager", "startingScene"])
