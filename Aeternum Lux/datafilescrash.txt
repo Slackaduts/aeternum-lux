@@ -1,4 +1,4 @@
-{ line : 31, script : "gml_Script_yui_unregister_interactions", stacktrace : [ "gml_Script_yui_unregister_interactions (line 31)","gml_Object_yui_base_CleanUp_0 (line 9) - yui_unregister_interactions(interactions);" ], longMessage : "ERROR in
+{ line : 31, longMessage : "ERROR in
 action number 1
 of <Unknown Event>
 for object yui_base:
@@ -6,4 +6,4 @@ for object yui_base:
 
 Unable to find any instance for object index '1' name 'YuiCursorManager'
  at gml_Script_yui_unregister_interactions (line 31) - 	if !ds_exists(YuiCursorManager.participation_map, ds_type_map) return;
-", message : "Unable to find any instance for object index '1' name 'YuiCursorManager'" }
+", message : "Unable to find any instance for object index '1' name 'YuiCursorManager'", script : "gml_Script_yui_unregister_interactions", stacktrace : [ "gml_Script_yui_unregister_interactions (line 31)","gml_Object_yui_base_CleanUp_0 (line 9) - yui_unregister_interactions(interactions);" ] }

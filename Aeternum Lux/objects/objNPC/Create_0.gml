@@ -12,7 +12,6 @@ npcScenes = [
 [5, true, cutscene_dialogue, [id, id, "You can say that again..."]],
 [6, true, cutscene_dialogue, [id, global.focusInstance, "Soon this'll have speaker name support and party member support as well."]],
 [7, true, cutscene_dialogue, [id, id, "Nice."]],
-//[9, false, cutscene_toggle_movement, [id]];
 ];
 
 sceneManager = new scene_manager(npcScenes);
