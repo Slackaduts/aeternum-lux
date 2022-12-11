@@ -14,9 +14,6 @@ function get_instance_data(_inst) {
 	
 	return _instData;	
 };
-//TODO: Change room saving to use objectsToSave like it was before the wipe DONE
-// -- Clear Room function DONE
-// --Finish room and player data functions
 
 
 function load_instance(_obj, _instData) {
@@ -25,7 +22,8 @@ function load_instance(_obj, _instData) {
 	with (_inst) {
 		for (var _index = 0; _index < array_length(_instDataNames); _index++) {
 			var _data = _instDataNames[_index];
-			self[$ _data] = _instData[$ _data];
+			if is_struct(self[$ _data]) || is_array(self[$ _data]) merge_struct(self[$ _data], _instData[$ _data]);
+			else self[$ _data] = _instData[$ _data];
 		};
 	};
 };
@@ -75,7 +73,6 @@ function load_room(_roomName, _cleanup = true) {
 	clear_room();
 	for (var _index = 0; _index < array_length(global.roomData[$ _roomName]); _index++) {
 		var _objName = global.roomData[$ _roomName][_index].spawnObjName;
-		show_debug_message(_objName);
 		if _objName != undefined {
 		var _obj = asset_get_index(string(_objName));
 		load_instance(_obj, global.roomData[$ _roomName][_index]);
@@ -112,10 +109,9 @@ function temp_save_player_data() {
 
 function load_player_data() {
 	if variable_struct_get_names(global.saveData) == 0 {
-		read_player_data();	
+		read_player_data();
 	};
-	
-	//show_debug_message(global.saveData);
+	read_player_data();
 	
 	global.partyObjects = [];
 	for (var _index = 0; _index < array_length(global.saveData.partyNames); _index++) {
@@ -161,9 +157,9 @@ function room_transfer(_x, _y, _roomName) {
     load_player_data();
 
     for (var _index = 0; _index < array_length(global.partyObjects); _index++) {
-        var _member = instance_find(global.partyObjects[_index], 0);
-        _member.x = _x;
-        _member.y = _y;
+        var _inst = instance_find(global.partyObjects[_index], 0);
+        instance_destroy(_inst, true);
+		//load_instance()
     };
 };
 
@@ -191,4 +187,18 @@ function load_game() {
     room_goto(asset_get_index(global.saveData.currentRoom));
     load_room(global.saveData.currentRoom);
     load_player_data();
+};
+
+
+function merge_struct(_struct, _dataStruct) {
+	var _dataStructNames = variable_struct_get_names(_dataStruct);
+	for (var _index = 0; _index < array_length(_dataStructNames); _index++) {
+		var _name = _dataStructNames[_index];
+		if is_struct(_struct[$ _name]) merge_struct(_struct[$ _name], _dataStruct[$ _name]);
+		else if is_array(_struct[$ _name]) {
+			for (var _arrayIndex = 0; _arrayIndex < array_length(_struct[$ _name]); _arrayIndex++) {
+				if is_struct(_struct[$ _name][_arrayIndex]) merge_struct(_struct[$ _name][_arrayIndex], _dataStruct[$ _name][_arrayIndex]);
+			};
+		} else _struct[$ _name] = _dataStruct[$ _name];
+	};
 };

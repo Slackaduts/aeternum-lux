@@ -1,9 +1,9 @@
-{ line : 121, longMessage : "ERROR in
+{ line : 31, stacktrace : [ "gml_Script_yui_unregister_interactions (line 31)","gml_Object_yui_base_CleanUp_0 (line 9) - yui_unregister_interactions(interactions);" ], longMessage : "ERROR in
 action number 1
-of  Step Event2
-for object obj_save_load:
+of <Unknown Event>
+for object yui_base:
 
 
-Variable <unknown_object>.partyNames(103608, -2147483648) not set before reading it.
- at gml_Script_load_player_data (line 121) - 	for (var _index = 0; _index < array_length(global.saveData.partyNames); _index++) {
-", message : "Variable <unknown_object>.partyNames(103608, -2147483648) not set before reading it.", script : "gml_Script_load_player_data", stacktrace : [ "gml_Script_load_player_data (line 121)","gml_Script_load_game (line 190) -     load_player_data();","gml_Object_obj_save_load_Step_2 (line 5) - else if input_check("cancel") load_game();" ] }
+Unable to find any instance for object index '1' name 'YuiCursorManager'
+ at gml_Script_yui_unregister_interactions (line 31) - 	if !ds_exists(YuiCursorManager.participation_map, ds_type_map) return;
+", message : "Unable to find any instance for object index '1' name 'YuiCursorManager'", script : "gml_Script_yui_unregister_interactions" }
