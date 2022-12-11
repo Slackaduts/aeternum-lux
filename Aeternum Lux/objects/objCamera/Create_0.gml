@@ -10,7 +10,6 @@ global.movementStatus = true;
 
 focusIndex = 0;
 global.partyObjects = [objNero, objRena, objAurra, objGaro];
-global.partyObjectNames = array_foreach(global.partyObjects, object_get_name);
 global.partyInstances = [];
 global.followerObjects = [];
 
@@ -55,19 +54,3 @@ dataToSave = [
 "viewHeight",
 "windowScale"
 ];
-
-show_debug_message(variable_struct_get_names(global));
-
-/**
- * Returns a save-able struct of all relevant saved data on the object. Control what data you want to save with the dataToSave array.
- */
-function save() {
-	var _saveData = {}
-	for (var _currData = 0; _currData < array_length(dataToSave); _currData++) {
-		var _data = dataToSave[_currData];
-		_saveData[$ _data] = self[$ _data];
-	};
-
-	return _saveData;
-};
-

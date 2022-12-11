@@ -1,4 +1,8 @@
 /// @desc Sync Sprite
-x += focusObj.velocity.x;
-y += focusObj.velocity.y;
+
+if global.focusInstance != undefined {
+	x += global.focusInstance.velocity.x;
+	y += global.focusInstance.velocity.y;
+};
+
 image_index = indicatorState;

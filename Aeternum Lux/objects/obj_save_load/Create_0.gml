@@ -2,6 +2,3 @@
 
 global.roomData = {};
 global.saveData = {};
-
-save_player();
-save_room();

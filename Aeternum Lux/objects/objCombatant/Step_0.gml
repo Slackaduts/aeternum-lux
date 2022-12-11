@@ -49,6 +49,7 @@ proxyVelocity = 0;
 tweenManager.run();
 
 // If we are being controlled by inputs or following, handle movement
+if followingObj != undefined && instance_number(followingObj) > 0 {
 switch combatant.states.controlState {
 	case controlStates.IDLE:
 		apply_force(seperation_force());
@@ -91,6 +92,7 @@ switch combatant.states.controlState {
 		//};
 		apply_force(seperation_force());
 	break;	
+};
 };
 
 if global.movementStatus {
