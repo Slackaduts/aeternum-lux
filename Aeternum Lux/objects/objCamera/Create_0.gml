@@ -52,5 +52,6 @@ dataToSave = [
 "camY",
 "viewWidth",
 "viewHeight",
-"windowScale"
+"windowScale",
+"focusIndex"
 ];

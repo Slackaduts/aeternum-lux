@@ -92,14 +92,19 @@ function clear_room() {
 
 function temp_save_player_data() {
  	var _partyNames = []
+	var _partyData = [];
 	for (var _index = 0; _index < array_length(global.partyObjects); _index++) {
+		var _obj = global.partyObjects[_index];
 		array_push(_partyNames, object_get_name(global.partyObjects[_index]));
+		var _inst = instance_find(_obj, 0);
+		array_push(_partyData, get_instance_data(_inst));
 	};
 	
 	var _focusName = object_get_name(global.focusInstance.object_index);
 
 	global.saveData = {
 		partyNames: _partyNames,
+		partyData: _partyData,
 		focusName: _focusName,
 		movementStatus: global.movementStatus,
 		currentRoom: room_get_name(room)
@@ -115,7 +120,10 @@ function load_player_data() {
 	
 	global.partyObjects = [];
 	for (var _index = 0; _index < array_length(global.saveData.partyNames); _index++) {
-		array_push(global.partyObjects, asset_get_index(global.saveData.partyNames[_index]));
+		var _obj = asset_get_index(global.saveData.partyNames[_index]);
+		array_push(global.partyObjects, _obj);
+		instance_destroy(instance_find(_obj, 0), true);
+		load_instance(_obj, global.saveData.partyData[_index]);
 	};
 	
 	global.focusObject = asset_get_index(global.saveData.focusName);
@@ -155,12 +163,6 @@ function room_transfer(_x, _y, _roomName) {
     room_goto(asset_get_index(_roomName));
     load_room(_roomName);
     load_player_data();
-
-    for (var _index = 0; _index < array_length(global.partyObjects); _index++) {
-        var _inst = instance_find(global.partyObjects[_index], 0);
-        instance_destroy(_inst, true);
-		//load_instance()
-    };
 };
 
 
