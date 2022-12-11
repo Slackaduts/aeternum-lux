@@ -1,5 +1,5 @@
 /// @desc Returns a struct of saveable data from an instance. 
-/// @param {Id.Instance} _inst Description
+/// @param {Id.Instance} _inst Instance to get the saveable data of
 /// @returns {struct}
 function get_instance_data(_inst) {
 	var _instData = {};
@@ -16,6 +16,11 @@ function get_instance_data(_inst) {
 };
 
 
+/**
+ * Creates an instance and then overwrites specified values.
+ * @param {asset.GMObject} _obj Object to create instance of
+ * @param {struct} _instData Struct of variables to merge/overwrite
+ */
 function load_instance(_obj, _instData) {
 	var _inst = instance_create_depth(0, 0, 0, _obj);
 	var _instDataNames = variable_struct_get_names(_instData);
@@ -29,6 +34,10 @@ function load_instance(_obj, _instData) {
 };
 
 
+/**
+ * Saves the saveable data of the current room to memory. Does NOT write to file.
+ * @param {array<asset.GMObject>} [_objsToSave]=[objCombatant, objCamera] Description
+ */
 function temp_save_current_room(_objsToSave = [objCombatant, objCamera]) {
 	var _roomName = room_get_name(room);
 	global.roomData[$ _roomName] = [];
@@ -43,6 +52,11 @@ function temp_save_current_room(_objsToSave = [objCombatant, objCamera]) {
 };
 
 
+/**
+ * Writes the saveable data of a specified room to file.
+ * @param {any} _roomName Room to write to file, by name
+ * @param {bool} [_cleanup]=false Whether we should delete the room data from memory afterwards
+ */
 function write_room(_roomName, _cleanup = false) {
 	if !directory_exists("saveData") directory_create("saveData");
 	var _filepath = string_concat("saveData\\roomData\\", _roomName, ".yml");
@@ -55,6 +69,10 @@ function write_room(_roomName, _cleanup = false) {
 };
 
 
+/**
+ * Read the saveable data of a room from file.
+ * @param {any*} _roomName Room to read the data of, by name
+ */
 function read_room(_roomName) {
 	var _filepath = string_concat("saveData\\roomData\\", _roomName, ".yml");
 	if !file_exists(_filepath) exit;
@@ -64,6 +82,11 @@ function read_room(_roomName) {
 };
 
 
+/**
+ * Loads a room from memory (or file if needed) into the game world.
+ * @param {any} _roomName Room to load, by name
+ * @param {bool} [_cleanup]=true Whether we should delete the room data from memory afterwards
+ */
 function load_room(_roomName, _cleanup = true) {
 	if !variable_struct_exists(global.roomData, _roomName) {
 		read_room(_roomName);
@@ -82,6 +105,9 @@ function load_room(_roomName, _cleanup = true) {
 };
 
 
+/**
+ * Clears all saveable instances from the room.
+ */
 function clear_room() {
 	for (var _index = 0; _index < instance_count; _index++) {
 		var _inst = instance_id[_index];
@@ -90,6 +116,9 @@ function clear_room() {
 };
 
 
+/**
+ * Saves global and party data to memory. Does NOT write to file.
+ */
 function temp_save_player_data() {
  	var _partyNames = []
 	var _partyData = [];
@@ -112,6 +141,9 @@ function temp_save_player_data() {
 };
 
 
+/**
+ * Loads global and party data from memory into the game world.
+ */
 function load_player_data() {
 	if variable_struct_get_names(global.saveData) == 0 {
 		read_player_data();
@@ -129,10 +161,11 @@ function load_player_data() {
 	global.focusObject = asset_get_index(global.saveData.focusName);
 	global.movementStatus = global.saveData.movementStatus;
 };
-	
 
 
-
+/**
+ * Writes global and party data to file.
+ */
 function write_player_data() {
 	var _dir = "saveData";
 	if !directory_exists(_dir) directory_create(_dir);
@@ -142,6 +175,9 @@ function write_player_data() {
 };
 
 
+/**
+ * Reads global and party data from file into memory.
+ */
 function read_player_data() {
 	var _filepath = "saveData\\saveData.yml";
 	if !file_exists(_filepath) exit;
@@ -158,10 +194,23 @@ function read_player_data() {
  * @param {string} _roomName Description
  */
 function room_transfer(_x, _y, _roomName) {
+	//Save current room and player data to memory
     temp_save_current_room();
     temp_save_player_data();
-    room_goto(asset_get_index(_roomName));
-    load_room(_roomName);
+
+	//Only change rooms if we aren't in the same room
+	if _roomName != room_get_name(room) {
+		room_goto(asset_get_index(_roomName));
+		load_room(_roomName);
+	};
+
+	//Modify our saved location in the player data to match the desired one
+	for (var _index = 0; _index < array_length(global.saveData.partyData); _index++) {
+		global.saveData.partyData[_index].x = _x;
+		global.saveData.partyData[_index].y = _y;
+	};
+
+	//Load in our party with the newly modified data
     load_player_data();
 };
 
@@ -192,6 +241,11 @@ function load_game() {
 };
 
 
+/**
+ * Overwrites a struct with another recursively, and preserves the methods on the original struct.
+ * @param {struct} _struct Struct to overwrite
+ * @param {struct} _dataStruct The data struct we are overwriting with
+ */
 function merge_struct(_struct, _dataStruct) {
 	var _dataStructNames = variable_struct_get_names(_dataStruct);
 	for (var _index = 0; _index < array_length(_dataStructNames); _index++) {
