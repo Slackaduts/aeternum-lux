@@ -95,5 +95,5 @@ dataToSave = [
 	"velocity",
 	"proxyVelocity",
 	"steeringForce",
-	"maxForce",
+	"maxForce"
 ];

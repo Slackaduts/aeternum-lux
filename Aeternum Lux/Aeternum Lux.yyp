@@ -39,6 +39,7 @@
     {"id":{"name":"sprBaseTileB_exterior4_2ColFrames","path":"sprites/sprBaseTileB_exterior4_2ColFrames/sprBaseTileB_exterior4_2ColFrames.yy",},"order":7,},
     {"id":{"name":"input_cursor_limit_aabb","path":"scripts/input_cursor_limit_aabb/input_cursor_limit_aabb.yy",},"order":5,},
     {"id":{"name":"BulbLight","path":"scripts/BulbLight/BulbLight.yy",},"order":4,},
+    {"id":{"name":"objRoomTransfer","path":"objects/objRoomTransfer/objRoomTransfer.yy",},"order":6,},
     {"id":{"name":"YuiCanvasLayout","path":"scripts/YuiCanvasLayout/YuiCanvasLayout.yy",},"order":6,},
     {"id":{"name":"input_binding_threshold_get","path":"scripts/input_binding_threshold_get/input_binding_threshold_get.yy",},"order":12,},
     {"id":{"name":"__input_gamepad_find_in_sdl2_database","path":"scripts/__input_gamepad_find_in_sdl2_database/__input_gamepad_find_in_sdl2_database.yy",},"order":8,},
@@ -100,6 +101,7 @@
     {"id":{"name":"SnapBufferReadGrid","path":"scripts/SnapBufferReadGrid/SnapBufferReadGrid.yy",},"order":2,},
     {"id":{"name":"yui_hex_to_dec","path":"scripts/yui_hex_to_dec/yui_hex_to_dec.yy",},"order":6,},
     {"id":{"name":"scribble_font_has_character","path":"scripts/scribble_font_has_character/scribble_font_has_character.yy",},"order":16,},
+    {"id":{"name":"Room2","path":"rooms/Room2/Room2.yy",},"order":2,},
     {"id":{"name":"YUI_TOKEN","path":"scripts/YUI_TOKEN/YUI_TOKEN.yy",},"order":1,},
     {"id":{"name":"GsplParserBase","path":"scripts/GsplParserBase/GsplParserBase.yy",},"order":3,},
     {"id":{"name":"input_tick","path":"scripts/input_tick/input_tick.yy",},"order":7,},
@@ -770,6 +772,7 @@
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"rm_Demo","path":"rooms/rm_Demo/rm_Demo.yy",},},
     {"roomId":{"name":"gspl_test_room","path":"rooms/gspl_test_room/gspl_test_room.yy",},},
+    {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
   ],
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Animation Curves","folderPath":"folders/Animation Curves.yy","order":9,},
@@ -957,6 +960,6 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"inventory_item.yui","CopyToMask":-1,"filePath":"datafiles/YUI/Templates",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.11.0.54",
+    "IDEVersion": "2022.11.1.56",
   },
 }

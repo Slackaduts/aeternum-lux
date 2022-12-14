@@ -80,6 +80,7 @@
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"data_context","path":"objects/yui_document/yui_document.yy",},"objectId":{"name":"yui_document","path":"objects/yui_document/yui_document.yy",},"value":"objCamera",},
           ],"isDnd":false,"objectId":{"name":"yui_document","path":"objects/yui_document/yui_document.yy",},"inheritCode":false,"hasCreationCode":true,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":912.0,"y":432.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_2AD4F239","properties":[],"isDnd":false,"objectId":{"name":"objCamera","path":"objects/objCamera/objCamera.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":464.0,"y":496.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_3E7B1020","properties":[],"isDnd":false,"objectId":{"name":"objRoomTransfer","path":"objects/objRoomTransfer/objRoomTransfer.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":800.0,"y":288.0,},
       ],"visible":true,"depth":200,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritVisibility":true,"inheritSubLayers":true,"gridX":16,"gridY":16,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],},
     {"resourceType":"GMRTileLayer","resourceVersion":"1.1","name":"Tiles_1","tilesetId":{"name":"tsBaseTileB_exterior4","path":"tilesets/tsBaseTileB_exterior4/tsBaseTileB_exterior4.yy",},"x":0,"y":0,"tiles":{"TileDataFormat":1,"SerialiseWidth":40,"SerialiseHeight":23,"TileCompressedData":[
 -4,0,1,16,-6,17,1,18,-7,0,1,16,-11,17,1,18,-8,-2147483648,-3,0,2,16,19,-6,33,1,20,-7,17,1,19,-11,33,4,20,17,17,18,-5,-2147483648,
@@ -152,6 +153,7 @@
     {"name":"inst_7F7CA618","path":"rooms/Room1/Room1.yy",},
     {"name":"inst_68232694","path":"rooms/Room1/Room1.yy",},
     {"name":"inst_5B2EF819","path":"rooms/Room1/Room1.yy",},
+    {"name":"inst_3E7B1020","path":"rooms/Room1/Room1.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

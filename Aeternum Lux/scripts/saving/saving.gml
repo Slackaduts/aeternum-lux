@@ -38,7 +38,7 @@ function load_instance(_obj, _instData) {
  * Saves the saveable data of the current room to memory. Does NOT write to file.
  * @param {array<asset.GMObject>} [_objsToSave]=[objCombatant, objCamera] Description
  */
-function temp_save_current_room(_objsToSave = [objCombatant, objCamera]) {
+function temp_save_current_room(_objsToSave = [objCombatant]) {
 	var _roomName = room_get_name(room);
 	global.roomData[$ _roomName] = [];
 	for (var _currObj = 0; _currObj < array_length(_objsToSave); _currObj++) {
@@ -108,10 +108,15 @@ function load_room(_roomName, _cleanup = true) {
 /**
  * Clears all saveable instances from the room.
  */
-function clear_room() {
+function clear_room(_destructables = ["dataToSave"]) {
 	for (var _index = 0; _index < instance_count; _index++) {
 		var _inst = instance_id[_index];
-		if variable_instance_exists(_inst, "dataToSave") instance_destroy(_inst, true);
+		for (var _destruct = 0; _destruct < array_length(_destructables); _destruct++) {
+			if variable_instance_exists(_inst, _destructables[_destruct]) {
+				instance_destroy(_inst, true);
+				break;
+			};
+		};
 	};	
 };
 
@@ -124,16 +129,17 @@ function temp_save_player_data() {
 	var _partyData = [];
 	for (var _index = 0; _index < array_length(global.partyObjects); _index++) {
 		var _obj = global.partyObjects[_index];
-		array_push(_partyNames, object_get_name(global.partyObjects[_index]));
+		array_push(_partyNames, object_get_name(_obj));
 		var _inst = instance_find(_obj, 0);
 		array_push(_partyData, get_instance_data(_inst));
 	};
 	
-	var _focusName = object_get_name(global.focusInstance.object_index);
+	var _focusName = object_get_name(global.focusObject);
 
 	global.saveData = {
 		partyNames: _partyNames,
 		partyData: _partyData,
+		cameraData: get_instance_data(instance_find(objCamera, 0)),
 		focusName: _focusName,
 		movementStatus: global.movementStatus,
 		currentRoom: room_get_name(room)
@@ -145,21 +151,26 @@ function temp_save_player_data() {
  * Loads global and party data from memory into the game world.
  */
 function load_player_data() {
-	if variable_struct_get_names(global.saveData) == 0 {
+	if array_length(variable_struct_get_names(global.saveData)) == 0 {
 		read_player_data();
 	};
-	read_player_data();
 	
 	global.partyObjects = [];
 	for (var _index = 0; _index < array_length(global.saveData.partyNames); _index++) {
 		var _obj = asset_get_index(global.saveData.partyNames[_index]);
 		array_push(global.partyObjects, _obj);
-		instance_destroy(instance_find(_obj, 0), true);
+		instance_destroy(_obj, true);
 		load_instance(_obj, global.saveData.partyData[_index]);
 	};
 	
+	if instance_exists(objCamera) instance_destroy(objCamera, true);
+	load_instance(objCamera, global.saveData.cameraData);
+	
+	
 	global.focusObject = asset_get_index(global.saveData.focusName);
 	global.movementStatus = global.saveData.movementStatus;
+	show_debug_message("THIS RAN")
+	show_debug_message(room_get_name(room));
 };
 
 
@@ -186,7 +197,6 @@ function read_player_data() {
 };
 
 
-
 /**
  * Transfers the player to a given room and to a given position in that room.
  * @param {any*} _x Description
@@ -200,18 +210,21 @@ function room_transfer(_x, _y, _roomName) {
 
 	//Only change rooms if we aren't in the same room
 	if _roomName != room_get_name(room) {
+		clear_room(["dataToSave", "lights", "partSystem", "emitters"]);
+		instance_destroy(objLightController, true);
 		room_goto(asset_get_index(_roomName));
-		load_room(_roomName);
+		//load_room(_roomName);
 	};
 
-	//Modify our saved location in the player data to match the desired one
-	for (var _index = 0; _index < array_length(global.saveData.partyData); _index++) {
-		global.saveData.partyData[_index].x = _x;
-		global.saveData.partyData[_index].y = _y;
-	};
+	////Modify our saved location in the player data to match the desired one
+	//for (var _index = 0; _index < array_length(global.saveData.partyData); _index++) {
+	//	global.saveData.partyData[_index].x = _x;
+	//	global.saveData.partyData[_index].y = _y;
+	//};
 
-	//Load in our party with the newly modified data
-    load_player_data();
+	////Load in our party with the newly modified data
+	//if !instance_exists(objLightController) instance_create_layer(0, 0, "LightRender", objLightController);
+    //load_player_data();
 };
 
 

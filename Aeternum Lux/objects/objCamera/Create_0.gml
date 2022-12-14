@@ -10,8 +10,6 @@ global.movementStatus = true;
 
 focusIndex = 0;
 global.partyObjects = [objNero, objRena, objAurra, objGaro];
-global.partyInstances = [];
-global.followerObjects = [];
 
 viewWidth = 1280;
 viewHeight = 720;
