@@ -17,12 +17,11 @@ function get_instance_data(_inst) {
 
 
 /**
- * Creates an instance and then overwrites specified values.
- * @param {asset.GMObject} _obj Object to create instance of
- * @param {struct} _instData Struct of variables to merge/overwrite
+ * Overwrites the data of an instance with supplied data. Preserves instance methods recursively.
+ * @param {any*} _inst Instance to overwrite
+ * @param {struct} _instData Data to overwrite the instance with
  */
-function load_instance(_obj, _instData) {
-	var _inst = instance_create_depth(0, 0, 0, _obj);
+function merge_instance(_inst, _instData) {
 	var _instDataNames = variable_struct_get_names(_instData);
 	with (_inst) {
 		for (var _index = 0; _index < array_length(_instDataNames); _index++) {
@@ -31,6 +30,17 @@ function load_instance(_obj, _instData) {
 			else self[$ _data] = _instData[$ _data];
 		};
 	};
+};
+
+
+/**
+ * Creates an instance and then overwrites specified values.
+ * @param {asset.GMObject} _obj Object to create instance of
+ * @param {struct} _instData Struct of variables to merge/overwrite
+ */
+function load_instance(_obj, _instData) {
+	var _inst = instance_create_depth(0, 0, 0, _obj);
+	merge_instance(_inst, _instData);
 };
 
 
@@ -112,7 +122,7 @@ function clear_room(_destructables = ["dataToSave"]) {
 	for (var _index = 0; _index < instance_count; _index++) {
 		var _inst = instance_id[_index];
 		for (var _destruct = 0; _destruct < array_length(_destructables); _destruct++) {
-			if variable_instance_exists(_inst, _destructables[_destruct]) {
+			if variable_instance_exists(_inst, _destructables[_destruct]) && !persistent {
 				instance_destroy(_inst, true);
 				break;
 			};
@@ -159,18 +169,17 @@ function load_player_data() {
 	for (var _index = 0; _index < array_length(global.saveData.partyNames); _index++) {
 		var _obj = asset_get_index(global.saveData.partyNames[_index]);
 		array_push(global.partyObjects, _obj);
-		instance_destroy(_obj, true);
+		//if instance_exists(_obj) merge_instance(instance_find(_obj, 0), global.saveData.partyData[_index]);
+		//else load_instance(_obj, global.saveData.partyData[_index]);
+		if instance_exists(_obj) instance_destroy(_obj, true);
 		load_instance(_obj, global.saveData.partyData[_index]);
 	};
 	
-	if instance_exists(objCamera) instance_destroy(objCamera, true);
-	load_instance(objCamera, global.saveData.cameraData);
-	
+	if instance_exists(objCamera) merge_instance(instance_find(objCamera, 0), global.saveData.cameraData);
+	else load_instance(objCamera, global.saveData.cameraData);
 	
 	global.focusObject = asset_get_index(global.saveData.focusName);
 	global.movementStatus = global.saveData.movementStatus;
-	show_debug_message("THIS RAN")
-	show_debug_message(room_get_name(room));
 };
 
 
@@ -199,9 +208,9 @@ function read_player_data() {
 
 /**
  * Transfers the player to a given room and to a given position in that room.
- * @param {any*} _x Description
- * @param {any*} _y Description
- * @param {string} _roomName Description
+ * @param {real} _x X position to go to in the new room
+ * @param {real} _y Y position to go to in the new room
+ * @param {string} _roomName Room to go to, by name
  */
 function room_transfer(_x, _y, _roomName) {
 	//Save current room and player data to memory
@@ -209,22 +218,15 @@ function room_transfer(_x, _y, _roomName) {
     temp_save_player_data();
 
 	//Only change rooms if we aren't in the same room
+	var _oldRoom = room;
+	var _skipTransfer = false;
 	if _roomName != room_get_name(room) {
 		clear_room(["dataToSave", "lights", "partSystem", "emitters"]);
 		instance_destroy(objLightController, true);
 		room_goto(asset_get_index(_roomName));
-		//load_room(_roomName);
-	};
-
-	////Modify our saved location in the player data to match the desired one
-	//for (var _index = 0; _index < array_length(global.saveData.partyData); _index++) {
-	//	global.saveData.partyData[_index].x = _x;
-	//	global.saveData.partyData[_index].y = _y;
-	//};
-
-	////Load in our party with the newly modified data
-	//if !instance_exists(objLightController) instance_create_layer(0, 0, "LightRender", objLightController);
-    //load_player_data();
+	} else _skipTransfer = true;
+	
+	instance_create_depth(0, 0, 0, objTransferHelper, {oldRoom: _oldRoom, skipTransfer: _skipTransfer, targetX: _x, targetY: _y});
 };
 
 
@@ -247,10 +249,12 @@ function save_game() {
  * Top-level function for loading the game. Reads from files.
  */
 function load_game() {
-    load_player_data();
-    room_goto(asset_get_index(global.saveData.currentRoom));
-    load_room(global.saveData.currentRoom);
-    load_player_data();
+	read_player_data();
+	read_room(global.saveData.currentRoom);
+	var _x = global.saveData.partyData[0].x;
+	var _y = global.saveData.partyData[0].y;
+	
+	room_transfer(_x, _y, global.saveData.currentRoom);
 };
 
 

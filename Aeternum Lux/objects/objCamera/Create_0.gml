@@ -1,6 +1,5 @@
 /// @desc Initialize camera
 global.focusObject = objNero;
-global.focusInstance = instance_nearest(x, y, global.focusObject);
 
 global.collisionLayers = [];
 global.collisionTileSets = [];
