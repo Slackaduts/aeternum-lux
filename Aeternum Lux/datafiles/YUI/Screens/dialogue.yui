@@ -15,10 +15,10 @@ root:
         content:
           type: text
           padding: 5
-          text: @content
+          text: @data
           scribble: true
           typist: @typist
       - type: image
         sprite: sprDialogueIndicator
         opacity: @@ 0.5 + ((sin((@currentTime / @roomSpeed) * 0.1)) * 0.5)
-        visible: @dialogueEnd
+        visible: @!sceneManager.sceneOver
