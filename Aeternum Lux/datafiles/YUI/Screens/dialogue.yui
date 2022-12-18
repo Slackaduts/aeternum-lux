@@ -20,5 +20,5 @@ root:
           typist: @typist
       - type: image
         sprite: sprDialogueIndicator
-        opacity: @@ 0.5 + ((sin((@currentTime / @roomSpeed) * 0.1)) * 0.5)
-        visible: @!sceneManager.sceneOver
+        opacity: @@ 0.5 + ((sin((get_current_time() / get_room_speed()) * 0.1)) * 0.5)
+        visible: @sceneManager.sceneOver

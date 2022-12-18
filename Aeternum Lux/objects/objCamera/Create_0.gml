@@ -41,7 +41,7 @@ inventory.add_item(get_item("Basic Ether"), 2);
 inventory.add_item(get_item("Alchemist's Brew"), 1);
 inventory.add_item(get_item("Wild Mushroom"), 7);
 inventory.add_item(get_item("Field Cricket"), 4);
-test = inventory.get_category_inventory_array(0);
+//test = inventory.get_category_inventory_array(0);
 
 dataToSave = [
 "inventory",

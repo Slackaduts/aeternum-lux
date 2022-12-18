@@ -1,9 +1,7 @@
-{ line : 6, stacktrace : [ "gml_Object_objCamera_Step_2 (line 6)" ], longMessage : "ERROR in
+{ script : "gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_732586_scene_manager_gml_GlobalScript_scene_manager", longMessage : "ERROR in
 action number 1
-of  Step Event2
-for object objCamera:
+of  Step Event0
+for object objNPC:
 
 
-global variable name 'focusInstance' index (101157) not set before reading it.
- at gml_Object_objCamera_Step_2 (line 6) - 	camX = clamp(global.focusInstance.x - (viewWidth / 2), 0, room_width - viewWidth);
-", message : "global variable name 'focusInstance' index (101157) not set before reading it.", script : "gml_Object_objCamera_Step_2" }
+I32 argument is undefined", stacktrace : [ "gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_732586_scene_manager_gml_GlobalScript_scene_manager (line 29)","gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_199585_scene_manager_gml_GlobalScript_scene_manager (line 22)","gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_732586_scene_manager_gml_GlobalScript_scene_manager (line 40)","gml_Object_objNPC_Step_0 (line 7)" ], message : "I32 argument is undefined", line : 0 }

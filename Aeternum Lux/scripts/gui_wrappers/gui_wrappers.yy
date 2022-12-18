@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "gui_utils",
+  "name": "gui_wrappers",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

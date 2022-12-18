@@ -95,6 +95,8 @@ switch combatant.states.controlState {
 };
 };
 
+//scenePool.run();
+
 if global.movementStatus {
 	//Update steering/velocity vectors
 	velocity.add(steeringForce);
