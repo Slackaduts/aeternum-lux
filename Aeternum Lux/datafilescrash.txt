@@ -1,7 +1,9 @@
-{ script : "gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_732586_scene_manager_gml_GlobalScript_scene_manager", longMessage : "ERROR in
+{ stacktrace : [ "gml_Script_anon_scene_pool_gml_GlobalScript_scene_manager_1424_scene_pool_gml_GlobalScript_scene_manager (line 61)","gml_Object_objCombatant_Step_0 (line 103) - scenePool.run();","gml_Object_objLightCombatant_Step_0 (line 2)","gml_Object_objPlayerCombatant_Step_0 (line 1)" ], longMessage : "ERROR in
 action number 1
 of  Step Event0
-for object objNPC:
+for object objCombatant:
 
 
-I32 argument is undefined", stacktrace : [ "gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_732586_scene_manager_gml_GlobalScript_scene_manager (line 29)","gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_199585_scene_manager_gml_GlobalScript_scene_manager (line 22)","gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_732586_scene_manager_gml_GlobalScript_scene_manager (line 40)","gml_Object_objNPC_Step_0 (line 7)" ], message : "I32 argument is undefined", line : 0 }
+Variable <unknown_object>.sceneOver(103335, -2147483648) not set before reading it.
+ at gml_Script_anon_scene_pool_gml_GlobalScript_scene_manager_1424_scene_pool_gml_GlobalScript_scene_manager (line 61) - 			if _scene.sceneOver array_delete(scenes, _index, 1);
+", message : "Variable <unknown_object>.sceneOver(103335, -2147483648) not set before reading it.", script : "gml_Script_anon_scene_pool_gml_GlobalScript_scene_manager_1424_scene_pool_gml_GlobalScript_scene_manager", line : 61 }

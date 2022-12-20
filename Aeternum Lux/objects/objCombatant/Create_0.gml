@@ -86,7 +86,8 @@ breathOffset = irandom_range(1, 20);
 
 combatant = new CombatantManager("Enemy");
 
-//scenePool = new scene_pool();
+scenePool = new scene_pool();
+
 
 dataToSave = [
 	"x",

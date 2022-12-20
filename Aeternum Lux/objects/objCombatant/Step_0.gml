@@ -95,7 +95,11 @@ switch combatant.states.controlState {
 };
 };
 
-//scenePool.run();
+if array_length(scenePool.scenes) == 0 && input_check("cancel") {
+	scenePool.add_scene([new scene_dialogue(self.id, "This is a test of adding events in real time.")]);
+};
+
+scenePool.run();
 
 if global.movementStatus {
 	//Update steering/velocity vectors
