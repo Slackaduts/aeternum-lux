@@ -112,6 +112,10 @@ function scene_callback(_data = undefined, _index = undefined) constructor {
 
 
 
+function async_callback(_callback): scene_callback() {};
+
+
+
 /**
  * Creates a scene callback for showing dialogue. Must be added to a scene pool and/or scene manager to actually do something.
  * @param {any*} _speaker The object "speaking" the dialogue
