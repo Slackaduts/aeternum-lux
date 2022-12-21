@@ -12,8 +12,9 @@ new scene_dialogue(self.id, "Oh hey, it's you again."),
 new scene_dialogue(global.focusObject, "Again? You know me?"),
 new scene_dialogue(self.id, "Yeah, this system can handle branching/post-scene dialogue."),
 new scene_dialogue(global.focusObject, "Sounds based.", -8),
-new scene_dialogue(self.id, "Damn. You're really persistent."),
-new scene_dialogue(self.id, "People don't normally come up and continually ask for conversation.", -8),
+new scene_dialogue(self.id, "Oh yeah, we have delays now. I'll talk to you in 5 seconds, after you advance the dialogue."),
+new scene_delay(5),
+new scene_dialogue(self.id, "Pretty cool, right?", -8),
 ];
 
 npcScene = new scene_manager(npcSceneData);

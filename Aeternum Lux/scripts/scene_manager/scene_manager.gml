@@ -153,6 +153,20 @@ function scene_dialogue(_speaker, _data = "", _index = undefined): scene_callbac
 };
 
 
+function scene_delay(_data = 1, _index = undefined): scene_callback(_data, _index) constructor {
+	time_source = undefined;
+	
+	static initialize = function() {
+		time_source = time_source_create(time_source_game, data, time_source_units_seconds, function() {self.finish();});
+		time_source_start(time_source);
+	};
+	
+	static reset = function() {
+		time_source = undefined;
+	};
+};
+
+
 
 function dialogue_option() constructor {
 };
