@@ -112,7 +112,31 @@ function scene_callback(_data = undefined, _index = undefined) constructor {
 
 
 
-function async_callback(_callback): scene_callback() {};
+
+//function async_callback(_inst, _scene): scene_callback() constructor {
+//	scene = undefined;
+//	/**
+//	 * Adds this scene to the scene pool.
+//	 */
+//	static initialize = function(_inst = _inst, _scene = _scene) {
+//		scene = _scene;
+//		with (_inst) {
+//			scenePool.add_scene(scene);
+//		};
+//	};
+	
+	
+//	/**
+//	 * Marks this callback as finished, as this callback is only being executed by the scene pool.
+//	 */
+//	static run = function() {
+//		finish();
+//	};
+	
+//	static reset = function() {
+//		scene = undefined;
+//	};
+//};
 
 
 
@@ -158,15 +182,16 @@ function scene_dialogue(_speaker, _data = "", _index = undefined): scene_callbac
 
 
 function scene_delay(_data = 1, _index = undefined): scene_callback(_data, _index) constructor {
-	time_source = undefined;
+	time_source = time_source_create(time_source_game, data, time_source_units_seconds, function() {self.finish();});
 	
 	static initialize = function() {
-		time_source = time_source_create(time_source_game, data, time_source_units_seconds, function() {self.finish();});
 		time_source_start(time_source);
 	};
+
 	
 	static reset = function() {
-		time_source = undefined;
+		completed = false;
+		time_source_reset(time_source);
 	};
 };
 

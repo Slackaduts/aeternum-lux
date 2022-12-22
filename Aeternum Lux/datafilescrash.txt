@@ -1,9 +1,9 @@
-{ longMessage : "ERROR in
+{ line : 193, longMessage : "ERROR in
 action number 1
 of  Step Event0
 for object objNPC:
 
 
-Variable scene_delay._data(100035, -2147483648) not set before reading it.
- at gml_Script_anon_scene_delay_gml_GlobalScript_scene_manager_4722_scene_delay_gml_GlobalScript_scene_manager (line 160) - 		time_source = time_source_create(time_source_game, _data, time_source_units_seconds, finish);
-", message : "Variable scene_delay._data(100035, -2147483648) not set before reading it.", stacktrace : [ "gml_Script_anon_scene_delay_gml_GlobalScript_scene_manager_4722_scene_delay_gml_GlobalScript_scene_manager (line 160)","gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_1060_scene_manager_gml_GlobalScript_scene_manager (line 39) - 			_callback.initialize();","gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_519_scene_manager_gml_GlobalScript_scene_manager (line 26) - 				run();","gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_1060_scene_manager_gml_GlobalScript_scene_manager (line 46) - 			advance();","gml_Object_objNPC_Step_0 (line 7) - 	if (_activated && distance_to_object(_inst) < npcActivationRange) || npcScene.scenePlaying npcScene.run();" ], script : "gml_Script_anon_scene_delay_gml_GlobalScript_scene_manager_4722_scene_delay_gml_GlobalScript_scene_manager", line : 160 }
+Illegal time source repetition value: 0
+ at gml_Script_anon_scene_delay_gml_GlobalScript_scene_manager_5317_scene_delay_gml_GlobalScript_scene_manager (line 193) - 		time_source = time_source_create(time_source_game, data, time_source_units_seconds, function() {self.finish();}, [], 0, time_source_expire_nearest);
+", message : "Illegal time source repetition value: 0", script : "gml_Script_anon_scene_delay_gml_GlobalScript_scene_manager_5317_scene_delay_gml_GlobalScript_scene_manager", stacktrace : [ "gml_Script_anon_scene_delay_gml_GlobalScript_scene_manager_5317_scene_delay_gml_GlobalScript_scene_manager (line 193)","gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_1060_scene_manager_gml_GlobalScript_scene_manager (line 39) - 			_callback.initialize();","gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_519_scene_manager_gml_GlobalScript_scene_manager (line 26) - 				run();","gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_1060_scene_manager_gml_GlobalScript_scene_manager (line 46) - 			advance();","gml_Object_objNPC_Step_0 (line 7) - 	if (_activated && distance_to_object(_inst) < npcActivationRange) || npcScene.scenePlaying npcScene.run();" ] }
