@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "lighting_utils",
+  "name": "movement_utils",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

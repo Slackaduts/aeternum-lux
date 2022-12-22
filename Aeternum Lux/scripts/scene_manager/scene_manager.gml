@@ -11,6 +11,7 @@ function scene_manager(_callbacks) constructor {
 	 * Advances the scene manager to the next scene if the first is completed. Handles graceful finish of past callback, and initializes the future one.
 	 */
 	static advance = function() {
+		//if !is_array(callbacks) || array_length(callbacks) == 0 exit;
 		var _callback = callbacks[callbackIndex];
 		if _callback.completed {
 			_callback.finish();
@@ -32,6 +33,8 @@ function scene_manager(_callbacks) constructor {
 	 * Runs the scene manager for one frame.
 	 */
 	static run = function() {
+		if !is_array(callbacks) show_debug_message(callbacks);
+		//if !is_array(callbacks) || array_length(callbacks) == 0 exit;
 		var _callback = callbacks[callbackIndex];
 		var _initialized = false;
 		sceneOver = false;
@@ -73,8 +76,7 @@ function scene_pool() constructor {
 	 * @param {array<struct.scene_callback>} _scene Array of scene callbacks to push to the scene pool
 	 */
 	static add_scene = function(_scene) {
-		var _sceneManager = new scene_manager(_scene);
-		array_push(scenes, _sceneManager);
+		array_push(scenes, new scene_manager(_scene));
 	};
 };
 
@@ -113,30 +115,20 @@ function scene_callback(_data = undefined, _index = undefined) constructor {
 
 
 
-//function async_callback(_inst, _scene): scene_callback() constructor {
-//	scene = undefined;
-//	/**
-//	 * Adds this scene to the scene pool.
-//	 */
-//	static initialize = function(_inst = _inst, _scene = _scene) {
-//		scene = _scene;
-//		with (_inst) {
-//			scenePool.add_scene(scene);
-//		};
-//	};
-	
-	
-//	/**
-//	 * Marks this callback as finished, as this callback is only being executed by the scene pool.
-//	 */
-//	static run = function() {
-//		finish();
-//	};
-	
-//	static reset = function() {
-//		scene = undefined;
-//	};
-//};
+/**
+ * Pushes a scene to the scene pool for execution, not waiting for its execution to finish in the current scene manager.
+ * @param {any*} _scene Scene to execute
+ * @param {any*} [_index] Index to go to upon completion, influences branching scene logic
+ */
+function async_callback(_scene, _index = undefined): scene_callback(_scene, _index) constructor {
+	/**
+	 * Adds this scene to the scene pool.
+	 */
+	static initialize = function() {
+		other.scenePool.add_scene(data);
+		finish();
+	};
+};
 
 
 
@@ -182,16 +174,8 @@ function scene_dialogue(_speaker, _data = "", _index = undefined): scene_callbac
 
 
 function scene_delay(_data = 1, _index = undefined): scene_callback(_data, _index) constructor {
-	time_source = time_source_create(time_source_game, data, time_source_units_seconds, function() {self.finish();});
-	
 	static initialize = function() {
-		time_source_start(time_source);
-	};
-
-	
-	static reset = function() {
-		completed = false;
-		time_source_reset(time_source);
+		var _callback = call_later(data, time_source_units_seconds, function() {self.finish();});
 	};
 };
 
