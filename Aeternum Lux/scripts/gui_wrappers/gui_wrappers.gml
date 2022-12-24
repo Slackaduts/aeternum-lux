@@ -16,3 +16,8 @@ function get_room_speed() {
 function gui_amount_view(_amount) {
 	return string_concat("x", string(_amount))
 };
+
+
+function create_yui_obj(_yui_file, _data_context) {
+	return instance_create_depth(0, 0, 0, yui_document, {yui_file: _yui_file, data_context: _data_context});
+};
