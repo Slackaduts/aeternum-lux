@@ -6,6 +6,7 @@ if _pressed {
 	if paused unpause();
 	else {
 		pause();
-		yui = create_yui_obj("\\YUI\\Screens\\main_menu.yui", id);
+		yui = create_yui_obj("YUI/Screens/main_menu.yui", id);
 	};
 };
+

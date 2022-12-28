@@ -6,7 +6,7 @@
 
 // For Live Reload to work, YUI needs to know the FULL path to the 'datafiles' folder for your project.
 // e.g. "D:/Projects/Game Design/YUI/datafiles/"
-#macro YUI_USER_PROJECT_DATA_FOLDER "D:\\Aeternum Lux Source Control\\aeternum-lux\\Aeternum Lux\\datafiles"
+#macro YUI_USER_PROJECT_DATA_FOLDER "D:/Aeternum Lux Source Control/aeternum-lux/Aeternum Lux/datafiles/"
 
 
 
