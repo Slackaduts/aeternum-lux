@@ -83,6 +83,7 @@
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"data_context","path":"objects/yui_document/yui_document.yy",},"objectId":{"name":"yui_document","path":"objects/yui_document/yui_document.yy",},"value":"objCamera",},
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"is_full_screen","path":"objects/yui_document/yui_document.yy",},"objectId":{"name":"yui_document","path":"objects/yui_document/yui_document.yy",},"value":"True",},
           ],"isDnd":false,"objectId":{"name":"yui_document","path":"objects/yui_document/yui_document.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":848.0,"y":400.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_65E87965","properties":[],"isDnd":false,"objectId":{"name":"objMainMenu","path":"objects/objMainMenu/objMainMenu.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":880.0,"y":512.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_22AA0FB0","properties":[],"isDnd":false,"objectId":{"name":"objNPC","path":"objects/objNPC/objNPC.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":432.0,"y":304.0,},
       ],"visible":true,"depth":200,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritVisibility":true,"inheritSubLayers":true,"gridX":16,"gridY":16,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],},
     {"resourceType":"GMRTileLayer","resourceVersion":"1.1","name":"Tiles_1","tilesetId":{"name":"tsBaseTileB_exterior4","path":"tilesets/tsBaseTileB_exterior4/tsBaseTileB_exterior4.yy",},"x":0,"y":0,"tiles":{"TileDataFormat":1,"SerialiseWidth":40,"SerialiseHeight":23,"TileCompressedData":[
@@ -155,8 +156,9 @@
     {"name":"inst_7F7CA618","path":"rooms/Room1/Room1.yy",},
     {"name":"inst_68232694","path":"rooms/Room1/Room1.yy",},
     {"name":"inst_3E7B1020","path":"rooms/Room1/Room1.yy",},
-    {"name":"inst_12F3833C","path":"rooms/Room1/Room1.yy",},
     {"name":"inst_22AA0FB0","path":"rooms/Room1/Room1.yy",},
+    {"name":"inst_12F3833C","path":"rooms/Room1/Room1.yy",},
+    {"name":"inst_65E87965","path":"rooms/Room1/Room1.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

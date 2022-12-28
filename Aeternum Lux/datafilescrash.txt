@@ -1,9 +1,9 @@
-{ longMessage : "ERROR in
+{ script : "gml_Script_anon___snap_from_yui_builder_gml_GlobalScript_snap_from_yui_13499___snap_from_yui_builder_gml_GlobalScript_snap_from_yui", stacktrace : [ "gml_Script_anon___snap_from_yui_builder_gml_GlobalScript_snap_from_yui_13499___snap_from_yui_builder_gml_GlobalScript_snap_from_yui (line 347)","gml_Script___snap_from_yui_builder (line 509) -     result = read();","gml_Script_snap_from_yui (line 41)","gml_Script_anon_gml_Object_YuiGlobals_Create_0_1438_gml_Object_YuiGlobals_Create_0 (line 65) - 	var snap = snap_from_yui(text);","gml_Script_anon_CabinetFile_gml_GlobalScript_Cabinet_4884_CabinetFile_gml_GlobalScript_Cabinet (line 163) - 					return cabinet.options.file_value_generator(text, self);","gml_Script_anon_CabinetFile_gml_GlobalScript_Cabinet_3725_CabinetFile_gml_GlobalScript_Cabinet (line 123) - 		var file_result = file_exists(fullpath) ? __readFile(fullpath) : undefined;","gml_Script_anon_CabinetFile_gml_GlobalScript_Cabinet_3381_CabinetFile_gml_GlobalScript_Cabinet (line 113) - 			return tryLoad();","gml_Script_anon_YuiDocument_gml_GlobalScript_YuiDocument_441_YuiDocument_gml_GlobalScript_YuiDocument (line 36) - 		var file_data = cabinet_file.tryRead();","gml_Script_YuiDocument (line 18) - 	loadDocument();","gml_Script_anon_gml_Object_yui_document_Create_0_965_gml_Object_yui_document_Create_0 (line 45)","gml_Object_yui_document_Create_0 (line 62) - load();","gml_Script_create_yui_obj (line 22)","gml_Object_objMainMenu_Step_0 (line 9) - 		yui = create_yui_obj("\\YUI\\Screens\\main_menu.yui", id);" ], longMessage : "ERROR in
 action number 1
-of  Step Event0
-for object objCombatant:
+of Create Event
+for object yui_document:
 
 
-trying to index a variable which is not an array
- at gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_1127_scene_manager_gml_GlobalScript_scene_manager (line 38) - 		var _callback = callbacks[callbackIndex];
-", stacktrace : [ "gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_1127_scene_manager_gml_GlobalScript_scene_manager (line 38)","gml_Script_anon_scene_pool_gml_GlobalScript_scene_manager_1798_scene_pool_gml_GlobalScript_scene_manager (line 69) - 			_scene.run();","gml_Object_objCombatant_Step_0 (line 99) - scenePool.run();","gml_Object_objNPC_Step_0 (line 2)" ], message : "trying to index a variable which is not an array", script : "gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_1127_scene_manager_gml_GlobalScript_scene_manager", line : 38 }
+Variable Index [1] out of range [1]
+ at gml_Script_anon___snap_from_yui_builder_gml_GlobalScript_snap_from_yui_13499___snap_from_yui_builder_gml_GlobalScript_snap_from_yui (line 347) -                     var _key = snap_from_yui_get_token_value;
+", message : "Variable Index [1] out of range [1]", line : 347 }

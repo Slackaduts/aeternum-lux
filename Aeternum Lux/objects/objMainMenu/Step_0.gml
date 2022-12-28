@@ -3,9 +3,9 @@
 var _pressed = input_check_pressed("pause");
 
 if _pressed {
-	if paused {
-		instance_destroy(yui, true);
-		yui = undefined;
-		
-	} else pause();
+	if paused unpause();
+	else {
+		pause();
+		yui = create_yui_obj("\\YUI\\Screens\\main_menu.yui", id);
+	};
 };

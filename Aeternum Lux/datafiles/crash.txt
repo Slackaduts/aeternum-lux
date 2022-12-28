@@ -1,9 +1,9 @@
-{ script : "gml_Script_get_item", longMessage : "ERROR in
+{ script : "gml_Script_anon_YuiDocument_gml_GlobalScript_YuiDocument_441_YuiDocument_gml_GlobalScript_YuiDocument", stacktrace : [ "gml_Script_anon_YuiDocument_gml_GlobalScript_YuiDocument_441_YuiDocument_gml_GlobalScript_YuiDocument (line 36)","gml_Script_YuiDocument (line 18) - 	loadDocument();","gml_Script_anon_gml_Object_yui_document_Create_0_965_gml_Object_yui_document_Create_0 (line 45)","gml_Object_yui_document_Create_0 (line 62) - load();" ], longMessage : "ERROR in
 action number 1
-of  Step Event1
-for object objCamera:
+of Create Event
+for object yui_document:
 
 
-Variable <unknown_object>.stats(101338, -2147483648) not set before reading it.
- at gml_Script_get_item (line 234) - 					_item = new Item(_itemData.name, _itemData.desc, _itemData.icon, _itemData.stats);
-", line : 234, stacktrace : [ "gml_Script_get_item (line 234)","gml_Object_objCamera_Step_1 (line 30) - show_debug_message(get_item("Basic Ether"))" ], message : "Variable <unknown_object>.stats(101338, -2147483648) not set before reading it." }
+Variable <unknown_object>.tryRead(100458, -2147483648) cannot be resolved.
+ at gml_Script_anon_YuiDocument_gml_GlobalScript_YuiDocument_441_YuiDocument_gml_GlobalScript_YuiDocument (line 36) - 		var file_data = cabinet_file.tryRead();
+", message : "Variable <unknown_object>.tryRead(100458, -2147483648) cannot be resolved.", line : 36 }

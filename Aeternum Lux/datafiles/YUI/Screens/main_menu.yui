@@ -1,0 +1,40 @@
+id: main_menu
+file_type: screen
+
+import:
+  - "../Screens/save_menu.yui"
+
+root:
+  type: panel
+    layout: vertical
+    background: $theme.resources.panel_bg
+    size: { w: stretch, v: stretch }
+    alignment: { v: center, h: center }
+    elements:
+      - type: border
+        background: #000000
+        border_color: #FFFFFF
+        border_thickness: 2
+        content:
+          type: button
+          content: Continue
+          on_click: @@ unpause()
+          padding: 5
+      - type: border
+        background: #000000
+        border_color: #FFFFFF
+        border_thickness: 2
+        content:
+          type: button
+          content: Save / Load
+          on_click: @@ e => yui_change_screen(save_menu, e.source)
+          padding: 5
+      // - type: border
+      //   background: #000000
+      //   border_color: #FFFFFF
+      //   border_thickness: 2
+      //   content:
+      //     type: button
+      //     content: Options
+      //     // on_click: @@ e => yui_change_screen(options_menu, e.source)
+      //     padding: 5
