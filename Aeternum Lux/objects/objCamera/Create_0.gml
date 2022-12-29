@@ -28,7 +28,15 @@ show_debug_overlay(true);
 display_set_timing_method(tm_countvsyncs);
 window_set_size(viewWidth * windowScale, viewHeight * windowScale);
 alarm[0] = 500;
-//alarm_set(0, 500);
+
+//PPFX Initialization
+ppfx_application_render_init();
+ppfx_id = ppfx_create();
+ppfx_effects = new indexable_struct();
+var _i = ppfx_effects.add_item(new pp_bloom(true, 5, 0.4, 1.2));
+main_profile = ppfx_profile_create("Main", ppfx_effects.get_array());
+show_debug_message(main_profile);
+ppfx_profile_load(ppfx_id, main_profile);
 
 //TODO: Implement KeyItems
 global.itemsDatabase = [];
@@ -41,7 +49,6 @@ inventory.add_item(get_item("Basic Ether"), 2);
 inventory.add_item(get_item("Alchemist's Brew"), 1);
 inventory.add_item(get_item("Wild Mushroom"), 7);
 inventory.add_item(get_item("Field Cricket"), 4);
-//test = inventory.get_category_inventory_array(0);
 
 dataToSave = [
 "inventory",

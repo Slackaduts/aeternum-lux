@@ -1,0 +1,242 @@
+
+=============================================================================================
+Kazan Games Limited (TM)                              [Last edit: 11/12/2022 (BR) (DD/MM/YY)]
+Post-Processing FX - End User License Agreement
+=============================================================================================
+
+
+IMPORTANT. Read the following License Agreement (henceforth "Agreement") completely.
+
+This document explains the legal terms and conditions that apply when you use any content or
+services produced by Kazan Games Ltd.
+By using the software, games, or assets/source code (henceforth "Work"), you indicate that you
+accept the terms of the Agreement and you acknowledge that you have the authority, for yourself
+or on behalf of your company, to bind to these terms.
+You may then download or install the file(s). This EULA is freely provided for every Work prior
+to purchase or acquisition and as such should not be considered a "Click-Wrap" agreement. If you
+do not agree to the terms in this Agreement, do not purchase, use or download the Work.
+NOTE: FoxyOfJungle is the main developer, CEO of Kazan Games.
+
+
+Brief explanation:
+
+- If the "Work" is a SOURCE CODE, you are able to create commercial games and/or softwares using
+any source code made publicly available by Kazan Games (paid or free), provided that this license
+is included. You must NOT redistribute the original or even modified source code (all files).
+
+- If the "Work" is a GAME, you shouldn't redistribute, decompile and so on. See the rest of this
+license agreement for more details.
+
+
+
+=[ SUMMARY ]=
+
+1. Agreement
+2. Licensing
+3. Proprietary Requirementes
+4. Third-Party Licenses
+5. Term and Termination
+6. Support
+7. Warranties
+8. Indemnity
+9. Liability
+10. Changes to This Agreement
+11. Final Agreement
+12. Ignorance of Terms
+13. Contact
+
+
+1. AGREEMENT
+
+1.1. This is a legal agreement between you, as an authorized representative of your employer,
+or if you have no employer, as an individual (together "you") and Kazan Games Limited (from now
+on reffered as "Kazan Games"), FoxyOfJungle (from now on reffered as "Kazan Games") regarding the
+sold (or free) work maintained by Kazan Games Limited.
+
+1.2. Related to all "WORK" made by Kazan Games:
+
+Any Work, purchased from the original website will ONLY be refunded if one of the items mentioned
+below is true:
+- Did not receive the product.
+- You have received a damaged or defective product (does not include bugs but something totally
+non-functional).
+- You have received a different product from advertised.
+- Does not recognize a charge on the card.
+- You were charged more than once for something.
+- You have not authorized a payment.
+Outside of these conditions you need to contact Kazan Games in section 13 of this agreement.
+Please do not insist on a refund outside these conditions, only if required by law.
+
+
+2. LICENSING
+
+2.1. Executable Licensed Work (including, but not limited to, games and software) is provided for
+personal and recreational use only. Unless otherwise noted, executable Licensed Work may not be
+used in commercial derived works. If source code for executable Licensed Work is provided, whether
+as part of the executable Licensed Work or as a separate product, that source code is resource
+Licensed Work.
+Rendering executable Licensed Work unable to execute, with means including but not limited to changing
+its file extension, revoking file system execute permissions, or removing essential system libraries,
+does not render the Licensed Work a resource Licensed Work. You may not translate, reverse engineer,
+decompile, or disassemble the executable Licensed Work except to the extent applicable law specifically
+prohibits such restriction. You must prohibit your affiliates from translating, reverse engineering,
+decompiling, or disassembling the executable Licensed Work, except to the extent applicable law
+specifically prohibits such restriction.
+
+2.1.1. Do NOT:
+(i) Copy, modify, merge, distribute, translate, rent, lend, lease, reverse engineer, decompile,
+disassemble or create derivative works of it.
+(ii) Hack, harm, grief or misuse them or use any viruses or other harmful software in connection with
+them.
+(iii) Create or use exploits, automation software (aka 'bots') or other software or do anything else
+to give you an unfair advantage regarding them (or try to circumvent or harm software meant to stop
+these things).
+(iv) Interfere with them or their network software or other software including via tunneling, code
+injection, modifying or changing the software, using any other software together with them, through
+protocol emulation or through creation or use of private servers regarding them. 
+(v) Use them to access, copy, transfer, transcode or retransmit content in breach of any laws or
+third party rights.
+(vi) Remove, obscure or alter Kazan Games' or any third party's copyright, trade mark or other
+proprietary notices or documentation regarding them, nor use any Kazan Games or other trademarks
+for your own purposes.
+(vii) Do not use for the targeted harassment or defamation of any individual, group, or entity, or in
+anyway that is illegal. This includes masked words (---), acronyms and abbreviations.
+(viii) Submit personal information of other persons without their consent.
+
+2.2. Resource Licensed Work (including, but not limited to, source code/assets, sound effects, music and
+graphics) may be used to create derivative works, commercial and otherwise, provided the derivative work
+is in a non-resource form not intended to be further edited by its end user (including, but not limited
+to, game executable, digital or physical book, movie, software (machine-readable) object code).
+Credit to FoxyOfJungle within a derivative work is appreciated but not mandatory. You must not endorse
+or say that it was made by Kazan Games. The rights to intellectual properties used in derivative works
+stay with their intellectual property rights holders. You must NOT redistribute the project source
+(and any part of it, including, but NOT limited: shaders, code and sprites), as it will be considered
+copyright infringement. Only distribution of binary executables created by GameMaker are accepted.
+From the moment that someone has access to the source code, even if temporary, the person can copy the
+files, which means there must be a non-distribution agreement between you and the parties. See item 12
+of this Agreement for more information. When obtaining the product, the purchase is valid for a single
+commercial project. For every new published commercial project, you must obtain a new copy of the asset.
+This requirement is valid only for purchases made through Itch.io website.
+
+
+3. PROPRIETARY REQUIREMENTS
+
+3.1. Licensed Work may be provided in proprietary formats, including but not limited to GameMaker
+exported project file format. Kazan Games is not obligated to provide non-proprietary versions of
+Licensed Work, and use of Licensed Work requires lawful possession of the proprietary tool, IDE, or
+licenses required to use such Licensed Work. Kazan Games may not be held liable for damages arising
+due to use of third-party tools or IDEs manipulating or using Licensed Work, whether proprietary or
+otherwise.
+
+
+4. THIRD-PARTY LICENSES.
+
+4.1. You are solely responsible for obtaining licenses for any relevant third-party material for
+your use in connection with technology that you incorporate into the your product (whether as part
+of the Licensed Work or not), including but not limited to proprietary format file manipulation tools,
+storefront API licenses, and intellectual properties featured in derived works. This applies if the
+Work is primarily a source code.
+
+
+5. TERM AND TERMINATION.
+
+5.1. User is considered to have terminated this Agreement immediately at the completion of a refund
+of the Licensed Work.
+
+5.2. Upon termination of this Agreement, all licenses granted will expire.
+
+
+6. SUPPORT
+
+6.1. Kazan Games is not obligated to provide any support, upgrades or new releases of the Licensed
+Work under this Agreement. If you wish, you may contact Kazan Games and report problems and provide
+suggestions regarding the Licensed Work. Kazan Games has no obligation to respond to such a problem
+report or suggestion. Kazan Games may make changes to the Licensed Work at any time, without any
+obligation to notify or provide updated versions of the Licensed Work to you. Therefore, it is
+entirely our goodwill to offer quality support and updates to the customer. To get in touch, see
+item 14 of this agreement.
+
+
+7. WARRANTIES
+
+7.1. To the maximum extent permitted by law, Kazan Games expressly disclaims any warranty for the
+Licensed Work. The Licensed Work is provided "AS IS", without warranty of any kind, either express
+or implied, including without limitation the implied warranties of merchantability, fitness for a
+particular purpose, or non-infringement. You assume the entire risk arising out of the use or
+performance of the Licensed Work, or any systems you design using the Licensed Work (if any).
+
+
+8. INDEMNITY
+
+8.1. You agree that in serious cases of copyright infringement and breach of this License Agreement,
+caused by you (including, but not limited to, after distributing source code), you are subject to
+indemnify Kazan Games for such damages (both financial and moral).
+
+8.2. Licensed Work (collectively referred to as "items") is subject to the export control laws of
+the United States and other countries that may lawfully control the export of the Licensed Work.
+Furnishing support services with respect to Licensed Work that is controlled as defense or military
+items may also be subject to such laws. Accordingly, you agree you will not transfer the Licensed
+Work or furnish such services except in compliance with the export laws of the United States and
+any other country that may lawfully control the export of the Licensed Work or the provision of
+such services.  You will indemnify and hold Kazan Games harmless from any claims, liabilities,
+damages, penalties, forfeitures, and associated costs and expenses (including, but not limited to,
+attorneys' fees) that Kazan Games may incur due to your non-compliance with applicable export laws,
+rules, and regulations. You will immediately notify Kazan Games of any violation of any export law,
+rule, or regulation, which may affect Kazan Games or relate to the activities covered under this
+Agreement. If an export or import license, permit, or other government required authority is required
+for transfer of the Licensed Work under this Agreement, and such authorization is not approved, then
+Kazan Games is not obligated to proceed with the transfer until required government authorization is
+granted.
+
+
+9. LIABILITY
+
+9.1. IN NO EVENT WILL EITHER PARTY BE LIABLE, WHETHER IN CONTRACT, TORT, OR OTHERWISE, FOR ANY
+INCIDENTAL, SPECIAL, INDIRECT, CONSEQUENTIAL OR PUNITIVE DAMAGES, INCLUDING, BUT NOT LIMITED TO,
+DAMAGES FOR ANY LOSS OF USE, LOSS OF TIME, INCONVENIENCE, COMMERCIAL LOSS, OR LOST PROFITS, SAVINGS,
+OR REVENUES, TO THE FULL EXTENT SUCH MAY BE DISCLAIMED BY LAW.  KAZAN GAMES'S TOTAL LIABILITY FOR
+ALL COSTS, DAMAGES, CLAIMS, OR LOSSES WHATSOEVER ARISING OUT OF OR IN CONNECTION WITH THIS AGREEMENT
+OR PRODUCT(S) SUPPLIED UNDER THIS AGREEMENT IS LIMITED TO THE AGGREGATE AMOUNT PAID BY YOU TO KAZAN
+GAMES IN CONNECTION WITH THE LICENSED STUFF TO WHICH LOSSES OR DAMAGES ARE CLAIMED.
+
+
+10. CHANGES TO THIS USER AGREEMENT
+
+10.1. We may change this User Agreement if we consider it necessary (for example to reflect changes in
+the Work or legal developments). If so, we will make the revised version available online and
+make reasonable efforts to inform you of changes. It will become legally binding on you once we
+post it online. If you do not agree to the new version, you must stop using the Work completely
+- in order to make the "Work" work properly we need to have everyone using this under the same
+rules instead of different people having different rules.
+
+
+11. FINAL AGREEMENT
+
+11.1 If you use "the Work" created by Kazan Games, you need to follow this license agreement.
+If you change your mind, you need to delete all the files from everywhere.
+Subject to the license agreement and restrictions contained herein, you agree that you are fully
+responsible for any financial damage caused by third parties due to non-permanent access to
+source code for which they were not acquired through direct purchase (including, but not limited,
+source code). You (and your team/company, if that's the case) must treat the Licensed Work as
+confidential information and agree to retain the Licensed Work in confidence perpetually, or for
+a period of five (10) years after the termination of this Agreement.
+
+
+12. IGNORANCE OF TERMS
+
+12.1. Failure to fully read or understand the terms in this Agreement is not to be considered valid
+grounds for failure to uphold them, except to the extent applicable law specifically prohibits such
+restriction. Consent to the Agreement is considered to explicitly state that the terms of the Agreement
+have been fully read and understood.
+
+
+13. CONTACT
+
+13.1. You can contact Kazan Games / FoxyOfJungle for any questions,
+suggestions and other subjects via e-mail and social media:
+
+E-mail:
+foxyofjungle@gmail.com
+
+Discord:
+FoxyOfJungle#0167

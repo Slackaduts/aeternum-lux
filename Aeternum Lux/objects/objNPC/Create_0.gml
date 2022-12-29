@@ -4,9 +4,22 @@ event_inherited();
 
 npcActivationRange = 32;
 npcSceneData = [
-new scene_dialogue(id, "Oh yeah, we have delays now. I'll talk to you in 3 seconds, after you advance the dialogue."),
+new scene_dialogue(id, "Oh yeah, we have timed effects now. I'll talk to you in 3 seconds, after you advance the dialogue."),
+new scene_dialogue(id, "I'll also add some effects to the screen."),
+new async_callback([new scene_timed_ppfx_effects(3, [new pp_mist(true)])]),
 new scene_delay(3),
 new scene_dialogue(id, "Pretty cool, right?"),
 ];
+//npcSceneData = [
+//new scene_dialogue(self.id, "This is a test of the new dialogue handler."),
+//new scene_dialogue(global.focusObject, "Wow. This is pretty cool."),
+//new scene_dialogue(self.id, "Yeah, it's actually done properly this time."),
+//new scene_dialogue(self.id, "This new system will also be useful for combat.", -4),
+//new scene_dialogue(self.id, "Oh hey, it's you again."),
+//new scene_dialogue(global.focusObject, "Again? You know me?"),
+//new scene_dialogue(self.id, "Yeah, this system can handle branching/post-scene dialogue."),
+//new scene_dialogue(global.focusObject, "Based.", -4)
+//];
+
 
 npcScene = new scene_manager(npcSceneData);

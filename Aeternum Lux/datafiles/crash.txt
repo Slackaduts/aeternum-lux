@@ -1,9 +1,9 @@
-{ script : "gml_Script_anon_YuiDocument_gml_GlobalScript_YuiDocument_441_YuiDocument_gml_GlobalScript_YuiDocument", stacktrace : [ "gml_Script_anon_YuiDocument_gml_GlobalScript_YuiDocument_441_YuiDocument_gml_GlobalScript_YuiDocument (line 36)","gml_Script_YuiDocument (line 18) - 	loadDocument();","gml_Script_anon_gml_Object_yui_document_Create_0_965_gml_Object_yui_document_Create_0 (line 45)","gml_Object_yui_document_Create_0 (line 62) - load();" ], longMessage : "ERROR in
+{ stacktrace : [ "gml_Script_ppfx_profile_create (line 191)","gml_Script_update_main_ppfx (line 6) - 		main_profile = ppfx_profile_create("Main", ppfx_effects.get_array());","gml_Script_anon_scene_timed_ppfx_effects_gml_GlobalScript_scene_manager_6054_scene_timed_ppfx_effects_gml_GlobalScript_scene_manager (line 202) - 		update_main_ppfx();","gml_Script_anon_anon_scene_timed_ppfx_effects_gml_GlobalScript_scene_manager_5705_scene_timed_ppfx_effects_gml_GlobalScript_scene_manager_5997_anon_scene_timed_ppfx_effects_gml_GlobalScript_scene_manager_5705_scene_timed_ppfx_effects_gml_GlobalScript_scene_manager (line 194) - 		var _callback = call_later(data, time_source_units_seconds, function() {self.finish();});" ], line : 191, longMessage : "ERROR in
 action number 1
 of Create Event
-for object yui_document:
+for object objMainMenu:
 
 
-Variable <unknown_object>.tryRead(100458, -2147483648) cannot be resolved.
- at gml_Script_anon_YuiDocument_gml_GlobalScript_YuiDocument_441_YuiDocument_gml_GlobalScript_YuiDocument (line 36) - 		var file_data = cabinet_file.tryRead();
-", message : "Variable <unknown_object>.tryRead(100458, -2147483648) cannot be resolved.", line : 36 }
+Variable <unknown_object>.sets(100721, -2147483648) cannot be resolved.
+ at gml_Script_ppfx_profile_create (line 191) - 		_profile.settings[$ effects_array[i].effect_name] = effects_array[i].sets;
+", message : "Variable <unknown_object>.sets(100721, -2147483648) cannot be resolved.", script : "gml_Script_ppfx_profile_create" }

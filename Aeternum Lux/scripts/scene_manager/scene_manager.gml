@@ -16,6 +16,7 @@ function scene_manager(_callbacks) constructor {
 		if _callback.completed {
 			_callback.finish();
 			_callback.index ??= callbackIndex + 1;
+			if _callback.index == 0 _callback.index = callbackIndex + 1;
 			callbackIndex = _callback.index;
 			_callback.reset();
 			scenePlaying = false;
@@ -83,8 +84,8 @@ function scene_pool() constructor {
 
 /// @desc Creates a framework of a scene callback. Does nothing.
 /// @param {any*} [_data] Data to be supplied to the callback, does nothing.
-/// @param {any*} [_index] Index of the callback array in the parent scene manager to skip to. Influences branching scene logic.
-function scene_callback(_data = undefined, _index = undefined) constructor {
+/// @param {real} [_index] Index of the callback array in the parent scene manager to skip to. Influences branching scene logic.
+function scene_callback(_data = undefined, _index = 0) constructor {
 	data = _data;
 	index = _index;
 	completed = false;
@@ -118,9 +119,9 @@ function scene_callback(_data = undefined, _index = undefined) constructor {
 /**
  * Pushes a scene to the scene pool for execution, not waiting for its execution to finish in the current scene manager.
  * @param {any*} _scene Scene to execute
- * @param {any*} [_index] Index to go to upon completion, influences branching scene logic
+ * @param {real} [_index] Index to go to upon completion, influences branching scene logic
  */
-function async_callback(_scene, _index = undefined): scene_callback(_scene, _index) constructor {
+function async_callback(_scene, _index = 0): scene_callback(_scene, _index) constructor {
 	/**
 	 * Adds this scene to the scene pool.
 	 */
@@ -136,9 +137,9 @@ function async_callback(_scene, _index = undefined): scene_callback(_scene, _ind
  * Creates a scene callback for showing dialogue. Must be added to a scene pool and/or scene manager to actually do something.
  * @param {any*} _speaker The object "speaking" the dialogue
  * @param {string} [_data]="" String of dialogue to show
- * @param {any*} [_index] Index to go to afterwards. Negative indexes mark a default to change the scene manager to. Example: -9 means after completion, the scene manager will reset and set index 9 as the start.
+ * @param {real} [_index] Index to go to afterwards. Negative indexes mark a default to change the scene manager to. Example: -9 means after completion, the scene manager will reset and set index 9 as the start.
  */
-function scene_dialogue(_speaker, _data = "", _index = undefined): scene_callback(_data, _index) constructor {
+function scene_dialogue(_speaker, _data = "", _index = 0): scene_callback(_data, _index) constructor {
 	speaker = _speaker;
 	typist = undefined;
 	yui = undefined;	
@@ -149,7 +150,7 @@ function scene_dialogue(_speaker, _data = "", _index = undefined): scene_callbac
 	static initialize = function() {
 		typist = scribble_typist();
 		typist.in(1, 1);
-		yui = instance_create_depth(0, 0, 0, yui_document, {yui_file: "\\YUI\\Screens\\dialogue.yui", data_context: other});
+		yui = instance_create_depth(0, 0, 0, yui_document, {yui_file: "YUI/Screens/dialogue.yui", data_context: other});
 	};
 	
 	/**
@@ -173,9 +174,32 @@ function scene_dialogue(_speaker, _data = "", _index = undefined): scene_callbac
 };
 
 
-function scene_delay(_data = 1, _index = undefined): scene_callback(_data, _index) constructor {
+function scene_delay(_data = 1, _index = 0): scene_callback(_data, _index) constructor {
 	static initialize = function() {
 		var _callback = call_later(data, time_source_units_seconds, function() {self.finish();});
+	};
+};
+
+
+function scene_timed_ppfx_effects(_data, _effects, _callbackIndex = 0): scene_callback(_data, _callbackIndex) constructor {
+	effectIndexes = [];
+	scenes = _effects;
+	
+	static initialize = function() {
+		var _inst = instance_find(objCamera, 0);
+		for (var _index = 0; _index < array_length(scenes); _index++) {
+			array_push(effectIndexes, _inst.ppfx_effects.add_item(scenes[_index]));
+		};
+		update_main_ppfx();
+		var _callback = call_later(data, time_source_units_seconds, function() {self.finish();});
+	};
+		
+	static finish = function() {
+		var _inst = instance_find(objCamera, 0);
+		for (var _index = 0; _index < array_length(effectIndexes); _index++) {
+			_inst.ppfx_effects.remove_item(effectIndexes[_index]);
+		};
+		update_main_ppfx();
 	};
 };
 
@@ -186,7 +210,7 @@ function dialogue_option() constructor {
 
 
 
-function scene_dialogue_options(_speaker, _options = [], _data = "", _index = undefined): scene_dialogue(_speaker, _data, _index) constructor {
+function scene_dialogue_options(_speaker, _options = [], _data = "", _index = 0): scene_dialogue(_speaker, _data, _index) constructor {
 	options = _options;
 	
 };

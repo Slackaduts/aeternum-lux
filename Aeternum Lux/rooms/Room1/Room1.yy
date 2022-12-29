@@ -22,7 +22,6 @@
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"ParticleRender","instances":[],"visible":true,"depth":100,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritVisibility":true,"inheritSubLayers":true,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":true,"effectEnabled":true,"effectType":null,"properties":[],},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Instances","instances":[
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_4B3B294D","properties":[],"isDnd":false,"objectId":{"name":"objNero","path":"objects/objNero/objNero.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":576.0,"y":384.0,},
-        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_3D651233","properties":[],"isDnd":false,"objectId":{"name":"objTorch","path":"objects/objTorch/objTorch.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":-0.8098756,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1824.0,"y":480.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_39E6F20F","properties":[],"isDnd":false,"objectId":{"name":"objTorch","path":"objects/objTorch/objTorch.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1648.0,"y":784.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_70002F43","properties":[],"isDnd":false,"objectId":{"name":"objTorch","path":"objects/objTorch/objTorch.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":384.0,"y":496.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_6478B85B","properties":[],"isDnd":false,"objectId":{"name":"objTorch","path":"objects/objTorch/objTorch.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":208.0,"y":272.0,},
@@ -124,7 +123,6 @@
     {"name":"inst_60B06758","path":"rooms/Room1/Room1.yy",},
     {"name":"inst_11CE4AF2","path":"rooms/Room1/Room1.yy",},
     {"name":"inst_70002F43","path":"rooms/Room1/Room1.yy",},
-    {"name":"inst_3D651233","path":"rooms/Room1/Room1.yy",},
     {"name":"inst_7C84B92","path":"rooms/Room1/Room1.yy",},
     {"name":"inst_3DD7F999","path":"rooms/Room1/Room1.yy",},
     {"name":"inst_57B55863","path":"rooms/Room1/Room1.yy",},

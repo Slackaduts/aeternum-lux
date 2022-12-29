@@ -14,7 +14,7 @@ root:
       border_thickness: 2
       content: Test Button
       padding: 5
-      autofocus: true
+      // autofocus: false
 
     - type: button
       background: #000000
