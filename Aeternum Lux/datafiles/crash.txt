@@ -1,9 +1,9 @@
-{ stacktrace : [ "gml_Script_ppfx_profile_create (line 191)","gml_Script_update_main_ppfx (line 6) - 		main_profile = ppfx_profile_create("Main", ppfx_effects.get_array());","gml_Script_anon_scene_timed_ppfx_effects_gml_GlobalScript_scene_manager_6054_scene_timed_ppfx_effects_gml_GlobalScript_scene_manager (line 202) - 		update_main_ppfx();","gml_Script_anon_anon_scene_timed_ppfx_effects_gml_GlobalScript_scene_manager_5705_scene_timed_ppfx_effects_gml_GlobalScript_scene_manager_5997_anon_scene_timed_ppfx_effects_gml_GlobalScript_scene_manager_5705_scene_timed_ppfx_effects_gml_GlobalScript_scene_manager (line 194) - 		var _callback = call_later(data, time_source_units_seconds, function() {self.finish();});" ], line : 191, longMessage : "ERROR in
+{ line : 262, longMessage : "ERROR in
 action number 1
-of Create Event
-for object objMainMenu:
+of  Step Event0
+for object objCombatant:
 
 
 Variable <unknown_object>.sets(100721, -2147483648) cannot be resolved.
- at gml_Script_ppfx_profile_create (line 191) - 		_profile.settings[$ effects_array[i].effect_name] = effects_array[i].sets;
-", message : "Variable <unknown_object>.sets(100721, -2147483648) cannot be resolved.", script : "gml_Script_ppfx_profile_create" }
+ at gml_Script_anon_scene_tween_ppfx_effects_gml_GlobalScript_scene_manager_7750_scene_tween_ppfx_effects_gml_GlobalScript_scene_manager (line 262) - 				_inst.ppfx_effects[$ string(_effectIndex)].sets[$ _param] = _startParam + (_dist * _tweenPosition);
+", message : "Variable <unknown_object>.sets(100721, -2147483648) cannot be resolved.", script : "gml_Script_anon_scene_tween_ppfx_effects_gml_GlobalScript_scene_manager_7750_scene_tween_ppfx_effects_gml_GlobalScript_scene_manager", stacktrace : [ "gml_Script_anon_scene_tween_ppfx_effects_gml_GlobalScript_scene_manager_7750_scene_tween_ppfx_effects_gml_GlobalScript_scene_manager (line 262)","gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_1192_scene_manager_gml_GlobalScript_scene_manager (line 49) - 			_callback.run();","gml_Script_anon_scene_pool_gml_GlobalScript_scene_manager_1863_scene_pool_gml_GlobalScript_scene_manager (line 70) - 			_scene.run();","gml_Object_objCombatant_Step_0 (line 99) - scenePool.run();","gml_Object_objNPC_Step_0 (line 2)" ] }

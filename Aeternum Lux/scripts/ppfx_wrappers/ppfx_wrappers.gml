@@ -48,7 +48,7 @@ function indexable_struct() constructor {
 	
 	/**
 	 * Returns an array of the struct's data. Note that this does not respect empty indexes.
-	 * @returns {array}
+	 * @returns {array<Any>}
 	 */
 	static get_array = function() {
 		var _names = variable_struct_get_names(self);
