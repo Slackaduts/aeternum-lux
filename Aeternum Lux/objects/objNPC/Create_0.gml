@@ -4,11 +4,11 @@ event_inherited();
 
 npcActivationRange = 32;
 npcSceneData = [
-new scene_dialogue(id, "Oh yeah, we have timed effects now. I'll talk to you in 3 seconds, after you advance the dialogue."),
+new scene_dialogue(id, "Oh yeah, we have timed effects now. I'll talk to you in 5 seconds, after you advance the dialogue."),
 new scene_dialogue(id, "I'll also add some effects to the screen."),
 //new async_callback([new scene_timed_ppfx_effects(3, [new pp_mist(true)])]),
-new async_callback([new scene_tween_ppfx_effects(3, 1, [new pp_swirl(true, 0, 0), new pp_lens_distortion(true, 0), new pp_chromaber(true, 0)], ["radius", "amount", "intensity"], [0, 0, 0], [1, -1, 35])]),
-new scene_delay(3),
+new async_callback([new scene_tween_ppfx_effects(5, 1.5, [new pp_swirl(true, 0, 0), new pp_lens_distortion(true, 0), new pp_chromaber(true, 0)], ["radius", "amount", "intensity"], [0, 0, 0], [1, -1, 35], "EaseIn")]),
+new scene_delay(5),
 new scene_dialogue(id, "Pretty cool, right?"),
 ];
 //npcSceneData = [

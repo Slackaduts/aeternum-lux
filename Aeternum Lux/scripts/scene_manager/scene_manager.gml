@@ -216,13 +216,26 @@ function scene_timed_ppfx_effects(_data, _effects, _callbackIndex = 0): scene_ca
 };
 
 
-//function tween_ppfx(_tweenDuration, _effects, _params, _start, _finish) constructor {
+//function tween_ppfx(_effect, _param, _start, _finish) constructor {
+//	effect = effect;
+//	param = _param;
+//	start = _start;
+//	finish = _finish;
 	
 	
 	
 //};
 
 
+/// @desc Tweens an array of Foxy PPFX effects using an animation curve
+/// @param {real} _duration How long the entire effect should be active
+/// @param {real} _tweenDuration How long it takes to individually fade in/out
+/// @param {array} _effects Array of PPFX effects
+/// @param {array<string>} _params Array of parameters to change over time for each effect
+/// @param {array<real>} _starts Array of starting values
+/// @param {array<real>} _finishes Array of ending values
+/// @param {string} [_shape]="Linear" Shape of the curve, defined in anim_tweens
+/// @param {real} [_callbackIndex]=0 Index to go to afterwards, see other function docs on usage
 function scene_tween_ppfx_effects(_duration, _tweenDuration, _effects, _params, _starts, _finishes, _shape = "Linear", _callbackIndex = 0): scene_timed_ppfx_effects(_duration, _effects, _callbackIndex) constructor {
 	params = _params;
 	starts = _starts;
@@ -235,6 +248,9 @@ function scene_tween_ppfx_effects(_duration, _tweenDuration, _effects, _params, 
 	finishedTween = false;
 	
 	
+	/**
+	 * Adds effects to the main PPFX profile, and starts the finish callback countdown.
+	 */
 	static initialize = function() {
 		var _inst = instance_find(objCamera, 0);
 		for (var _index = 0; _index < array_length(effects); _index++) {
@@ -245,6 +261,9 @@ function scene_tween_ppfx_effects(_duration, _tweenDuration, _effects, _params, 
 	};
 	
 	
+	/**
+	 * Updates the effect with the animation curve provided.
+	 */
 	static run = function() {
 		if !finishedTween {
 			tweenPercent += tweenIncrement;
@@ -272,6 +291,9 @@ function scene_tween_ppfx_effects(_duration, _tweenDuration, _effects, _params, 
 	};
 	
 	
+	/**
+	 * Removes the effects from the main Foxy PPFX profile.
+	 */
 	static finish = function() {
 		var _inst = instance_find(objCamera, 0);
 		for (var _index = 0; _index < array_length(effectIndexes); _index++) {
@@ -281,6 +303,9 @@ function scene_tween_ppfx_effects(_duration, _tweenDuration, _effects, _params, 
 		completed = true;
 	};
 	
+	/**
+	 * Resets this callback so it can be run again.
+	 */
 	static reset = function() {
 		tweenIncrement = 1 / (tweenDuration * FRAME_RATE);
 		tweenPercent = 0;

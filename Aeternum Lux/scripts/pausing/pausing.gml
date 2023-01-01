@@ -3,6 +3,8 @@ function pause(_menuObj = objMainMenu) {
 	with (_inst) {
 		paused = true;
 		instance_deactivate_all(true);
+		instance_activate_object(YuiCursorManager);
+		instance_activate_object(YuiGlobals);
 	};
 };
 
