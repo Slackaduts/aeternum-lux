@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "combat_utils",
+  "name": "combat_skill",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

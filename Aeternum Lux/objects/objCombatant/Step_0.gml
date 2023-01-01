@@ -71,7 +71,7 @@ switch combatant.states.controlState {
 		tweenManager.clear();
 		if followingObj != id && followingObj != undefined {
 			//apply_force(pathfind_force(followingObj.x, followingObj.y));
-			apply_force(arrive_force(followingObj.position, followingObj.velocity, followingObj.x, followingObj.y, maximumCrowding * 3, maximumCrowding))
+			apply_force(arrive_force(followingObj.position, followingObj.velocity, followingObj.x, followingObj.y, maximumCrowding * 3, maximumCrowding));
 		};
 		apply_force(seperation_force());
 	break;

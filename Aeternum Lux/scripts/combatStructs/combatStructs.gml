@@ -100,6 +100,18 @@ function CombatStats() constructor {
 		add_struct(self, _statsMod);
 		clampStats();
 	};
+	
+	
+	static hasStats = function(_stats) {
+		_names = variable_struct_get_names(_stats);
+		for (var _index = 0; _index < array_length(_names); _index++) {
+			var _name = _names[_index];
+			if !(variable_struct_exists(self, _name) && self[$ _name] >= _stats[$ _name]) return false;
+		};
+
+		return true;
+	};
+	
 
 	/**
 	 * Subtracts stats from this CombatStats object.
