@@ -6,7 +6,10 @@
   "solid": false,
   "visible": true,
   "managed": true,
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "sprColliderSquare",
+    "path": "sprites/sprColliderSquare/sprColliderSquare.yy",
+  },
   "persistent": false,
   "parentObjectId": {
     "name": "objParticle",

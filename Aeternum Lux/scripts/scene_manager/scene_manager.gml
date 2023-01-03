@@ -316,7 +316,6 @@ function scene_tween_ppfx_effects(_duration, _tweenDuration, _effects, _params, 
 
 
 
-
 function dialogue_option() constructor {
 };
 

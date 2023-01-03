@@ -1,5 +1,7 @@
 /// @desc Skill hitbox handling
 
+
+// Acquire relevant hitbox
 var _checkedHitboxes = [];
 var _hitbox = undefined;
 for (var _index = 0; _index < instance_number(objSkillHitbox); _index++) {
@@ -19,13 +21,15 @@ for (var _index = 0; _index < instance_number(objSkillHitbox); _index++) {
 	};
 };
 
-if _hitbox != undefined {
+//If we found a hitbox (we should always), play the scene on hit
+if _hitbox != undefined && skill_affects_inst(_hitbox.target, _hitbox.caster) {
 	combatant.liveStats.applyStats(_hitbox.stats);
 	array_push(_hitbox.hitInstances, id);
 	async_callback(_hitbox.sceneOnHit);	
 };
 
 
+// Place checked hitboxes back in their original positions
 for (var _index = 0; _index < array_length(_checkedHitboxes); _index++) {
 	var _hitboxData = _checkedHitboxes[_index];
 	var _inst = _hitboxData.inst;

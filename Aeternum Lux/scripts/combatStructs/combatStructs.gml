@@ -8,14 +8,6 @@ enum controlStates {
 };
 
 
-enum teamStates {
-	PLAYER,
-	ENEMY,
-	NEUTRAL,
-	LAST	
-};
-
-
 enum aiTypes {
 	DARING,
 	CAREFUL,
@@ -102,6 +94,11 @@ function CombatStats() constructor {
 	};
 	
 	
+	/**
+	 * Checks if this stat struct is greater than or equal to another stat struct.
+	 * @param {struct} _stats Stats to check if we have
+	 * @returns {bool} Returns true if we have these stats, false if not
+	 */
 	static hasStats = function(_stats) {
 		_names = variable_struct_get_names(_stats);
 		for (var _index = 0; _index < array_length(_names); _index++) {
