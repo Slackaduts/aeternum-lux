@@ -250,4 +250,22 @@ function seperation_force(_obj = objCombatant, _seperationDist = 48) {
 };
 
 
+
+/**
+ * Rotates a 2D positional vector about another by a specified number of degrees.
+ * @param {any*} _vecOrigin Origin point of the rotation
+ * @param {any*} _vecPoint Point to be rotated
+ * @param {real} _theta Number of degrees to rotate by
+ * @returns {struct.vector} Vector
+ */
+function rotate_point_vector(_vecOrigin, _vecPoint, _theta) {
+	var _radians = degtorad(_theta);
+	var _cos = cos(_radians);
+	var _sin = sin(_radians);
+	var _yDiff = _vecPoint.y - _vecOrigin.y;
+	var _xDiff = _vecPoint.x - _vecOrigin.x;
+	return new vector(_cos * _xDiff - _sin * _yDiff + _vecOrigin.x, _sin * _xDiff + _cos * _yDiff + _vecOrigin.y);
+};
+
+
 //function crowd_force(_obj, _seperationDist = 64)

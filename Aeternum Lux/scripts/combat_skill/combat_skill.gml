@@ -4,49 +4,37 @@ enum colliderShapes {
 	LAST	
 };
 
-function create_skill_collider(_hitboxData, _infront = false, _relX = 0, _relY = 0, _relTheta = 0, _shape = colliderShapes.ELLIPSE) {
-	var _sprite = undefined;
-	switch _shape {
-		case colliderShapes.ELLIPSE:
-			_sprite = sprColliderEllipse;
-			_hitboxData.image_xscale = _hitboxData.hitboxWidth / 500;
-			_hitboxData.image_yscale = _hitboxData.hitboxHeight / 500;
-		break;
+
+function create_skill_collider(_hitboxData = {}, _infront = true, _addDist = 0, _theta = 0) {
+	var _x = _hitboxData.caster.x;
+	var _y = _hitboxData.caster.y;
 	
-		default:
-			_sprite = sprColliderSquare;
-			_hitboxData.image_xscale = _hitboxData.hitboxWidth / 2;
-			_hitboxData.image_yscale = _hitboxData.hitboxHeight / 2;
+	if _infront {
+		_x -= _hitboxData.hitboxWidth * dsin(_hitboxData.caster.inputDirection);
+		_y -= _hitboxData.hitboxHeight * dcos(_hitboxData.caster.inputDirection);
+	};
+
+	if _addDist > 0 {
+		var _dist = point_distance(_hitboxData.caster.x, _hitboxData.caster.y, _x, _y);
+		var _n = (_dist / _addDist) / _dist;
+		_x = ((_x - _hitboxData.caster.x) * _n) + _hitboxData.caster.x;
+		_y = ((_y - _hitboxData.caster.y) * _n) + _hitboxData.caster.y;
 	};
 	
-	_hitboxData.sprite_index = _sprite;
-	
-	var _x = 0, _y = 0;
-	
-	if infront {
-		_x = _hitboxData.caster.x - (_hitboxData.hitboxWidth * dsin(_hitboxData.caster.inputDirection));
-		_y = _hitboxData.caster.y - (_hitboxData.hitboxHeight * dcos(_hitboxData.caster.inputDirection));
-	} else {
-		_x = rotate_point_x(_hitboxData.caster.x, _hitboxData.caster.y, _hitboxData.caster.x + _relX, _hitboxData.caster.y + _relY, _relTheta);
-		_y = rotate_point_y(_hitboxData.caster.x, _hitboxData.caster.y, _hitboxData.caster.x + _relX, _hitboxData.caster.y + _relY, _relTheta);
+	if _theta > 0 {
+		var _vecOrigin = new vector(_hitboxData.caster.x, _hitboxData.caster.y);
+		var _vecPoint = new vector(_x, _y);
+		var _vecRotated = rotate_point_vector(_vecOrigin, _vecPoint, _theta);
+		_x = _vecRotated.x;
+		_y = _vecRotated.y;
 	};
 
 	return instance_create_depth(_x, _y, 0, objSkillHitbox, _hitboxData);
 };
 
 
-function SkillCollider(_width, _height, _caster, _scene, _target, _shape, _theta = 0, _distance = 0, infront = true) {
-	
-	
-	
-	
-	
-	
-};
 
-
-
-function CombatSkill(_name, _desc, _scene, _triggerStats, _hitboxData = {}, _cooldown = 1, _costStats = new CombatStats(), _target = skillTarget.ENEMIES, _hitboxObj = objSkillHitbox) constructor {
+function CombatSkill(_name, _desc, _scene, _triggerStats, _hitboxData = {}, _cooldown = 1, _costStats = new CombatStats(), _target = skillTarget.ENEMIES) constructor {
 	name = _name;
 	desc = _desc;
 
@@ -61,7 +49,6 @@ function CombatSkill(_name, _desc, _scene, _triggerStats, _hitboxData = {}, _coo
 	target = _target;
 
 	hitbox = undefined;
-	hitboxObj = _hitboxObj;
 	hitboxData = _hitboxData;
 	hitboxData.sceneOnHit = _sceneOnHit;
 	hitboxData.stats = stats;
@@ -76,8 +63,8 @@ function CombatSkill(_name, _desc, _scene, _triggerStats, _hitboxData = {}, _coo
 		hitbox = create_skill_collider(hitboxData);
 	};
 	
-	static cast = function(_caster = other) {
-		if is_castable(_caster) {
+	static cast = function(_caster = other, _override = true) {
+		if is_castable(_caster) || _override {
 			_caster.combatant.liveStats.revokeStats(stats);
 			var _scene = scene;
 			with (_caster) {

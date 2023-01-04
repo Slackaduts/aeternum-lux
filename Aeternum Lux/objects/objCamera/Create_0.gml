@@ -33,7 +33,7 @@ alarm[0] = 500;
 ppfx_application_render_init();
 ppfx_id = ppfx_create();
 ppfx_effects = new indexable_struct();
-var _i = ppfx_effects.add_item(new pp_bloom(true, 5, 0.4, 1.15));
+var _i = ppfx_effects.add_item(new pp_bloom(true, 5, 0.4, 1.12)); //permanent bloom effect, looks really good on fires
 main_profile = ppfx_profile_create("Main", ppfx_effects.get_array());
 show_debug_message(main_profile);
 ppfx_profile_load(ppfx_id, main_profile);
