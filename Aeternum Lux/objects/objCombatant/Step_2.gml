@@ -6,11 +6,13 @@
 depth = getTrueDepth(bbox_bottom);
 
 // Update Sprite Image Index
-if velocity.get_magnitude() || proxyVelocity {
-	//direction = inputDirection;
-	animate_sprite(walkIndexes, inputDirection);
+if animState == animationStates.IDLE || animState == animationStates.WALK {
+	if velocity.get_magnitude() || proxyVelocity animState = animationStates.WALK;
+	else animState = animationStates.IDLE;
+};
 
-} else animate_sprite(idleIndexes, inputDirection);
+animate_sprite(LPC_ANIMATION_DATA, inputDirection, animState);
+
 
 //Sync position vector with actual position
 position.x = x;

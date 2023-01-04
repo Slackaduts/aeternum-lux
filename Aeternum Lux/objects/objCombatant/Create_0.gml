@@ -9,6 +9,7 @@ spdWalk = 5;
 pastX = x;
 pastY = y;
 collided = false;
+animState = animationStates.IDLE;
 
 
 //Steering/Navigation related values

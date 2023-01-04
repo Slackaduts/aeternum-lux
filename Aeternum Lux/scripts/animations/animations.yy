@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "animate_sprite",
+  "name": "animations",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
