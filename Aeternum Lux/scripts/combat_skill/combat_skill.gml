@@ -5,43 +5,47 @@ enum colliderShapes {
 };
 
 
-function create_skill_collider(_hitboxData = {}, _infront = true, _addDist = 0, _theta = 0) {
+function create_skill_collider(_hitboxData = {}) {
 	var _x = _hitboxData.caster.x;
 	var _y = _hitboxData.caster.y;
 	
-	if _infront {
-		_x -= _hitboxData.hitboxWidth * dsin(_hitboxData.caster.inputDirection);
-		_y -= _hitboxData.hitboxHeight * dcos(_hitboxData.caster.inputDirection);
+	if _hitboxData.infront {
+		_x -= _hitboxData.width * dsin(_hitboxData.caster.inputDirection);
+		_y -= _hitboxData.height * dcos(_hitboxData.caster.inputDirection);
 	};
 
-	if _addDist > 0 {
+	if _hitboxData.addDist > 0 {
 		var _dist = point_distance(_hitboxData.caster.x, _hitboxData.caster.y, _x, _y);
-		var _n = (_dist / _addDist) / _dist;
+		var _n = (_dist / _hitboxData.addDist) / _dist;
 		_x = ((_x - _hitboxData.caster.x) * _n) + _hitboxData.caster.x;
 		_y = ((_y - _hitboxData.caster.y) * _n) + _hitboxData.caster.y;
 	};
 	
-	if _theta > 0 {
+	if _hitboxData.theta > 0 {
 		var _vecOrigin = new vector(_hitboxData.caster.x, _hitboxData.caster.y);
 		var _vecPoint = new vector(_x, _y);
-		var _vecRotated = rotate_point_vector(_vecOrigin, _vecPoint, _theta);
+		var _vecRotated = rotate_point_vector(_vecOrigin, _vecPoint, _hitboxData.theta);
 		_x = _vecRotated.x;
 		_y = _vecRotated.y;
 	};
+	
+	variable_struct_remove(_hitboxData, "infront");
+	variable_struct_remove(_hitboxData, "addDist");
+	variable_struct_remove(_hitboxData, "theta");
 
 	return instance_create_depth(_x, _y, 0, objSkillHitbox, _hitboxData);
 };
 
 
 
-function CombatSkill(_name, _desc, _scene, _triggerStats, _hitboxData = {}, _cooldown = 1, _costStats = new CombatStats(), _target = skillTarget.ENEMIES) constructor {
+function CombatSkill(_name, _desc, _scene, _triggerStats, _hitboxData = {}, _cooldown = 1, _cost = new CombatStats(), _target = skillTarget.ENEMIES) constructor {
 	name = _name;
 	desc = _desc;
 
 	scene = _scene;
 
 	stats = _triggerStats;
-	cost = _costStats;
+	cost = _cost;
 
 	cooldown = _cooldown;
 	coolingDown = false;
@@ -63,9 +67,9 @@ function CombatSkill(_name, _desc, _scene, _triggerStats, _hitboxData = {}, _coo
 		hitbox = create_skill_collider(hitboxData);
 	};
 	
-	static cast = function(_caster = other, _override = true) {
+	static cast = function(_caster = other, _override = false) {
 		if is_castable(_caster) || _override {
-			_caster.combatant.liveStats.revokeStats(stats);
+			_caster.combatant.liveStats.revokeStats(cost);
 			var _scene = scene;
 			with (_caster) {
 				coolingDown = true;

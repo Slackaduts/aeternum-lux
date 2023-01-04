@@ -8,8 +8,8 @@ function update_collider() {
 	
 	default: sprite_index = sprColliderSquare;
 	};
-	image_xscale = hitboxWidth / sprite_width;
-	image_yscale = hitboxHeight / sprite_width;
+	image_xscale = width / sprite_width;
+	image_yscale = height / sprite_width;
 };
 
 update_collider();

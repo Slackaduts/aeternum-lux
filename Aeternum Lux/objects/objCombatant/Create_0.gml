@@ -10,6 +10,7 @@ pastX = x;
 pastY = y;
 collided = false;
 
+
 //Steering/Navigation related values
 position = new vector(x, y);
 velocity = new vector(0, 0);
@@ -61,6 +62,13 @@ walkIndexes =
 [106, 107, 108, 109, 110, 111, 112],
 [119, 120, 121, 122, 123, 124, 125],
 [132, 133, 134, 135, 136, 137, 138],
+];
+
+slashIndexes = [
+[195, 196, 197, 198, 199, 200],
+[156, 157, 158, 159, 160, 161],
+[169, 170, 171, 172, 173, 174],
+[182, 183, 184, 185, 186, 187]
 ];
 
 movement = use_tdmc();
