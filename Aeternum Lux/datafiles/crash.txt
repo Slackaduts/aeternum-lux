@@ -1,9 +1,9 @@
-{ line : 262, longMessage : "ERROR in
+{ longMessage : "ERROR in
 action number 1
-of  Step Event0
-for object objCombatant:
+of Create Event
+for object objMainMenu:
 
 
-Variable <unknown_object>.sets(100721, -2147483648) cannot be resolved.
- at gml_Script_anon_scene_tween_ppfx_effects_gml_GlobalScript_scene_manager_7750_scene_tween_ppfx_effects_gml_GlobalScript_scene_manager (line 262) - 				_inst.ppfx_effects[$ string(_effectIndex)].sets[$ _param] = _startParam + (_dist * _tweenPosition);
-", message : "Variable <unknown_object>.sets(100721, -2147483648) cannot be resolved.", script : "gml_Script_anon_scene_tween_ppfx_effects_gml_GlobalScript_scene_manager_7750_scene_tween_ppfx_effects_gml_GlobalScript_scene_manager", stacktrace : [ "gml_Script_anon_scene_tween_ppfx_effects_gml_GlobalScript_scene_manager_7750_scene_tween_ppfx_effects_gml_GlobalScript_scene_manager (line 262)","gml_Script_anon_scene_manager_gml_GlobalScript_scene_manager_1192_scene_manager_gml_GlobalScript_scene_manager (line 49) - 			_callback.run();","gml_Script_anon_scene_pool_gml_GlobalScript_scene_manager_1863_scene_pool_gml_GlobalScript_scene_manager (line 70) - 			_scene.run();","gml_Object_objCombatant_Step_0 (line 99) - scenePool.run();","gml_Object_objNPC_Step_0 (line 2)" ] }
+Variable scene_crossfade_global_sound._oldSound(101019, -2147483648) not set before reading it.
+ at gml_Script_anon_anon_scene_crossfade_global_sound_gml_GlobalScript_audio_4653_scene_crossfade_global_sound_gml_GlobalScript_audio_4980_anon_scene_crossfade_global_sound_gml_GlobalScript_audio_4653_scene_crossfade_global_sound_gml_GlobalScript_audio (line 119) - 			var _callback = call_later(time, time_source_units_seconds, function() {audio_stop_sound(_oldSound)}, false);
+", script : "gml_Script_anon_anon_scene_crossfade_global_sound_gml_GlobalScript_audio_4653_scene_crossfade_global_sound_gml_GlobalScript_audio_4980_anon_scene_crossfade_global_sound_gml_GlobalScript_audio_4653_scene_crossfade_global_sound_gml_GlobalScript_audio", message : "Variable scene_crossfade_global_sound._oldSound(101019, -2147483648) not set before reading it.", stacktrace : [ "gml_Script_anon_anon_scene_crossfade_global_sound_gml_GlobalScript_audio_4653_scene_crossfade_global_sound_gml_GlobalScript_audio_4980_anon_scene_crossfade_global_sound_gml_GlobalScript_audio_4653_scene_crossfade_global_sound_gml_GlobalScript_audio (line 119)" ], line : 119 }

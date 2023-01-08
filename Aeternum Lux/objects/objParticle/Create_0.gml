@@ -1,8 +1,10 @@
-/// @description Init particle emitter
+/// @description Init particle and sound emitter
 event_inherited();
 partSystem = part_system_create();
 emitters = [];
 emitter_types = [];
+
+soundManager = new SoundManager(240, 96);
 
 var _p = part_type_create();
 var _partSprite = sprSmokeParticle;

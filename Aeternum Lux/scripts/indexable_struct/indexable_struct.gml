@@ -1,13 +1,3 @@
-/// @desc Updates the main ppfx profile in the desired object.
-/// @param {asset.GMObject} [_obj]=objCamera Object holding the ppfx manager/profiles. Defaults to the camera object.
-function update_main_ppfx(_obj = objCamera) {
-	var _inst = instance_find(_obj, 0);
-	with (_inst) {
-		main_profile = ppfx_profile_create("Main", ppfx_effects.get_array());
-		ppfx_profile_load(ppfx_id, main_profile);
-	};
-};
-
 
 /**
  * Creates a struct that has data retreived via indexes. Useful for when you need array-like storage but need it to not collapse after data removal.
@@ -47,14 +37,18 @@ function indexable_struct() constructor {
 	};
 	
 	/**
-	 * Returns an array of the struct's data. Note that this does not respect empty indexes.
-	 * @returns {array<Any>}
-	 */
-	static get_array = function() {
+	 *  Returns an array of the struct's data. Note that this does not respect empty indexes.
+	 * @param {bool} [_numeric_only]=true If we should only consider numbered data entries
+	 * @returns {array<Any>} Array of the data in the struct
+	 */	
+	static get_array = function(_numeric_only = true) {
 		var _names = variable_struct_get_names(self);
 		var _array = [];
 		for (var _index = 0; _index < array_length(_names); _index++) {
-			if _names[_index] != "maxIndex" array_push(_array, self[$ _names[_index]]);
+			var _name = _names[_index];
+			var _numeric = true;
+			if _numeric_only _numeric = (_name == string_digits(_name));
+			if _name != "maxIndex" && _numeric array_push(_array, self[$ _name]);
 		};
 
 		return _array;

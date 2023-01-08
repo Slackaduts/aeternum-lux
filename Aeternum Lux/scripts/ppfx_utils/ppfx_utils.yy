@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "ppfx_wrappers",
+  "name": "ppfx_utils",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

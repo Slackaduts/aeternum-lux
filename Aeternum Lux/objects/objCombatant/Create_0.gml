@@ -9,8 +9,9 @@ spdWalk = 5;
 pastX = x;
 pastY = y;
 collided = false;
-animState = animationStates.IDLE;
 
+animState = animationStates.IDLE;
+animData = LPC_ANIMATION_DATA;
 
 //Steering/Navigation related values
 position = new vector(x, y);

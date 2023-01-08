@@ -59,3 +59,7 @@ dataToSave = [
 "windowScale",
 "focusIndex"
 ];
+
+//IMPORTANT: Makes spatial audio work and not have flipped channels
+audio_listener_orientation(0,1,0,0,0,1);
+global.sounds = new indexable_struct(); //

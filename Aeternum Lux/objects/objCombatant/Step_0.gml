@@ -2,8 +2,6 @@
 event_inherited();
 
 
-
-
 if combatant.states.controlState == controlStates.CONTROLLED {
 // Get Movement Inputs
 keyLeft = input_check("left");
@@ -94,6 +92,11 @@ switch combatant.states.controlState {
 		apply_force(seperation_force());
 	break;	
 };
+};
+
+
+if input_check_pressed("cancel") {
+	scenePool.add_scene([new scene_play_animation(x, y, objAnimation)]);
 };
 
 
