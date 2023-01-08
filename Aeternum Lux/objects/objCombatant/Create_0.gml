@@ -79,7 +79,6 @@ movement = use_tdmc();
 
 // TODO: Make this a struct and implement these
 
-
 followingObj = undefined;
 minFollowDistance = 64;
 maximumCrowding = 48;

@@ -34,9 +34,12 @@ ppfx_application_render_init();
 ppfx_id = ppfx_create();
 ppfx_effects = new indexable_struct();
 var _i = ppfx_effects.add_item(new pp_bloom(true, 5, 0.4, 1.12)); //permanent bloom effect, looks really good on fires
+_i = ppfx_effects.add_item(new pp_shockwaves(true, 0.1, 0.1, sprite_get_texture(__spr_ppf_prism_lut_rb, 0)));
 main_profile = ppfx_profile_create("Main", ppfx_effects.get_array());
-show_debug_message(main_profile);
 ppfx_profile_load(ppfx_id, main_profile);
+
+// init shockwaves distortion surface
+shockwaves_sys_id = shockwave_create();
 
 //TODO: Implement KeyItems
 global.itemsDatabase = [];

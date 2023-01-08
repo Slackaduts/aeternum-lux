@@ -1,9 +1,9 @@
 { longMessage : "ERROR in
 action number 1
 of Create Event
-for object objMainMenu:
+for object objCamera:
 
 
-Variable scene_crossfade_global_sound._oldSound(101019, -2147483648) not set before reading it.
- at gml_Script_anon_anon_scene_crossfade_global_sound_gml_GlobalScript_audio_4653_scene_crossfade_global_sound_gml_GlobalScript_audio_4980_anon_scene_crossfade_global_sound_gml_GlobalScript_audio_4653_scene_crossfade_global_sound_gml_GlobalScript_audio (line 119) - 			var _callback = call_later(time, time_source_units_seconds, function() {audio_stop_sound(_oldSound)}, false);
-", script : "gml_Script_anon_anon_scene_crossfade_global_sound_gml_GlobalScript_audio_4653_scene_crossfade_global_sound_gml_GlobalScript_audio_4980_anon_scene_crossfade_global_sound_gml_GlobalScript_audio_4653_scene_crossfade_global_sound_gml_GlobalScript_audio", message : "Variable scene_crossfade_global_sound._oldSound(101019, -2147483648) not set before reading it.", stacktrace : [ "gml_Script_anon_anon_scene_crossfade_global_sound_gml_GlobalScript_audio_4653_scene_crossfade_global_sound_gml_GlobalScript_audio_4980_anon_scene_crossfade_global_sound_gml_GlobalScript_audio_4653_scene_crossfade_global_sound_gml_GlobalScript_audio (line 119)" ], line : 119 }
+Variable objCamera.spr_lut_test_0(105356, -2147483648) not set before reading it.
+ at gml_Object_objCamera_Create_0 (line 38) - _i = ppfx_effects.add_item(new pp_lut3d(true, sprite_get_texture(spr_lut_test_0, 0), 1));
+", script : "gml_Object_objCamera_Create_0", message : "Variable objCamera.spr_lut_test_0(105356, -2147483648) not set before reading it.", line : 38, stacktrace : [ "gml_Object_objCamera_Create_0 (line 38)" ] }
