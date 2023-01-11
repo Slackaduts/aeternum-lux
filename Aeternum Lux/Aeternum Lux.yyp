@@ -730,6 +730,7 @@
     {"id":{"name":"dialogue","path":"scripts/dialogue/dialogue.yy",},"order":30,},
     {"id":{"name":"scribble_msdf_thickness_offset","path":"scripts/scribble_msdf_thickness_offset/scribble_msdf_thickness_offset.yy",},"order":5,},
     {"id":{"name":"__input_class_gamepad","path":"scripts/__input_class_gamepad/__input_class_gamepad.yy",},"order":6,},
+    {"id":{"name":"shockwaves","path":"scripts/shockwaves/shockwaves.yy",},"order":32,},
     {"id":{"name":"objBaseTileB_exterior4_0","path":"objects/objBaseTileB_exterior4_0/objBaseTileB_exterior4_0.yy",},"order":1,},
     {"id":{"name":"yui_create_dynamic_sprite","path":"scripts/yui_create_dynamic_sprite/yui_create_dynamic_sprite.yy",},"order":0,},
     {"id":{"name":"input_cursor_limit_get","path":"scripts/input_cursor_limit_get/input_cursor_limit_get.yy",},"order":7,},

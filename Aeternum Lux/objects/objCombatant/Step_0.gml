@@ -95,12 +95,6 @@ switch combatant.states.controlState {
 };
 
 
-if input_check_pressed("cancel") {
-	scenePool.add_scene([new scene_play_animation(x, y, objAnimation)]);
-};
-var _x = yui_world_to_gui_x(x);
-var _y = yui_world_to_gui_x(y);
-if input_check_pressed("accept") && object_index == global.focusObject shockwave_instance_create(x, y, "Instances", 0, 4, 0.01, __obj_ppf_shockwave);
 scenePool.run();
 
 if global.movementStatus {
