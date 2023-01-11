@@ -97,7 +97,6 @@ combatant = new CombatantManager("Enemy");
 
 scenePool = new scene_pool();
 
-
 dataToSave = [
 	"x",
 	"y",

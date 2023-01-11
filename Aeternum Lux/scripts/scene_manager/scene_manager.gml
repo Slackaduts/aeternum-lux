@@ -137,6 +137,26 @@ function async_callback(_scene, _index = 0): scene_callback(_scene, _index) cons
 
 
 /**
+ * Sends a scene callback to a specified instance's scenepool for execution.
+ * @param {Id.Instance} _inst Instance to send the scene to
+ * @param {any*} _scene Scene to send
+ * @param {real} [_index]=0 Index to go to upon completion, influences branching scene logic
+ */
+function send_callback(_inst, _scene, _index = 0): scene_callback(_scene, _index) constructor {
+	parent = _inst;
+
+	/**
+	 * Adds this scene to the scene pool of the parent instance.
+	 */
+	static initialize = function() {
+		parent.scenePool.add_scene(data);
+		finish();
+	};
+};
+
+
+
+/**
  * Creates a callback that finishes after a specified period of time, in seconds.
  * @param {real} [_data]=1 Duration of the callback
  * @param {real} [_index]=0 Index to go to afterwards, see other function docs on usage

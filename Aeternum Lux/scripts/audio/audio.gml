@@ -126,3 +126,21 @@ function scene_crossfade_global_sound(_name, _time, _sound, _loop = false, _prio
 		audio_sound_gain(global.sounds[$ string(name)], gain, time * 1000);
 	};
 };
+
+
+function scene_play_temp_local_sound(_x, _y, _falloffDist, _falloffMax, _sound, _loop = false, _priority = 50, _gain = 1, _pitch = 1, _offset = 0, _callbackIndex = 0): scene_play_global_sound(_sound, _loop, _priority, _gain, _pitch, _offset, _callbackIndex) constructor {
+	x = _x;
+	y = _y;
+	falloffDist = _falloffDist;
+	falloffMax = _falloffMax;
+
+	static initialize = function() {
+		soundIndex = audio_play_sound_at(sound, x, y, 0, falloffDist, falloffMax, 1, loop, priority, gain, offset, pitch);
+	};
+	
+	static run = function() {
+		if soundIndex != undefined && !audio_is_playing(soundIndex) {
+			soundIndex = undefined;
+			finish();
+		};
+};
