@@ -81,3 +81,16 @@ function CombatSkill(_name, _desc, _scene, _triggerStats, _hitboxData = {}, _coo
 		};
 	};
 };
+
+
+function scene_damage_indicator(_hitOrigin, _dmg, _maxHp, _callbackIndex): scene_callback(undefined, _callbackIndex) constructor {
+	hitOrigin = _hitOrigin;
+	dmg = _dmg;
+	maxHp = _maxHp;
+	
+	static initialize = function() {
+		
+	};
+	
+	
+};

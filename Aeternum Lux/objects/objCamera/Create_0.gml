@@ -1,8 +1,6 @@
 /// @desc Initialize camera
 global.focusObject = objNero;
 
-global.collisionLayers = [];
-global.collisionTileSets = [];
 global.maxObjectDepth = 0;
 global.minObjectDepth = 0;
 global.movementStatus = true;
@@ -66,3 +64,6 @@ dataToSave = [
 //IMPORTANT: Makes spatial audio work and not have flipped channels
 audio_listener_orientation(0,1,0,0,0,1);
 global.sounds = new indexable_struct(); //
+
+
+culling = call_later(15, time_source_units_frames, cull_instances, true);

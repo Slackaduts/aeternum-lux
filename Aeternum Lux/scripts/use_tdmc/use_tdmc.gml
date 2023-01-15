@@ -37,28 +37,28 @@ function pathfindToObj(_obj) {
 
 
 
-/// @description Returns whether the x, y coordinates passed overlaps any of the collision layers
-/// @param _x The x coordinate to test
-/// @param _y The y coordinate to test
-function pointMeetingLayers(_x, _y)
-{
-	var localCollided = false;
+///// @description Returns whether the x, y coordinates passed overlaps any of the collision layers
+///// @param _x The x coordinate to test
+///// @param _y The y coordinate to test
+//function pointMeetingLayers(_x, _y)
+//{
+//	var localCollided = false;
 	
-	for (var currLayer = 0; currLayer < array_length(global.collisionLayers); currLayer += 1) {
-		var tileSetName = global.collisionTileSets[currLayer];
-		var checkerOBJ = asset_get_index(tileSetName);
-		if checker == undefined checker = instance_create_depth(0,0,0,checkerOBJ);
-		else if !instance_exists(checker) checker = instance_create_depth(0,0,0,checkerOBJ);
+//	//for (var currLayer = 0; currLayer < array_length(global.collisionLayers); currLayer += 1) {
+//	//	var tileSetName = global.collisionTileSets[currLayer];
+//	//	var checkerOBJ = asset_get_index(tileSetName);
+//	//	if checker == undefined checker = instance_create_depth(0,0,0,checkerOBJ);
+//	//	else if !instance_exists(checker) checker = instance_create_depth(0,0,0,checkerOBJ);
 
-		if tile_meeting_precise(_x, _y, global.collisionLayers[currLayer]) {
-			localCollided = true;
-			break;
-		};
-		instance_destroy(checker, false);
-	};
+//	//	if tile_meeting_precise(_x, _y, global.collisionLayers[currLayer]) {
+//	//		localCollided = true;
+//	//		break;
+//	//	};
+//	//	instance_destroy(checker, false);
+//	//};
 
-	return (localCollided || place_meeting(_x, _y, objCollision));
-};
+//	return (localCollided || place_meeting(_x, _y, objCollision));
+//};
 
 
 
@@ -104,8 +104,7 @@ return false;
 function use_tdmc(
   _placeMeeting = function(_x, _y){
 	//return tile_meeting_precise(_x, _y, "Collisions");
-	return pointMeetingLayers(_x, _y);
-    //return place_meeting(_x, _y, objWall); //Replace objWall with your object 
+    return place_meeting(_x, _y, objCollision); //Replace objWall with your object 
   }, 
   _cornerSlip = 24,
   _slipSpd = .5, 

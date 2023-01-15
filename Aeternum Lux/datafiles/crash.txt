@@ -1,9 +1,7 @@
-{ longMessage : "ERROR in
+{ line : 0, message : "(null) argument 1 incorrect type (unknown) expecting a Number (YYGI32)", longMessage : "ERROR in
 action number 1
-of Create Event
-for object objCamera:
+of  Step Event0
+for object objRoomTransfer:
 
 
-Variable objCamera.spr_lut_test_0(105356, -2147483648) not set before reading it.
- at gml_Object_objCamera_Create_0 (line 38) - _i = ppfx_effects.add_item(new pp_lut3d(true, sprite_get_texture(spr_lut_test_0, 0), 1));
-", script : "gml_Object_objCamera_Create_0", message : "Variable objCamera.spr_lut_test_0(105356, -2147483648) not set before reading it.", line : 38, stacktrace : [ "gml_Object_objCamera_Create_0 (line 38)" ] }
+(null) argument 1 incorrect type (unknown) expecting a Number (YYGI32)", script : "gml_Script_temp_save_current_room", stacktrace : [ "gml_Script_temp_save_current_room (line 53)","gml_Script_room_transfer (line 217)","gml_Object_objRoomTransfer_Step_0 (line 6)" ] }

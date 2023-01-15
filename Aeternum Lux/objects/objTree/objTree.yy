@@ -12,8 +12,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "objCollision",
-    "path": "objects/objCollision/objCollision.yy",
+    "name": "objTile",
+    "path": "objects/objTile/objTile.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,

@@ -133,10 +133,17 @@ function CombatantManager(_name) constructor {
 	level = 1;
 	aiType = aiTypes.DARING;
 	states = new CombatStates();
+	agro = false;
+	title = undefined;
+	gauge = undefined;
 
 	baseStats = new CombatStats();
 	liveStats = new CombatStats();
 	
 	equipment = [];
 	overTimes = [];
+	
+	static update = function() {
+		
+	};
 };

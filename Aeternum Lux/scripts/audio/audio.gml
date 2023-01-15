@@ -143,4 +143,5 @@ function scene_play_temp_local_sound(_x, _y, _falloffDist, _falloffMax, _sound, 
 			soundIndex = undefined;
 			finish();
 		};
+	};
 };
