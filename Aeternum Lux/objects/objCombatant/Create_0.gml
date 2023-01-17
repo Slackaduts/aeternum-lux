@@ -94,6 +94,12 @@ breathTime = random_range(0.15, 0.30);
 breathOffset = irandom_range(1, 20);
 
 combatant = new CombatantManager("Enemy");
+//var _self = self;
+//var _data = {
+//	inst: _self,
+//	combatant: combatant
+//};
+
 
 scenePool = new scene_pool();
 
@@ -106,3 +112,4 @@ dataToSave = [
 	"steeringForce",
 	"maxForce"
 ];
+

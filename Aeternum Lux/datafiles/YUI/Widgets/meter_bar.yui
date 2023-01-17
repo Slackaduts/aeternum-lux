@@ -10,7 +10,8 @@ resources:
       max: 100
       value: 0
       meter_sprite: yui_white_pixel // default to a white pixel
-      meter_blend_color: null
+      meter_blend_color: 
+      meter_max_w: 128
 
     template:
 
@@ -20,6 +21,5 @@ resources:
         sprite: $meter_sprite
         blend_color: $meter_blend_color
         size:
-          w: $value / ($max - $min),
-          w_type: proportional
+          w: $value / $max * 64,
           h: stretch

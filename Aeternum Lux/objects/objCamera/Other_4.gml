@@ -8,7 +8,6 @@ global.maxObjectDepth = layer_get_depth("Instances") + 100;
 global.minObjectDepth = global.maxObjectDepth - 200;
 
 
-var _iterations = 0;
 for (var currLayer = 0; currLayer < array_length(layers); currLayer++) {
 	var layerName = layer_get_name(layers[currLayer]);
 	if (string_count("tile", string_lower(layerName)) > 0) {
@@ -23,13 +22,10 @@ for (var currLayer = 0; currLayer < array_length(layers); currLayer++) {
 	        {
 	        for (var j = 0; j < tilemap_get_height(tile_guide); j++;) //Vertical
 	            {
-	            var data = tilemap_get(tile_guide, i, j); //Get tile info
-				_iterations += 1;
-				show_debug_message(_iterations);
-				//if object_get_sprite(objTile) != _sprite object_set_sprite(objTile, _sprite);
-				instance_create_layer(i * _tileWidth, j * _tileHeight, "Instances", objTile, {sprite_index: _sprite, image_index: data, image_speed: 0, tileWidth: _tileWidth, tileHeight: _tileHeight});
-	            }
-	        }
+					var data = tilemap_get(tile_guide, i, j); //Get tile info
+					instance_create_layer(i * _tileWidth, j * _tileHeight, "Instances", objTile, {sprite_index: _sprite, image_index: data, image_speed: 0, tileWidth: _tileWidth, tileHeight: _tileHeight});
+	            };
+	        };
 	};
 };
 

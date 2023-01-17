@@ -66,4 +66,4 @@ audio_listener_orientation(0,1,0,0,0,1);
 global.sounds = new indexable_struct(); //
 
 
-culling = call_later(15, time_source_units_frames, cull_instances, true);
+//culling = call_later(15, time_source_units_frames, cull_instances, true);

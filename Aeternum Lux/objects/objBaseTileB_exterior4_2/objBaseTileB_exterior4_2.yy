@@ -2,10 +2,7 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "objBaseTileB_exterior4_2",
-  "spriteId": {
-    "name": "sprBaseTileB_exterior4_2ColFrames",
-    "path": "sprites/sprBaseTileB_exterior4_2ColFrames/sprBaseTileB_exterior4_2ColFrames.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "managed": true,

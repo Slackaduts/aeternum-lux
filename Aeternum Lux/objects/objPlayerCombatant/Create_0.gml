@@ -3,3 +3,5 @@ event_inherited();
 
 inventory = new Inventory();
 array_push(dataToSave, "inventory");
+
+combatant.team = teamStates.PLAYER;

@@ -1,0 +1,11 @@
+root:
+  type: border
+  xoffset: @@ yui_world_to_gui_x(@inst.x) - @inst.sprite_width / 2
+  yoffset: @@ yui_world_to_gui_y(@inst.y) - @inst.sprite_height
+  content:
+    type: text
+    padding: 5
+    // alignment: { h: center }
+    text: @inst.combatant.name
+    scribble: true
+    visible: @inst.combatant.agro

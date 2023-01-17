@@ -94,7 +94,7 @@ switch combatant.states.controlState {
 };
 };
 
-
+combatant.update();
 scenePool.run();
 
 if global.movementStatus {

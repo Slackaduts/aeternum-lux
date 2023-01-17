@@ -1,0 +1,45 @@
+id: mob_healthbar
+file_type: screen
+
+import:
+  - ../Widgets/meter_bar.yui
+
+root:
+  type: meter_bar
+  xoffset: @@ yui_world_to_gui_x(@inst.x) - @inst.sprite_width / 2
+  yoffset: @@ yui_world_to_gui_y(@inst.y)
+  value: @inst.combatant.liveStats.hp
+  max: @inst.combatant.liveStats.maxHp
+  meter_max_w: 64
+  // blend_color: red
+  meter_blend_color: red
+  // size:
+  //   w: @inst.sprite_width
+  //   h: 4
+  // type: panel
+  // xoffset: @@ yui_world_to_gui_x(@inst.x) - @inst.sprite_width / 2
+  // yoffset: @@ yui_world_to_gui_y(@inst.y)
+  // layout: vertical
+  // elements:
+  //   - type: border
+  //     background: #000000
+  //     border_color: #FFFFFF
+  //     border_thickness: 1
+  //     content:
+  //       type: image
+  //       sprite: yui_white_pixel
+  //       blend_color: red
+  //       size:
+  //         w: @inst.sprite_width
+  //         h: 4
+
+  //   // These text elements are for testing the data binding
+  //   - type: text
+  //     scribble: true
+  //     text: @inst.combatant.liveStats.hp
+  //   - type: text
+  //     scribble: true
+  //     text: @inst.combatant.liveStats.maxHp
+  //   - type: text
+  //     scribble: true
+  //     text: @inst.sprite_width
