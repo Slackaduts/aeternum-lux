@@ -9,6 +9,7 @@ function gui_element(_x, _y, _width, _height, _sprite, _anchorData, _anchorParam
 	anchorParams = _anchorParams;
 	children = _children;
 	hovered = false;
+	active = true;
 	visible = true;
 	animated = _animated;
 	alpha = 1;
@@ -43,12 +44,28 @@ function gui_element(_x, _y, _width, _height, _sprite, _anchorData, _anchorParam
 	};
 
 
-	static trigger = function() {};
+	static trigger = function() {}; // This is the root type, this will do more in specific GUI types
+	
+	
+	static close = function() {
+		active = false;
+	};
+
+
+	static free = function() {
+		var _children = children.get_array();
+		for (var _index = 0; _index < array_length(_children); _index++) {
+			var _child = _children[_index];
+			_child.free();
+		};
+
+		delete self;
+	};
 
 
 	static draw = function() {
 		if !visible exit;
-		if animated && !finishedTween {
+		if animated && (!finishedTween || !active) {
 			tweenPercent += tweenIncrement;
 			if tweenPercent > 1 || tweenPercent < 0 {
 				tweenPercent = clamp(tweenPercent, 0, 1);
@@ -58,11 +75,23 @@ function gui_element(_x, _y, _width, _height, _sprite, _anchorData, _anchorParam
 			alpha = tweenPercent;
 		};
 		draw_sprite_stretched_ext(sprite, -1, x, y, width, height, color, alpha);
-		
+
 		var _children = children.get_array();
 		for (var _index = 0; _index < array_length(_children); _index++) {
 			var _child = _children[_index];
 			_child.draw();
 		};
+		
+		if !active && finishedTween free();
 	};
 }
+
+
+
+function gui_dialogue(): gui_element() constructor {
+	
+	
+	
+	
+	
+};
