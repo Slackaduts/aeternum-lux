@@ -30,6 +30,16 @@ for (var currLayer = 0; currLayer < array_length(layers); currLayer++) {
 };
 
 
-//global.pathfindGrid = mp_grid_create(0, 0, room_width / 32, room_height / 32, 32, 32);
 
+
+//if baseGrid != undefined mp_grid_destroy(baseGrid);
+//if global.pathfindGrid != undefined mp_grid_destroy(global.pathfindGrid);
+
+//global.pathfindGrid = undefined;
+//baseGrid = undefined;
+
+//var _hCells = (room_width + 300) / 64;
+//var _vCells = (room_height + 300) / 64;
+
+//global.pathfindGrid = mp_grid_create(-150, -150, 64, 64, _hCells, _vCells);
 //mp_grid_add_instances(global.pathfindGrid, objTile, true);

@@ -65,5 +65,6 @@ dataToSave = [
 audio_listener_orientation(0,1,0,0,0,1);
 global.sounds = new indexable_struct(); //
 
-
+//global.pathfindGrid = undefined;
+//baseGrid = undefined;
 //culling = call_later(15, time_source_units_frames, cull_instances, true);

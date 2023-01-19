@@ -20,7 +20,8 @@ function gui_element(_x, _y, _width, _height, _sprite, _anchorData, _anchorParam
 	tweenIncrement = 1 / (tweenDuration * FRAME_RATE);
 	tweenPercent = 0;
 	finishedTween = false;
-	
+
+
 	static add_child = function(_child = new gui_element(x, y, sprite, anchor, anchorParams, children)) {
 		return children.add_item(_child);
 	};
@@ -52,15 +53,15 @@ function gui_element(_x, _y, _width, _height, _sprite, _anchorData, _anchorParam
 	};
 
 
-	static free = function() {
-		var _children = children.get_array();
-		for (var _index = 0; _index < array_length(_children); _index++) {
-			var _child = _children[_index];
-			_child.free();
-		};
+	//static free = function() {
+	//	var _children = children.get_array();
+	//	for (var _index = 0; _index < array_length(_children); _index++) {
+	//		var _child = _children[_index];
+	//		_child.free();
+	//	};
 
-		delete self;
-	};
+	//	delete self;
+	//};
 
 
 	static draw = function() {
@@ -88,10 +89,10 @@ function gui_element(_x, _y, _width, _height, _sprite, _anchorData, _anchorParam
 
 
 
-function gui_dialogue(): gui_element() constructor {
+//function gui_dialogue(_x, _y, ): gui_element() constructor {
 	
 	
 	
 	
 	
-};
+//};

@@ -22,12 +22,15 @@ function rotate_point_y(_originX, _originY, _pointX, _pointY, _theta) {
 function pathfindToXY(_x, _y) {
 	var _pastX = x;
 	var _pastY = y;
-	var _foundStep = mp_potential_step_object(_x, _y, spdWalk, instance_nearest(_x, _y, objCollision));
+	var _foundStep = mp_potential_step_object(_x, _y, spdWalk, objCollision); // instance_nearest(_x, _y, objCollision
+	if square_distance(_x, _y, x, y) == 0 exit;
 	inputDirection = point_direction(_pastX, _pastY, x, y);
+	if inputDirection mod 90 == 0 inputDirection += 1;
 	inputMagnitude = 1;
 	x = _pastX;
 	y = _pastY;
 };
+
 
 function pathfindToObj(_obj) {
 	if _obj != undefined && combatLiveStates.controlState == controlStates.FOLLOWING {

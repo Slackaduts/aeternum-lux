@@ -1,9 +1,9 @@
-{ stacktrace : [ "gml_Object_yui_image_Draw_64 (line 28)" ], line : 28, message : "draw_sprite_ext argument 8 incorrect type (undefined) expecting a Number (YYGI32)", longMessage : "ERROR in
+{ line : 53, message : "global variable name 'roomData' index (104231) not set before reading it.", longMessage : "ERROR in
 action number 1
-of Draw Event
-for object yui_image:
+of  Step Event0
+for object objRoomTransfer:
 
 
-draw_sprite_ext argument 8 incorrect type (undefined) expecting a Number (YYGI32)
- at gml_Object_yui_image_Draw_64 (line 28) - 			sprite_index, image_index,
-", script : "gml_Object_yui_image_Draw_64" }
+global variable name 'roomData' index (104231) not set before reading it.
+ at gml_Script_temp_save_current_room (line 53) - 	global.roomData[$ _roomName] = [];
+", stacktrace : [ "gml_Script_temp_save_current_room (line 53)","gml_Script_room_transfer (line 217) -     temp_save_current_room();","gml_Object_objRoomTransfer_Step_0 (line 6) - 		room_transfer(targetX, targetY, roomName);" ], script : "gml_Script_temp_save_current_room" }

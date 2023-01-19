@@ -24,3 +24,8 @@ if instance_exists(global.focusObject) {
 	var _inst = instance_find(global.focusObject, 0);
 	_inst.combatant.states.controlState = controlStates.CONTROLLED;
 };
+
+//global.pathfindGrid = baseGrid;
+
+
+//mp_grid_add_instances(global.pathfindGrid, objCombatant, false)
