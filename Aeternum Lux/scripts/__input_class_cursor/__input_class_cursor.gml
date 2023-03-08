@@ -80,9 +80,10 @@ function __input_class_cursor() constructor
         __prev_x = __x;
         __prev_y = __y;
         
-        var _can_use_mouse = __player.__source_contains(INPUT_MOUSE);
+        var _can_use_mouse = __player.__source_contains(INPUT_MOUSE); //Automatically remapped to INPUT_TOUCH where appropriate
         
-        if ((global.__input_pointer_moved || __using_mouse) && _can_use_mouse)
+        //Mouse and touch
+        if ((global.__input_pointer_moved || __using_mouse) && _can_use_mouse && global.__input_mouse_allowed_on_platform)
         {
             __using_mouse = true;
                 
@@ -101,6 +102,37 @@ function __input_class_cursor() constructor
         //Don't update the cursor if the mouse recently moved or we're rebinding controls
         if (global.__input_cursor_verbs_valid && (!global.__input_pointer_moved || !_can_use_mouse) && (__player.__rebind_state <= 0))
         {
+            //Gyro
+            if (__player.__gyro_enabled)
+            {
+                var _motion_data = __player.__motion_data_get();                
+                if (is_struct(_motion_data))
+                {
+                    var _gyro_value_x = undefined;
+                    switch (__player.__gyro_axis_x)
+                    {
+                        case INPUT_GYRO.AXIS_PITCH: _gyro_value_x = _motion_data.angular_velocity_x; break;
+                        case INPUT_GYRO.AXIS_YAW:   _gyro_value_x = _motion_data.angular_velocity_y; break;
+                        case INPUT_GYRO.AXIS_ROLL:  _gyro_value_x = _motion_data.angular_velocity_z; break;
+                    }
+
+                    var _gyro_value_y = undefined;
+                    switch (__player.__gyro_axis_y)
+                    {
+                        case INPUT_GYRO.AXIS_PITCH: _gyro_value_y = _motion_data.angular_velocity_x; break;
+                        case INPUT_GYRO.AXIS_YAW:   _gyro_value_y = _motion_data.angular_velocity_y; break;
+                        case INPUT_GYRO.AXIS_ROLL:  _gyro_value_y = _motion_data.angular_velocity_z; break;
+                    }
+
+                    var _dts = delta_time/1000000;
+                
+                    //Resolution of 0.1
+                    if (_gyro_value_x != undefined) __x += round((_gyro_value_x * _dts * __player.__gyro_screen_width  * __player.__gyro_sensitivity_x * 10)) / 10;
+                    if (_gyro_value_y != undefined) __y += round((_gyro_value_y * _dts * __player.__gyro_screen_height * __player.__gyro_sensitivity_y * 10)) / 10;
+                }
+            }
+
+            //Cursor bindings
             var _xy = input_xy(INPUT_CURSOR_VERB_LEFT, INPUT_CURSOR_VERB_RIGHT, INPUT_CURSOR_VERB_UP, INPUT_CURSOR_VERB_DOWN, __player.__index);
             if ((_xy.x != 0.0) || (_xy.y != 0.0))
             {

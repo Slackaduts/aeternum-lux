@@ -4,8 +4,6 @@ function __input_system_tick()
     global.__input_previous_current_time = global.__input_current_time;
     global.__input_current_time = current_time;
     global.__input_cleared = false;
-    
-
 
     #region Touch
     
@@ -39,7 +37,7 @@ function __input_system_tick()
                 {
                     //Get recent active touch
                     global.__input_pointer_durations[_i] += delta_time;
-                    if (_touch_index == undefined || (global.__input_pointer_durations[_i] < global.__input_pointer_durations[_touch_index]))
+                    if ((_touch_index == undefined) || (global.__input_pointer_durations[_i] < global.__input_pointer_durations[_touch_index]))
                     {
                         _touch_index = _i;
                     }
@@ -108,6 +106,8 @@ function __input_system_tick()
             //Linux app continues to recieve input some number of frames after focus loss
             //Clear IO on focus loss to prevent false positive of subsequent focus regain
             io_clear();
+            
+            __input_gamepad_stop_trigger_effects(all);
         }
         else
         {
@@ -121,6 +121,11 @@ function __input_system_tick()
                     //Sustain mouse block while a button remains held
                     if (__input_mouse_button() != mb_none) global.__input_window_focus_block_mouse = true;
                 }
+                
+                if (global.__input_window_focus_gamepad_timeout > 0)
+                {                    
+                    --global.__input_window_focus_gamepad_timeout;
+                }
             }
             else if ((keyboard_key != vk_nokey) 
                  ||  (mouse_button != mb_none)
@@ -130,11 +135,16 @@ function __input_system_tick()
                 //Regained focus
                 global.__input_window_focus = true;
                 
+                //Timeout gamepad
+                global.__input_window_focus_gamepad_timeout = 2;
+                
                 //Block mouse button input
                 if (!INPUT_ALLOW_OUT_OF_FOCUS) global.__input_window_focus_block_mouse = true;
                     
                 //Retrigger mouse capture timer to avoid the mouse jumping all over the place when we refocus the window
                 if (global.__input_mouse_capture) global.__input_mouse_capture_frame = global.__input_frame;
+                
+                __input_player_apply_trigger_effects(all);
             }
         }
     }
@@ -191,9 +201,9 @@ function __input_system_tick()
                             var _pointer_y = device_mouse_y_to_gui(global.__input_pointer_index);
                         break;
                         
-                        case INPUT_COORD_SPACE.DISPLAY:
-                            var _old_x     = window_get_width()/2;
-                            var _old_y     = window_get_height()/2;
+                        case INPUT_COORD_SPACE.DEVICE:
+                            var _old_x = window_get_width()/2;
+                            var _old_y = window_get_height()/2;
                             
                             if (os_type == os_windows)
                             {
@@ -212,7 +222,7 @@ function __input_system_tick()
                     var _dy = (_pointer_y - _old_y)*global.__input_mouse_capture_sensitivity;
                     
                     //Only detect movement in the display coordinate space so that moving a room's view, or moving the window, doesn't trigger movement
-                    if ((_m == INPUT_COORD_SPACE.DISPLAY) && (_dx*_dx + _dy*_dy > INPUT_MOUSE_MOVE_DEADZONE*INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
+                    if ((_m == INPUT_COORD_SPACE.DEVICE) && (_dx*_dx + _dy*_dy > INPUT_MOUSE_MOVE_DEADZONE*INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
                     
                     global.__input_pointer_dx[@ _m] = _dx;
                     global.__input_pointer_dy[@ _m] = _dy;
@@ -250,7 +260,7 @@ function __input_system_tick()
                     _pointer_y = device_mouse_y_to_gui(global.__input_pointer_index);
                 break;
                 
-                case INPUT_COORD_SPACE.DISPLAY:
+                case INPUT_COORD_SPACE.DEVICE:
                     if (os_type == os_windows)
                     {
                         _pointer_x = display_mouse_get_x() - window_get_x();
@@ -265,7 +275,7 @@ function __input_system_tick()
             }
             
             //Only detect movement in the display coordinate space so that moving a room's view, or moving the window, doesn't trigger movement
-            if ((_m == INPUT_COORD_SPACE.DISPLAY) && (point_distance(_old_x, _old_y, _pointer_x, _pointer_y) > INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
+            if ((_m == INPUT_COORD_SPACE.DEVICE) && (point_distance(_old_x, _old_y, _pointer_x, _pointer_y) > INPUT_MOUSE_MOVE_DEADZONE)) _moved = true;
             
             global.__input_pointer_dx[@ _m] = _pointer_x - _old_x;
             global.__input_pointer_dy[@ _m] = _pointer_y - _old_y;
@@ -372,7 +382,15 @@ function __input_system_tick()
     
     #region Gamepads
     
-    if (global.__input_frame > INPUT_GAMEPADS_TICK_PREDELAY)
+    var _steam_handles_changed = false;
+    if (global.__input_using_steamworks)
+    {
+        steam_input_run_frame();
+        _steam_handles_changed = __input_steam_handles_changed();        
+        global.__input_steam_handles = steam_input_get_connected_controllers();
+    }
+    
+    if (global.__input_frame > __INPUT_GAMEPADS_TICK_PREDELAY)
     {
         //Expand dynamic device count
         var _device_change = max(0, gamepad_get_device_count() - array_length(global.__input_gamepads))
@@ -380,8 +398,6 @@ function __input_system_tick()
         
         var _device_change = max(0, gamepad_get_device_count() - array_length(INPUT_GAMEPAD))
         repeat(_device_change) array_push(INPUT_GAMEPAD, new __input_class_source(__INPUT_SOURCE.GAMEPAD, array_length(INPUT_GAMEPAD)));
-        
-        var _clear_gamepads = (!INPUT_ALLOW_OUT_OF_FOCUS && !global.__input_window_focus);
         
         var _g = 0;
         repeat(array_length(global.__input_gamepads))
@@ -391,22 +407,20 @@ function __input_system_tick()
             {
                 if (gamepad_is_connected(_g))
                 {
-                    if (os_type == os_switch)
+                    if ((os_type == os_switch) && (_gamepad.description != gamepad_get_description(_g)))
                     {
-                        //When L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
+                        //When Switch L+R assignment is used to pair two gamepads we won't see a normal disconnection/reconnection
                         //Instead we have to check for changes in the description to see if state has changed
-                        if (_gamepad.description != gamepad_get_description(_g))
-                        {
-                            _gamepad.discover();
-                        }
-                        else
-                        {
-                            _gamepad.tick();
-                        }
+                        _gamepad.discover();
                     }
                     else
                     {
-                        _gamepad.tick(_clear_gamepads);
+                        if (_steam_handles_changed) 
+                        {
+                            _gamepad.virtual_set();
+                        }
+                        
+                        _gamepad.tick();
                     }
                 }
                 else
@@ -460,6 +474,64 @@ function __input_system_tick()
     {
         global.__input_players[_p].tick();
         ++_p;
+    }
+    
+    #endregion
+    
+    
+    
+    #region Virtual Buttons
+    
+    //Reorder virtual buttons if necessary, from highest priority to lowest
+    if (global.__input_virtual_order_dirty)
+    {
+        //Clean up any destroyed virtual buttons
+        var _i = 0;
+        repeat(array_length(global.__input_virtual_array))
+        {
+            if (global.__input_virtual_array[_i].__destroyed)
+            {
+                array_delete(global.__input_virtual_array, _i, 1);
+            }
+            else
+            {
+                ++_i;
+            }
+        }
+        
+        global.__input_virtual_order_dirty = false;
+        array_sort(global.__input_virtual_array, function(_a, _b)
+        {
+            return _a.__priority - _b.__priority;
+        });
+    }
+    
+    if (is_struct(global.__input_touch_player))
+    {
+        //Detect any new touch points and find the top-most button to handle it
+        var _i = 0;
+        repeat(INPUT_MAX_TOUCHPOINTS)
+        {
+            if (device_mouse_check_button_pressed(_i, mb_left))
+            {
+                var _j = 0;
+                repeat(array_length(global.__input_virtual_array))
+                {
+                    if (global.__input_virtual_array[_j].__capture_touchpoint(_i)) break;
+                    ++_j;
+                }
+            }
+            
+            ++_i;
+        }
+        
+        //Update any virtual buttons that are currently being interacted with
+        var _i = 0;
+        repeat(array_length(global.__input_virtual_array))
+        {
+            global.__input_virtual_array[_i].__tick();
+            ++_i;
+        }
     }
     
     #endregion

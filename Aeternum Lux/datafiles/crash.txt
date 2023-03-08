@@ -1,9 +1,9 @@
-{ message : "Variable <unknown_object>.caster(103888, -2147483648) not set before reading it.", stacktrace : [ "gml_Script_create_skill_collider (line 28)","gml_Object_objCombatant_Step_0 (line 14) - keySprint = input_check("sprint");","gml_Object_objLightCombatant_Step_0 (line 2)","gml_Object_objPlayerCombatant_Step_0 (line 1)" ], script : "gml_Script_create_skill_collider", longMessage : "ERROR in
+{ longMessage : "ERROR in
 action number 1
 of  Step Event0
 for object objCombatant:
 
 
-Variable <unknown_object>.caster(103888, -2147483648) not set before reading it.
+Variable <unknown_object>.caster(104281, -2147483648) not set before reading it.
  at gml_Script_create_skill_collider (line 28) - 	show_debug_message(_hitboxData.caster);
-", line : 28 }
+", message : "Variable <unknown_object>.caster(104281, -2147483648) not set before reading it.", line : 28, stacktrace : [ "gml_Script_create_skill_collider (line 28)","gml_Object_objCombatant_Step_0 (line 14) - keySprint = input_check("sprint");","gml_Object_objLightCombatant_Step_0 (line 2)","gml_Object_objPlayerCombatant_Step_0 (line 1)" ], script : "gml_Script_create_skill_collider" }

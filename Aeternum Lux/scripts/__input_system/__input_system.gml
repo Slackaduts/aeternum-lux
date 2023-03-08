@@ -1,21 +1,46 @@
-#macro __INPUT_VERSION "5.2.1"
-#macro __INPUT_DATE    "2022-10-18"
+#macro __INPUT_VERSION "5.5.1"
+#macro __INPUT_DATE    "2023-03-01"
 #macro __INPUT_DEBUG   false
+
+
+
+#region Forbidden Fruit
+
+#macro __INPUT_2D_CHECKER_STATIC_RESULT  true
+
+#macro __INPUT_DEBUG_PROFILES  false
+#macro __INPUT_DEBUG_SOURCES   false
+#macro __INPUT_DEBUG_BINDING   false
+#macro __INPUT_DEBUG_VERBS     false
+
+#macro __INPUT_EXTERNAL_DEBUG_LOG  false  //Do NOT set to <true> unless directed (!)
+
+//How many frames to wait before scanning for connected gamepads
+//This works around Steam sometimes reporting confusing connection/disconnection events on boot
+#macro __INPUT_GAMEPADS_TICK_PREDELAY  10     
+
+#endregion
+
+
 
 #macro __INPUT_BINDING_KEY               "key"
 #macro __INPUT_BINDING_MOUSE_BUTTON      "mouse button"
 #macro __INPUT_BINDING_MOUSE_WHEEL_UP    "mouse wheel up"
 #macro __INPUT_BINDING_MOUSE_WHEEL_DOWN  "mouse wheel down"
+#macro __INPUT_BINDING_VIRTUAL_BUTTON    "virtual button"
 #macro __INPUT_BINDING_GAMEPAD_BUTTON    "gamepad button"
 #macro __INPUT_BINDING_GAMEPAD_AXIS      "gamepad axis"
 
 #macro INPUT_KEYBOARD      global.__input_source_keyboard
 #macro INPUT_MOUSE         global.__input_source_mouse
 #macro INPUT_GAMEPAD       global.__input_source_gamepad
+#macro INPUT_TOUCH         global.__input_source_touch
 #macro INPUT_MAX_GAMEPADS  12
 
 #macro INPUT_KEYBOARD_LOCALE  global.__input_keyboard_locale
 #macro INPUT_KEYBOARD_TYPE    global.__input_keyboard_type
+
+#macro INPUT_VIRTUAL_BACKGROUND  global.__input_virtual_background
 
 #macro __INPUT_ON_PS       ((os_type == os_ps4)     || (os_type == os_ps5))
 #macro __INPUT_ON_XBOX     ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
@@ -28,7 +53,9 @@
 #macro __INPUT_ON_OPERAGX  (os_type == os_operagx)
 #macro __INPUT_ON_WEB      ((os_browser != browser_not_a_browser) || __INPUT_ON_OPERAGX)
 
-#macro __INPUT_TOUCH_SUPPORT              (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch))
+#macro __INPUT_STEAMWORKS_SUPPORT         (((os_type == os_windows) || (os_type == os_linux)) && !__INPUT_ON_WEB)
+#macro __INPUT_TOUCH_SUPPORT              (__INPUT_ON_MOBILE  || __INPUT_ON_PS  || (os_type == os_switch) || (os_type == os_windows))
+#macro __INPUT_TOUCH_PRIMARY              (!INPUT_TOUCH_IS_MOUSE && (__INPUT_ON_MOBILE  || (os_type == os_switch) || (global.__input_on_steam_deck && (os_type == os_windows))))
 #macro __INPUT_KEYBOARD_NORMATIVE         (__INPUT_ON_DESKTOP || __INPUT_ON_WEB || (os_type == os_switch))
 #macro __INPUT_KEYBOARD_SUPPORT           (__INPUT_KEYBOARD_NORMATIVE || (os_type == os_android))
 #macro __INPUT_GAMEPAD_VIBRATION_SUPPORT  (__INPUT_ON_CONSOLE || (!__INPUT_ON_WEB && (os_type == os_windows)))
@@ -125,6 +152,7 @@ enum __INPUT_SOURCE
     KEYBOARD,
     MOUSE,
     GAMEPAD,
+    TOUCH,
     __SIZE
 }
 
@@ -137,16 +165,6 @@ enum __INPUT_MAPPING
     BUTTON_TO_AXIS,
     SPLIT_AXIS,
     __SIZE
-}
-
-//INPUT_STATUS.DISCONNECTED *must* be zero so that array_size() initializes gamepad status to disconnected
-//See input_tick() for more details
-enum INPUT_STATUS
-{
-    NEWLY_DISCONNECTED = -1,
-    DISCONNECTED       =  0,
-    NEWLY_CONNECTED    =  1,
-    CONNECTED          =  2,
 }
 
 enum __INPUT_COMBO_STATE
@@ -171,6 +189,13 @@ enum __INPUT_VERB_TYPE
     __COMBO,
 }
 
+enum __INPUT_TRIGGER_EFFECT
+{
+    __TYPE_OFF,
+    __TYPE_FEEDBACK,
+    __TYPE_WEAPON,
+    __TYPE_VIBRATION,
+}
 
 
 
@@ -179,57 +204,6 @@ function __input_axis_is_directional(_axis)
 {
     return ((_axis == gp_padu)   || (_axis == gp_padd)   || (_axis == gp_padl)   || (_axis == gp_padr)
          || (_axis == gp_axislh) || (_axis == gp_axislv) || (_axis == gp_axisrh) || (_axis == gp_axisrv));
-}
-
-/// @param GUID
-/// @param legacy
-/// @param suppressWarnings
-function __input_gamepad_guid_parse(_guid, _legacy, _suppress)
-{
-    var _vendor  = "";
-    var _product = "";
-    
-    if (_guid == "00000000000000000000000000000000")
-    {
-        if (!_suppress) __input_trace("Warning! GUID was empty");
-        return { vendor : "", product : "" };
-    }
-    
-    if (_legacy)
-    {
-        //GM on Windows uses an older version of SDL so we strip out VID + PID as a special case
-        _vendor  = string_copy(_guid, 1, 4);
-        _product = string_copy(_guid, 5, 4);
-    }
-    else
-    {
-        //Check to see if this GUID fits our expected pattern:
-        //
-        //  ****0000****0000****0000****????
-        //  ^       ^       ^       ^
-        //  Driver  Vendor  Product Revision
-        //
-        //If not, return an invalid VID+PID
-        if ((string_copy(_guid,  5, 4) != "0000")
-        ||  (string_copy(_guid, 13, 4) != "0000")
-        ||  (string_copy(_guid, 21, 4) != "0000"))
-        {
-            if (!_suppress) __input_trace("Warning! GUID \"", _guid, "\" does not fit expected pattern. VID+PID cannot be extracted");
-            return { vendor : "", product : "" };
-        }
-        
-        //Check to see if the driver for this GUID is what we expect
-        //In some cases, what we expect for the driver ID is going to be different so this isn't necessarily something that invalidates VID+PID checking
-        if ((string_copy(_guid, 1, 4) != "0300") && (string_copy(_guid, 1, 4) != "0500"))
-        {
-            if (!_suppress) __input_trace("Warning! GUID \"", _guid, "\" driver ID does not match expected (Found ", string_copy(_guid, 1, 4), ", expect either 0300 or 0500)");
-        }
-        
-        _vendor  = string_copy(_guid,  9, 4);
-        _product = string_copy(_guid, 17, 4);
-    }
-    
-    return { vendor : _vendor, product : _product };
 }
 
 function __input_trace()
@@ -244,7 +218,7 @@ function __input_trace()
     
     show_debug_message("Input: " + _string);
     
-    if (INPUT_EXTERNAL_DEBUG_LOG)
+    if (__INPUT_EXTERNAL_DEBUG_LOG)
     {
         var _file = file_text_open_append(global.__input_debug_log);
         file_text_write_string(_file, _string);
@@ -265,7 +239,7 @@ function __input_trace_loud()
     
     show_debug_message("Input: LOUD " + _string);
     
-    if (INPUT_EXTERNAL_DEBUG_LOG)
+    if (__INPUT_EXTERNAL_DEBUG_LOG)
     {
         var _file = file_text_open_append(global.__input_debug_log);
         file_text_write_string(_file, _string);
