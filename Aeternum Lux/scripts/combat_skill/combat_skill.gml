@@ -5,29 +5,55 @@ enum colliderShapes {
 };
 
 
+function spawn_skill_collider(_caster = self.id, _sceneOnHit = [], _stats = new CombatStats(), _target = skillTarget.ENEMIES, _width = 64, _height = 64, _shape = colliderShapes.SQUARE, _infront = false, _addDist = 0, _theta = 0) {
+	var _hitboxData = {
+		caster: _caster,
+		target: _target,
+		sceneOnHit: _sceneOnHit,
+		stats: _stats,
+		infront: _infront,
+		addDist: _addDist,
+		theta: _theta,
+		width: _width,
+		height: _height,
+		shape: _shape,
+	};
+	
+	return create_skill_collider(_hitboxData);
+};
+
+
 function create_skill_collider(_hitboxData = {}) {
+	show_debug_message(_hitboxData);
+	show_debug_message(_hitboxData.caster);
+	
 	var _x = _hitboxData.caster.x;
 	var _y = _hitboxData.caster.y;
 	
-	if _hitboxData.infront {
-		_x -= _hitboxData.width * dsin(_hitboxData.caster.inputDirection);
-		_y -= _hitboxData.height * dcos(_hitboxData.caster.inputDirection);
-	};
-
-	if _hitboxData.addDist > 0 {
-		var _dist = point_distance(_hitboxData.caster.x, _hitboxData.caster.y, _x, _y);
-		var _n = (_dist / _hitboxData.addDist) / _dist;
-		_x = ((_x - _hitboxData.caster.x) * _n) + _hitboxData.caster.x;
-		_y = ((_y - _hitboxData.caster.y) * _n) + _hitboxData.caster.y;
-	};
+	//with (_hitboxData.caster) {
+	//	_x = x;
+	//	_y = y;
+	//};
 	
-	if _hitboxData.theta > 0 {
-		var _vecOrigin = new vector(_hitboxData.caster.x, _hitboxData.caster.y);
-		var _vecPoint = new vector(_x, _y);
-		var _vecRotated = rotate_point_vector(_vecOrigin, _vecPoint, _hitboxData.theta);
-		_x = _vecRotated.x;
-		_y = _vecRotated.y;
-	};
+	//if _hitboxData.infront {
+	//	_x -= _hitboxData.width * dsin(_hitboxData.caster.inputDirection);
+	//	_y -= _hitboxData.height * dcos(_hitboxData.caster.inputDirection);
+	//};
+
+	//if _hitboxData.addDist > 0 {
+	//	var _dist = point_distance(_hitboxData.caster.x, _hitboxData.caster.y, _x, _y);
+	//	var _n = (_dist / _hitboxData.addDist) / _dist;
+	//	_x = ((_x - _hitboxData.caster.x) * _n) + _hitboxData.caster.x;
+	//	_y = ((_y - _hitboxData.caster.y) * _n) + _hitboxData.caster.y;
+	//};
+	
+	//if _hitboxData.theta > 0 {
+	//	var _vecOrigin = new vector(_hitboxData.caster.x, _hitboxData.caster.y);
+	//	var _vecPoint = new vector(_x, _y);
+	//	var _vecRotated = rotate_point_vector(_vecOrigin, _vecPoint, _hitboxData.theta);
+	//	_x = _vecRotated.x;
+	//	_y = _vecRotated.y;
+	//};
 	
 	variable_struct_remove(_hitboxData, "infront");
 	variable_struct_remove(_hitboxData, "addDist");

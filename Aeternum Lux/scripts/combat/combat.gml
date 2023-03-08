@@ -149,32 +149,23 @@ function CombatantManager(_name) constructor {
 	overTimes = [];
 	
 	static update = function() {
-		show_debug_message(0)
 		if global.focusObject == undefined || team == global.focusObject.combatant.team exit;
 		title ??= instance_create_depth(0, 0, 0, yui_document, {yui_file: "YUI/Screens/mob_name.yui", data_context: {inst: inst}});
-		healthbar ??= instance_create_depth(0, 0, 0, yui_document, {yui_file: "YUI/Screens/mob_healthbar.yui", data_context: {inst: inst}});
-		show_debug_message(1)
+		//healthbar ??= instance_create_depth(0, 0, 0, yui_document, {yui_file: "YUI/Screens/mob_healthbar.yui", data_context: {inst: inst}});
 
 		if agro {
-			show_debug_message(2)
 			//if agroCallback == undefined exit;
 			with (inst) var _dist = distance_to_object(global.focusObject);
-			show_debug_message(3)
 			if _dist > 320 || collision_line(inst.x, inst.y, global.focusObject.x, global.focusObject.y, objTile, true, true) != noone {
-				show_debug_message(4)
 				agro = false;
 				//instance_destroy(title);
 				//title = undefined;
 			};
 		
 		} else {
-			show_debug_message(5)
 			with (inst) var _dist = distance_to_object(global.focusObject);
-			show_debug_message(6)
 			if _dist <= 320 {
-				show_debug_message(7)
 				if collision_line(inst.x, inst.y, global.focusObject.x, global.focusObject.y, objTile, true, true) == noone {
-					show_debug_message(8)
 					agro = true;
 					//agroCallback = call_later(5, time_source_units_seconds, function() {agroCallback = undefined;}, false);
 					

@@ -2,7 +2,7 @@
 part_system_depth(partSystem, getTrueDepth(bbox_bottom, -0.5));
 depth = getTrueDepth(bbox_bottom);
 var despawnBufferWidth = 128;
-if !point_in_rectangle(x, y, objCamera.camX - despawnBufferWidth, objCamera.camY - despawnBufferWidth, objCamera.camX + objCamera.viewWidth + despawnBufferWidth, objCamera.camY + objCamera.viewHeight + despawnBufferWidth) {
+if !point_in_rectangle(x, y, objCamera.camX - despawnBufferWidth, objCamera.camY - despawnBufferWidth, objCamera.camX + (objCamera.viewWidth / objCamera.zoomFactor) + despawnBufferWidth, objCamera.camY + (objCamera.viewHeight / objCamera.zoomFactor) + despawnBufferWidth) {
 	part_emitter_destroy_all(partSystem);
 	emitters = [];
 } else if !array_length(emitters) {

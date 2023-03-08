@@ -7,14 +7,14 @@ global.movementStatus = true;
 
 focusIndex = 0;
 global.partyObjects = [objNero, objRena, objAurra, objGaro];
+viewWidth = 640;
+viewHeight = 360;
 
-viewWidth = 1280;
-viewHeight = 720;
+windowScale = 4;
+zoomFactor = 0.5;
 
-windowScale = 1;
-
-camX = x;
-camY = y;
+camX = round(x);
+camY = round(y);
 global.cameraSpeed = 0.15;
 
 

@@ -63,6 +63,7 @@ switch combatant.states.controlState {
 		var _inputForce = new vector_lengthdir(inputMagnitude * spdWalk, inputDirection);
 		apply_force(_inputForce);
 		};
+		if input_check("accept") create_skill_collider({})
 	break;
 	
 	case controlStates.FOLLOWING:

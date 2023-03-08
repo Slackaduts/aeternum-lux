@@ -16,7 +16,7 @@ update_collider();
 
 scenePool = new scene_pool();
 //If our lifetime (durationFrames) has ended, destroy self
-if durationFrames >= 0 var _callback = call_later(durationFrames, time_source_units_frames, function() {instance_destroy(id, true);});
+if durationFrames >= 0 var _callback = call_later(durationFrames, time_source_units_frames, function() {instance_destroy();});
 
 //Check every 2 seconds if we are out of bounds, destroy self if we are
 var _outOfBoundsCallback = call_later(2, time_source_units_seconds, function() {

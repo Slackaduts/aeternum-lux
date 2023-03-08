@@ -27,15 +27,12 @@ function skill_affects_inst(_target, _caster, _inst = other) {
 	switch (_target) {
 		case skillTarget.SELF:
 			return _caster.id == _inst.id;
-		break;
 		
 		case skillTarget.ALLIES:
 			return _caster.combatant.team == _inst.combatant.team;
-		break;
 		
 		case skillTarget.ENEMIES:
 			return _caster.combatant.team != _inst.combatant.team;
-		break;
 		
 		default:
 			return true;
