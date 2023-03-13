@@ -3,7 +3,11 @@ event_inherited();
 partSystem = part_system_create();
 emitters = [];
 emitter_types = [];
-
+partSysEmpty = true;
+partSysPastX = x;
+partSysPastY = y;
+partSysCullFrame = 0;
+partSysDepthSet = false;
 soundManager = new SoundManager(240, 96);
 
 var _p = part_type_create();

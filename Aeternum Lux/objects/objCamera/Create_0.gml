@@ -15,6 +15,9 @@ zoomFactor = 0.5;
 
 camX = round(x);
 camY = round(y);
+isMoving = true;
+pastCamX = camX;
+pastCamY = camY;
 global.cameraSpeed = 0.15;
 
 

@@ -88,7 +88,7 @@ wanderPerlinX = random_range(0, 10000);
 wanderPerlinY = random_range(0, 10000);
 wanderPerlinIncrement = 5;
 
-canBreathe = true;
+canBreathe = false;
 maxbreathDistance = 1.15;
 breathTime = random_range(0.15, 0.30);
 breathOffset = irandom_range(1, 20);

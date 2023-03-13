@@ -1,2 +1,2 @@
 /// @desc Center Window
-window_center();
+//window_center();

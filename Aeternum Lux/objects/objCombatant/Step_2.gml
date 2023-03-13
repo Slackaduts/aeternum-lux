@@ -1,5 +1,5 @@
 /// @desc Z Sort and Animate
-
+event_inherited();
 //Set depth
 depth = getTrueDepth(bbox_bottom);
 
