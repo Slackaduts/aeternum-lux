@@ -3,4 +3,7 @@ part_emitter_destroy_all(partSystem);
 part_system_destroy(partSystem);
 emitters = [];
 
-soundManager.destroy();
+
+VinylEmitterDestroy(soundEmitter);
+soundEmitter = undefined;
+//soundManager.destroy();

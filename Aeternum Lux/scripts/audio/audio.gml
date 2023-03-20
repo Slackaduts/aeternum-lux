@@ -145,3 +145,39 @@ function scene_play_temp_local_sound(_x, _y, _falloffDist, _falloffMax, _sound, 
 		};
 	};
 };
+
+
+/**
+ * Plays a Vinyl sound in a scene.
+ * @param {asset.GMSound} _sound Sound asset to play
+ * @param {bool} [_loop]=false Whether this sound should loop, defaults to false
+ * @param {real} [_gain]=1 Volume, default is 1
+ * @param {real} [_pitch]=1 Pitch, default is 1
+ * @param {real} [_pan]=1 Pan, default is 1
+ * @param {real} [_callbackIndex]=0 Index to go to afterwards, see other function docs on usage
+ */
+function scene_vinyl_play_sound(_sound, _loop = false, _gain = 1, _pitch = 1, _pan = 1, _callbackIndex = 0): scene_callback(_sound, _callbackIndex) constructor {
+	voice = undefined;
+	
+	static initialize = function(_sound = _sound, _loop = _loop, _gain = _gain, _pitch = _pitch, _pan = _pan) {
+		voice = VinylPlay(_sound, _loop, _gain, _pitch, _pan);
+	};
+	
+	static run = function() {
+		if !VinylExists(voice) finish();
+	};
+	
+	static reset = function() {
+		delete voice;
+		voice = undefined;
+		completed = false;
+	};
+};
+
+
+
+
+
+
+
+

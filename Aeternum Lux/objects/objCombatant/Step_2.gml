@@ -16,3 +16,7 @@ animate_sprite(animData, inputDirection, animState);
 //Sync position vector with actual position
 position.x = x;
 position.y = y;
+
+//Sync past position with present
+pastX = x;
+pastY = y;

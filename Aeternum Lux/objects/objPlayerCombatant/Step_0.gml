@@ -11,3 +11,5 @@ if !combatant.states.inCombat {
 //	_test_stats.hp = -5;
 //	spawn_skill_collider(id, [new scene_dialogue(global.focusObject, "THIS WORKED")], _test_stats, skillTarget.ENEMIES, 500, 500)
 //};
+
+if combatant.states.controlState == controlStates.CONTROLLED && (pastX != x || pastY != y) VinylListenerSet(x, y);

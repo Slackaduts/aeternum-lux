@@ -22,6 +22,7 @@ function rotate_point_y(_originX, _originY, _pointX, _pointY, _theta) {
 function pathfindToXY(_x, _y) {
 	var _pastX = x;
 	var _pastY = y;
+	//mp_potential_settings(20, 5, 3, 0);
 	var _foundStep = mp_potential_step_object(_x, _y, spdWalk, objCollision); // instance_nearest(_x, _y, objCollision
 	if square_distance(_x, _y, x, y) == 0 exit;
 	inputDirection = point_direction(_pastX, _pastY, x, y);

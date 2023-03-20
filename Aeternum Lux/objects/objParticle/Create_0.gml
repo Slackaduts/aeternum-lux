@@ -8,7 +8,11 @@ partSysPastX = x;
 partSysPastY = y;
 partSysCullFrame = 0;
 partSysDepthSet = false;
-soundManager = new SoundManager(240, 96);
+
+// Sound setup
+//soundManager = new SoundManager(240, 96);
+soundEmitter = VinylEmitterPoint(x, y);
+VinylEmitterFalloffSet(soundEmitter, 96, 240, 1);
 
 var _p = part_type_create();
 var _partSprite = sprSmokeParticle;

@@ -149,7 +149,7 @@ function arrive_custom_force(_force, _dist, _slowingRadius, _stopRadius, _maxFor
 };
 
 
-function arrive_force(_position, _velocity, _x, _y, _slowingRadius, _stopRadius, _maxForce = 5, _cutoff = 0.15, ) {
+function arrive_force(_position, _velocity, _x, _y, _slowingRadius, _stopRadius, _maxForce = 5, _cutoff = 0.15) {
 	var _vec = new vector(_x, _y);
 	_vec.subtract(_position);
 	var _dist = _vec.get_magnitude();
@@ -169,9 +169,9 @@ function arrive_force(_position, _velocity, _x, _y, _slowingRadius, _stopRadius,
 	return _vec;
 };
 
-function pathfind_force(_x, _y) {
+function pathfind_force(_x, _y, _spd = spdWalk) {
 	pathfindToXY(followingObj.x, followingObj.y);
-	var _pathfindForce = new vector_lengthdir(spdWalk, inputDirection);
+	var _pathfindForce = new vector_lengthdir(_spd, inputDirection);
 	var _dist = point_distance(x, y, followingObj.x, followingObj.y);
 	return arrive_custom_force(_pathfindForce, _dist, maximumCrowding * 3, maximumCrowding);
 };

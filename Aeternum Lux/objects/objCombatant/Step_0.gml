@@ -46,8 +46,26 @@ proxyVelocity = 0;
 
 tweenManager.run();
 
+
+
+
 // If we are being controlled by inputs or following, handle movement
 if followingObj != undefined && instance_number(followingObj) > 0 {
+
+//if pathfindCallback == undefined && combatant.states.controlState == controlStates.FOLLOWING {
+//	currPathfindForce = pathfind_force(followingObj.x, followingObj.y);
+//	pathfindCallback ??= call_later(3, time_source_units_frames, function() 
+//		{
+//			currPathfindForce = pathfind_force(followingObj.x, followingObj.y);
+//			show_debug_message("THIS RAN - PATHFIND THING");
+//			}, true);
+
+//} else if pathfindCallback != undefined && combatant.states.controlState != controlStates.FOLLOWING {
+//	call_cancel(pathfindCallback);
+//	pathfindCallback = undefined;
+//};
+	
+
 switch combatant.states.controlState {
 	case controlStates.IDLE:
 		apply_force(seperation_force());

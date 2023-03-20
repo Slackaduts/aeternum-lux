@@ -3,7 +3,7 @@ enum itemTypes {
 	REAGENT,
 	EQUIPMENT,
 	ARTIFACT,
-	LAST	
+	LAST
 };
 
 enum equipmentTypes {
@@ -112,7 +112,6 @@ function Inventory() constructor {
 			categories[_item.itemType][$ _item.name].amount = _amount;
 			
 		};
-		show_debug_message(categories[_item.itemType][$ _item.name])
 	};
 	
 	

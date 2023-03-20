@@ -36,10 +36,12 @@ if partSysCullFrame == 0 {
 partSysCullFrame += 1;
 if partSysCullFrame >= 30 partSysCullFrame = 0;
 
-// Only change depth if we move
+// Only change depth if we move, and only update sound emitter xy if we move
 if partSysPastX != x || partSysPastY != y {
 	part_system_depth(partSystem, getTrueDepth(bbox_bottom, -0.5));
 	depth = getTrueDepth(bbox_bottom);
+	
+	VinylEmitterPositionSet(soundEmitter, x, y);
 };
 
 

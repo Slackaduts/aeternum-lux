@@ -18,6 +18,8 @@ position = new vector(x, y);
 velocity = new vector(0, 0);
 proxyVelocity = 0;
 steeringForce = new vector(0, 0);
+currPathfindForce = new vector(0, 0);
+pathfindCallback = undefined;
 maxForce = spdWalk;
 
 tweenManager = new TweenManager();

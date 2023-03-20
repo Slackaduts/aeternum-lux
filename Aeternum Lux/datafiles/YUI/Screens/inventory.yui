@@ -16,7 +16,7 @@ root:
     content:
       type: panel
       layout: vertical
-      elements: @@ gui_get_inventory_cat(0)
+      elements: @inventory_elements
       // trace: true
       template:
         type: panel

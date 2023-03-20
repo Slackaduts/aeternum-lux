@@ -63,6 +63,9 @@ dataToSave = [
 "windowScale",
 "focusIndex"
 ];
+inventory_elements = gui_get_inventory_cat(0);
+var _updateInventoryCallback = call_later(1, time_source_units_seconds, function() {inventory_elements = gui_get_inventory_cat(0);}, true)
+
 
 //IMPORTANT: Makes spatial audio work and not have flipped channels
 audio_listener_orientation(0,1,0,0,0,1);
